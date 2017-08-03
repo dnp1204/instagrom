@@ -10,7 +10,8 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
-    "dev": "concurrently \"npm run server\""
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Doanh Pham",
   "license": "ISC",
