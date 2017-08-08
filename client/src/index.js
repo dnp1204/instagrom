@@ -9,8 +9,8 @@ import App from './components/App';
 import reducers from './reducers';
 
 // Two line below is to test whether survey router can upload survey or not
-// import axios from 'axios';
-// window.axios = axios;
+import axios from 'axios';
+window.axios = axios;
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
