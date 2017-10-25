@@ -1,9 +1,16 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
 
+const { Schema } = mongoose;
 const userSchema = new Schema({
   googleId: String,
-  credits: { type: Number, default: 0 }
-});
+  firstName: String,
+  lastName: String,
+  email: { type: String, required: true, unique: true },
+  avatar: String,
+  gender: String,
+  placesLived: [{ value: String, primary: { type: Boolean, default: false } }],
+  following: [{ type: Schema.Types.ObjectId, ref: 'user' }],
+  followers: [{ type: Schema.Types.ObjectId, ref: 'user' }]
+}, { timestamp: { createdAt: 'createdAt' } });
 
-mongoose.model('users', userSchema);
+mongoose.model('user', userSchema);

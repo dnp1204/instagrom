@@ -3,7 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
-const User = mongoose.model('users');
+const User = mongoose.model('user');
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -29,7 +29,15 @@ passport.use(
         return done(null, existingUser);
       }
 
-      const user = await new User({ googleId: profile.id }).save();
+      const user = await new User({
+        googleId: profile.id,
+        firstName: profile.name.givenName,
+        lastName: profile.name.familyName,
+        email: profile.emails[0].value,
+        avatar: profile._json.image.url,
+        gender: profile.gender,
+        placesLived: profile._json.placesLived
+      }).save();
       done(null, user);
     }
   )

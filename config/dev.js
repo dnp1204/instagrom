@@ -1,10 +1,6 @@
 module.exports = {
-  googleClientID: '643326354318-pibdbmg1e0p60qpf0acs257s7dptpria.apps.googleusercontent.com',
-  googleClientSecret: 'YM1EfdtS7yBgSfzVcn5ShrFG',
-  mongoURI: 'mongodb://doanh:password@ds161049.mlab.com:61049/emaily-dev',
+  googleClientID: '333996789046-4f1udarijeunsld8ta1ohv56otbloia7.apps.googleusercontent.com',
+  googleClientSecret: 'FHCr6QNQ1p5MfBb4bWijRDE0',
+  mongoURI: 'mongodb://localhost/instagram',
   cookieKey: 'adsdfasdflkasjfrwieuhfcbdsjkvlasbfwefnafc',
-  stripePublishableKey: 'pk_test_zKVUpzrInL7nSMMpHdAbf7tV',
-  stripeSecretKey: 'sk_test_q2iwPlciNjILeYj169m5WJcR',
-  sendGridKey: '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',
-  redirectDomain: 'http://localhost:3000'
 }
