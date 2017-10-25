@@ -7,6 +7,7 @@
  *    IE on Windows Phone and in iOS.
  */
 @import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,400italic);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
 html {
   line-height: 1.15;
   /* 1 */
@@ -392,8 +393,7 @@ template {
 
 .gigantic, .huge, .large, .bigger, .big,
 h1, h2, h3, h4, h5, h6 {
-  color: #BD5248;
-  font-weight: bold; }
+  color: #000; }
 
 .gigantic {
   font-size: 110px;
@@ -438,12 +438,12 @@ hr {
   height: 0; }
 
 a {
-  color: #BD5248;
+  color: #000;
   text-decoration: none;
   outline: 0; }
 
 a:hover, a:focus {
-  color: #d89993; }
+  color: #333333; }
 
 ::selection {
   background: #FFF498; }
@@ -461,12 +461,34 @@ body {
   -webkit-tap-highlight-color: #FFF498; }
 
 body {
-  background: #F6F6F8;
+  background: #F6F6F6;
   font-size: 14px;
   line-height: 1.6;
   font-family: "Fira Sans" sans-serif;
   color: #2E2D33;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; }
+
+.login-page-container {
+  background-color: #FFF;
+  padding: 10px 70px 50px 70px;
+  height: 100%; }
+  .login-page-container .logo {
+    font-family: "Lobster", cursive; }
+  .login-page-container h1 {
+    text-align: center; }
+  .login-page-container input {
+    height: 45px;
+    margin-bottom: 5px;
+    background-color: #F6F6F6;
+    border: 0.2px solid rgba(0, 0, 0, 0.1) !important;
+    outline: none !important; }
+  .login-page-container .split-line-container {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0; }
+  .login-page-container .split-line {
+    height: 1px;
+    flex: 1; }
 
 /*# sourceMappingURL=index.css.map */

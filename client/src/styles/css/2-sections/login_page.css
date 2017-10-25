@@ -1,23 +1,35 @@
 /*
-Error: Undefined variable: "$accent-color".
-        on line 5 of client/src/styles/scss/1-base/base.sass
+Error: Undefined variable: "$bg-color".
+        on line 15 of client/src/styles/scss/2-sections/login_page.sass
 
-1: //	Typography
-2: 
-3: .gigantic, .huge, .large, .bigger, .big, 
-4: h1, h2, h3, h4, h5, h6
-5:   color: $accent-color
-6: 
-7: .gigantic
-8:   font-size: 110px
-9:   line-height: 1.09
-10:   letter-spacing: -2px
+10:     text-align: center
+11: 
+12:   input
+13:     height: 45px
+14:     margin-bottom: 5px
+15:     background-color: $bg-color
+16:     border: 0.2px solid rgba(0, 0, 0, 0.1) !important
+17:     outline: none !important
+18: 
+19:   .split-line-container 
+20:     display: flex
 
 Backtrace:
-client/src/styles/scss/1-base/base.sass:5
+client/src/styles/scss/2-sections/login_page.sass:15
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/variable.rb:49:in `_perform'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `map'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
@@ -65,4 +77,4 @@ client/src/styles/scss/1-base/base.sass:5
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$accent-color\".\A         on line 5 of client/src/styles/scss/1-base/base.sass\A \A 1: //	Typography\A 2: \A 3: .gigantic, .huge, .large, .bigger, .big, \A 4: h1, h2, h3, h4, h5, h6\A 5:   color: $accent-color\A 6: \A 7: .gigantic\A 8:   font-size: 110px\A 9:   line-height: 1.09\A 10:   letter-spacing: -2px"; }
+  content: "Error: Undefined variable: \"$bg-color\".\A         on line 15 of client/src/styles/scss/2-sections/login_page.sass\A \A 10:     text-align: center\A 11: \A 12:   input\A 13:     height: 45px\A 14:     margin-bottom: 5px\A 15:     background-color: $bg-color\A 16:     border: 0.2px solid rgba(0, 0, 0, 0.1) !important\A 17:     outline: none !important\A 18: \A 19:   .split-line-container \A 20:     display: flex"; }
