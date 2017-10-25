@@ -1,27 +1,38 @@
-.login-page-container
-  background-color: #FFF
-  padding: 10px 70px 50px 70px
-  height: 100%
+.app-login-page
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100vh
 
-  .logo 
-    font-family: 'Lobster', cursive
+  .login-page-container
+    width: 40%
+    background-color: #FFF
+    padding: 10px 70px 50px 70px
 
-  h1 
-    text-align: center
+    h1 
+      text-align: center
 
-  input
-    height: 45px
-    margin-bottom: 5px
-    background-color: $bg-color
-    border: 0.2px solid rgba(0, 0, 0, 0.1) !important
-    outline: none !important
+    input
+      height: 45px
+      margin-bottom: 5px
+      background-color: $bg-color
+      border: 0.2px solid rgba(0, 0, 0, 0.1) !important
+      outline: none !important
 
-  .split-line-container 
-    display: flex
-    flex-direction: row
-    margin: 10px 0
-  
-  .split-line
-    height: 1px
-    flex: 1
-  
+    .split-line-container 
+      display: flex
+      flex-direction: row
+      margin: 15px 0
+      justify-content: space-between
+      align-items: center
+
+      .between 
+        margin: 0 30px
+        width: 20px
+    
+      .split-line
+        flex: 1
+        flex-shrink: 1
+        height: 1px
+        background-color: #000
+    

@@ -5,12 +5,12 @@ class LoginPage extends Component {
     return (
       <div className="login-page-container">
         <h1 className="logo">Instagram</h1>
-        <a className="btn btn-block btn-danger" id="google-login-link" href="/">
+        <a href="/auth/google" className="btn btn-block btn-danger" id="google-login-link">
           <i className="fa fa-google"></i>  Log in with Google
         </a>
         <div className="split-line-container">
           <div className="split-line" />
-          <div>OR</div>
+          <div className="between">OR</div>
           <div className="split-line" />
         </div>
         <div className="form-group">

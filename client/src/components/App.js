@@ -10,6 +10,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.user);
     if (this.props.user) {
       return (
         <div>
@@ -18,10 +19,8 @@ class App extends Component {
       );
     }
     return (
-      <div className="row">
-        <div className="col-md-6 col-md-offset-3">
-          <LoginPage />
-        </div>
+      <div className="app-login-page">
+        <LoginPage />
       </div>
     );
   }
