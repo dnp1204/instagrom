@@ -1,2 +1,7 @@
 node_modules
 dev.js
+
+### macOS ###
+*.DS_Store
+.AppleDouble
+.LSOverride
