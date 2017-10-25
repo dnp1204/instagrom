@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { fetchCurrentUser } from '../actions';
 import LoginPage from './LoginPage';
 import Header from './Header';
+import Profile from './Profile';
+import Newsfeed from './Newsfeed';
 
 class App extends Component {
   componentDidMount() {
@@ -10,12 +13,15 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.user);
     if (this.props.user) {
       return (
-        <div>
-          <Header />
-        </div>
+        <BrowserRouter>
+          <div>
+            <Header />
+            <Route path="/" exact component={Newsfeed} />
+            <Route path="/profile" exact component={Profile} />
+          </div>
+        </BrowserRouter>
       );
     }
     return (
