@@ -469,7 +469,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
   font-family: "Fira Sans" sans-serif;
-  color: #2E2D33;
+  color: #262626;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; }
 
@@ -540,5 +540,37 @@ body {
     align-items: center; }
     .header-container .header-summary .notification {
       margin-right: 40px; }
+
+.profile-container {
+  display: flex;
+  flex-direction: column; }
+  .profile-container .user-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 50px 0;
+    height: 30%;
+    align-items: center;
+    border-bottom: 0.7px solid rgba(0, 0, 0, 0.2); }
+    .profile-container .user-container p {
+      font-size: 25px; }
+    .profile-container .user-container .user-avatar {
+      margin-right: 100px; }
+      .profile-container .user-container .user-avatar img {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        background-color: #000; }
+    .profile-container .user-container .user-info {
+      width: 60%;
+      display: flex;
+      flex-direction: column; }
+      .profile-container .user-container .user-info .numbers {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; }
+        .profile-container .user-container .user-info .numbers span {
+          color: #000000;
+          font-weight: bold; }
 
 /*# sourceMappingURL=index.css.map */
