@@ -1,30 +1,22 @@
 /*
 Error: Undefined variable: "$link-color".
-        on line 29 of client/src/styles/scss/2-sections/header.sass
+        on line 22 of client/src/styles/scss/3-modules/drop_down.sass
 
+17:       margin-bottom: 10px
+18:       cursor: pointer
+19:       transition: all 200ms ease-in-out
+20: 
+21:       &:hover 
+22:         color: $link-color
+23:   
 24: 
-25:     h1 
-26:       font-size: 28px
-27: 
-28:       &:hover
-29:         color: lighten($link-color, 60%)
-30:   
-31:   .header-search
-32:     align-self: center
-33: 
-34:     input 
+25: @keyframes slide-down 
+26:   0% 
+27:     transform: translateY(-20px)
 
 Backtrace:
-client/src/styles/scss/2-sections/header.sass:29
+client/src/styles/scss/3-modules/drop_down.sass:22
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/variable.rb:49:in `_perform'
-/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
-/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:173:in `perform_arg'
-/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:124:in `block in _perform'
-/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:124:in `each'
-/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:124:in `each_with_index'
-/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:124:in `each'
-/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:124:in `map'
-/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:124:in `_perform'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
@@ -107,4 +99,4 @@ client/src/styles/scss/2-sections/header.sass:29
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$link-color\".\A         on line 29 of client/src/styles/scss/2-sections/header.sass\A \A 24: \A 25:     h1 \A 26:       font-size: 28px\A 27: \A 28:       &:hover\A 29:         color: lighten($link-color, 60%)\A 30:   \A 31:   .header-search\A 32:     align-self: center\A 33: \A 34:     input "; }
+  content: "Error: Undefined variable: \"$link-color\".\A         on line 22 of client/src/styles/scss/3-modules/drop_down.sass\A \A 17:       margin-bottom: 10px\A 18:       cursor: pointer\A 19:       transition: all 200ms ease-in-out\A 20: \A 21:       &:hover \A 22:         color: $link-color\A 23:   \A 24: \A 25: @keyframes slide-down \A 26:   0% \A 27:     transform: translateY(-20px)"; }
