@@ -1,0 +1,36 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #fff;
+  padding: 5px 0; }
+  .header-container .header-brand {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
+    .header-container .header-brand .camera-logo {
+      border-right: 1px solid rgba(0, 0, 0, 0.7);
+      margin-right: 20px; }
+      .header-container .header-brand .camera-logo i {
+        display: block;
+        margin-right: 20px; }
+    .header-container .header-brand h1 {
+      font-size: 28px; }
+  .header-container .header-search {
+    align-self: center; }
+    .header-container .header-search input {
+      text-align: center;
+      width: 250px;
+      border-radius: 3px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      height: 26px; }
+  .header-container .header-summary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center; }
+    .header-container .header-summary .notification {
+      margin-right: 40px; }
+
+/*# sourceMappingURL=header.css.map */
