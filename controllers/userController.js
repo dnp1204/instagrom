@@ -22,5 +22,13 @@ module.exports = {
     } catch (err) {
       next(err);
     }
+  },
+
+  async findUser(req, res, next) {
+    try {
+      
+    } catch (err) {
+      next(err);
+    }
   }
 };

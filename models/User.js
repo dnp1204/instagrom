@@ -14,4 +14,6 @@ const userSchema = new Schema({
   posts: [{ type: Schema.Types.ObjectId, ref: 'post' }]
 }, { timestamp: { createdAt: 'createdAt' } });
 
+userSchema.index({ firstName: 'text', lastName: 'text', email: 'text' });
+
 mongoose.model('user', userSchema);
