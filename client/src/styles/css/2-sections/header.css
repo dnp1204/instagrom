@@ -24,14 +24,23 @@
     .header-container .header-brand h1 {
       font-size: 28px; }
   .header-container .header-search {
-    align-self: center; }
+    align-self: center;
+    position: relative; }
+    .header-container .header-search .fa-search {
+      position: absolute;
+      top: 6px;
+      left: 10px; }
     .header-container .header-search input {
       text-align: center;
       width: 250px;
       border-radius: 3px;
       border: 1px solid rgba(0, 0, 0, 0.2);
       height: 26px;
-      outline: none; }
+      outline: none;
+      transition: all 200ms ease-in-out; }
+    .header-container .header-search input:focus {
+      text-align: left;
+      padding-left: 30px; }
   .header-container .header-summary {
     display: flex;
     flex-direction: row;

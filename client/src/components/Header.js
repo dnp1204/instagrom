@@ -77,6 +77,7 @@ class Header extends Component {
         </div>
         <div className="header-search">
           <input type="text" placeholder="Searching" />
+          <div className="fa fa-search"></div>
         </div>
         <div className="header-summary">
           <div
