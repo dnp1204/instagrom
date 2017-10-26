@@ -664,4 +664,57 @@ body {
       .post-container .post-detail p .liked {
         color: #EF5350; }
 
+.suggestion-container {
+  position: relative; }
+  .suggestion-container .arrow-up {
+    background-color: #fff;
+    border-top: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+    height: 14px;
+    width: 14px;
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: 10px;
+    position: absolute;
+    transform: rotate(45deg);
+    z-index: 10; }
+  .suggestion-container .suggestion-body {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.0975);
+    z-index: 9;
+    background-color: #ffffff;
+    width: 250px;
+    max-height: 350px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+    top: 17px; }
+    .suggestion-container .suggestion-body ul {
+      list-style-type: none;
+      padding: 0; }
+      .suggestion-container .suggestion-body ul .tag {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid #e6e6e6;
+        width: 100%;
+        height: 66px; }
+        .suggestion-container .suggestion-body ul .tag:hover {
+          background-color: #fafafa; }
+        .suggestion-container .suggestion-body ul .tag:last-child {
+          border-bottom: none; }
+        .suggestion-container .suggestion-body ul .tag .user-avatar img {
+          background-color: #000000;
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          margin-right: 10px; }
+        .suggestion-container .suggestion-body ul .tag .user-info h4 {
+          margin: 20px 0 0 0;
+          font-size: 15px; }
+
 /*# sourceMappingURL=index.css.map */

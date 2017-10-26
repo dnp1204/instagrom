@@ -10,8 +10,8 @@ import {
   ModalFooter
 } from 'react-bootstrap';
 import fileStack from 'filestack-js';
-import { makePost } from '../actions';
-
+import { makePost, searchUser } from '../actions';
+import AutoSuggestion from './Utils/AutoSuggestion';
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -56,12 +56,24 @@ class Header extends Component {
   }
 
   onsubmit(values) {
-    this.props.makePost({ description: values.description, image: this.state.imageLink });
+    this.props.makePost({
+      description: values.description,
+      image: this.state.imageLink
+    });
     this.setState({ showUpload: false, imageLink: '', imageName: '' });
   }
 
+  onChange(event) {
+    const { _id } = this.props.user;
+    const { value } = event.target;
+
+    if (value !== '') {
+      this.props.searchUser(_id, value);
+    }
+  }
+
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, returnUser } = this.props;
 
     return (
       <div className="header-container">
@@ -76,8 +88,13 @@ class Header extends Component {
           </Link>
         </div>
         <div className="header-search">
-          <input type="text" placeholder="Searching" />
-          <div className="fa fa-search"></div>
+          <input
+            onChange={this.onChange.bind(this)}
+            type="text"
+            placeholder="Searching"
+          />
+          <div className="fa fa-search" />
+          <AutoSuggestion suggestionValue={returnUser} />
         </div>
         <div className="header-summary">
           <div
@@ -97,7 +114,6 @@ class Header extends Component {
             </Link>
           </div>
         </div>
-
         <Modal show={this.state.showUpload}>
           <ModalHeader>
             <ModalTitle>New Post</ModalTitle>
@@ -141,6 +157,10 @@ class Header extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return { user: state.user, returnUser: state.searchUser };
+}
+
 export default reduxForm({
   form: 'uploadForm'
-})(connect(null, { makePost })(Header));
+})(connect(mapStateToProps, { makePost, searchUser })(Header));

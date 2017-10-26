@@ -35,7 +35,13 @@ module.exports = {
       //   lastName: { $regex: name }
       // });
       const users = await User.aggregate([
-        { $project: { name: { $concat: ['$firstName', ' ', '$lastName'] }, avatar: '$avatar' } },
+        {
+          $project: {
+            name: { $concat: ['$firstName', ' ', '$lastName'] },
+            avatar: '$avatar',
+            email: '$email'
+          }
+        },
         { $match: { name: { $regex: name } } }
       ]).limit(20);
       res.send(users);
