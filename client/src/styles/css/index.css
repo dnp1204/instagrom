@@ -474,6 +474,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; }
 
+.btn-transparent {
+  background-color: transparent;
+  border-color: #ccc; }
+
 .app-login-page {
   display: flex;
   justify-content: center;
@@ -543,8 +547,10 @@ body {
     flex-direction: row;
     justify-content: space-around;
     align-items: center; }
+    .header-container .header-summary .upload {
+      margin-right: 20px; }
     .header-container .header-summary .notification {
-      margin-right: 40px; }
+      margin-right: 20px; }
 
 .profile-container {
   display: flex;

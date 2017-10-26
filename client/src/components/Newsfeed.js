@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Newsfeed extends Component {
-  state = {  }
+
   render() {
     return (
-      <div>Newsfeed</div>
+      <div>
+        <h1>Upload</h1>
+      </div>
     );
   }
 }
