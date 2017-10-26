@@ -23,6 +23,12 @@
       width: 60%;
       display: flex;
       flex-direction: column; }
+      .profile-container .user-container .user-info .name {
+        display: flex;
+        flex-direction: row;
+        align-items: center; }
+        .profile-container .user-container .user-info .name h4 {
+          margin-right: 20px; }
       .profile-container .user-container .user-info .numbers {
         display: flex;
         flex-direction: row;

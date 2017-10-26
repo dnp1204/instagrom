@@ -19,7 +19,7 @@ class App extends Component {
           <div>
             <Header />
             <div className="row">
-              <div className="col-md-8 col-md-offset-2">
+              <div className="col-md-6 col-md-offset-3">
                 <Route path="/" exact component={Newsfeed} />
                 <Route path="/profile" exact component={Profile} />
               </div>

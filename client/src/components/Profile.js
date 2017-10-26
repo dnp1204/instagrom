@@ -19,7 +19,7 @@ class Profile extends Component {
       followers
     } = this.props.user;
     const { posts } = this.props.posts;
-    
+
     return (
       <div className="profile-container">
         <div className="user-container">
@@ -27,9 +27,12 @@ class Profile extends Component {
             <img src={avatar} alt="avatar" />
           </div>
           <div className="user-info">
-            <h4 className="bigger">
-              {firstName} {lastName}
-            </h4>
+            <div className="name">
+              <h4 className="bigger">
+                {firstName} {lastName}
+              </h4>
+              <a href="/api/logout"><i className="fa fa-sign-out fa-2x"></i></a>
+            </div>
             <div className="numbers">
               <p>
                 <span className="bigger">{posts.length}</span> posts
