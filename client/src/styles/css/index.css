@@ -441,14 +441,11 @@ hr {
   margin: 10px 0 30px;
   height: 0; }
 
-a {
+a, a:focus, a:hover {
   color: #262626;
   text-decoration: none;
   transition: all 200ms ease-in-out;
   outline: 0; }
-
-a:hover {
-  color: #bfbfbf; }
 
 ::selection {
   background: #FFF498; }
@@ -479,7 +476,8 @@ body {
   border-color: #ccc; }
 
 .app-container {
-  padding-bottom: 60px; }
+  padding-bottom: 60px;
+  margin-top: 60px; }
 
 .app-login-page {
   display: flex;
@@ -518,7 +516,11 @@ body {
   flex-direction: row;
   justify-content: space-around;
   background-color: #fff;
-  padding: 5px 0; }
+  padding: 5px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999; }
   .header-container .header-brand {
     display: flex;
     flex-direction: row;
@@ -534,8 +536,6 @@ body {
         margin-right: 20px; }
     .header-container .header-brand h1 {
       font-size: 28px; }
-      .header-container .header-brand h1:hover {
-        color: #bfbfbf; }
   .header-container .header-search {
     align-self: center; }
     .header-container .header-search input {
@@ -551,9 +551,9 @@ body {
     justify-content: space-around;
     align-items: center; }
     .header-container .header-summary .upload {
-      margin-right: 20px; }
+      margin-right: 30px; }
     .header-container .header-summary .notification {
-      margin-right: 20px; }
+      margin-right: 30px; }
 
 .profile-container {
   display: flex;
