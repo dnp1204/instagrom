@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchPosts } from '../actions';
+import Post from './Utils/Post';
 
 class Profile extends Component {
-  render() {
-    const { firstName, lastName, avatar, posts, following, followers } = this.props.user;
+  componentDidMount() {
+    this.props.fetchPosts();
+  }
 
+  renderPosts() {}
+
+  render() {
+    const {
+      firstName,
+      lastName,
+      avatar,
+      following,
+      followers
+    } = this.props.user;
+    const { posts } = this.props.posts;
+    
     return (
       <div className="profile-container">
         <div className="user-container">
@@ -12,13 +27,32 @@ class Profile extends Component {
             <img src={avatar} alt="avatar" />
           </div>
           <div className="user-info">
-            <h4 className="bigger">{firstName} {lastName}</h4>
+            <h4 className="bigger">
+              {firstName} {lastName}
+            </h4>
             <div className="numbers">
-              <p><span className="bigger">{posts.length}</span> posts</p>
-              <p><span className="bigger">{following.length}</span> following</p>
-              <p><span className="bigger">{followers.length}</span> followers</p>
+              <p>
+                <span className="bigger">{posts.length}</span> posts
+              </p>
+              <p>
+                <span className="bigger">{following.length}</span> following
+              </p>
+              <p>
+                <span className="bigger">{followers.length}</span> followers
+              </p>
             </div>
           </div>
+        </div>
+        <div className="row user-post">
+          <div className="col-md-4">
+            <Post
+              likes={posts[0].likes.length}
+              comments={posts[0].comments.length}
+              imageURL={posts[0].image}
+            />
+          </div>
+          <div className="col-md-4" />
+          <div className="col-md-4" />
         </div>
       </div>
     );
@@ -26,7 +60,7 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state) {
-  return { user: state.user };
+  return { user: state.user, posts: state.posts };
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, { fetchPosts })(Profile);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import {
   ModalBody,
@@ -9,6 +10,7 @@ import {
   ModalFooter
 } from 'react-bootstrap';
 import fileStack from 'filestack-js';
+import { makePost } from '../actions';
 
 class Header extends Component {
   constructor(props) {
@@ -54,8 +56,7 @@ class Header extends Component {
   }
 
   onsubmit(values) {
-    console.log(values);
-    console.log(this.state.imageLink);
+    this.props.makePost({ description: values.description, image: this.state.imageLink });
     this.setState({ showUpload: false, imageLink: '', imageName: '' });
   }
 
@@ -141,4 +142,4 @@ class Header extends Component {
 
 export default reduxForm({
   form: 'uploadForm'
-})(Header);
+})(connect(null, { makePost })(Header));

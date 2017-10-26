@@ -1,9 +1,35 @@
 const mongoose = require('mongoose');
 
+const User = mongoose.model('user');
 const Post = mongoose.model('post');
 const Comment = mongoose.model('comment');
 
 module.exports = {
+  async getPosts(req, res, next) {
+    try {
+      const user = await User.findById(req.user._id).populate({
+        path: 'posts',
+        populate: {
+          path: 'comments',
+          model: 'comment',
+          populate: {
+            path: 'likes',
+            model: 'user'
+          }
+        },
+      }).populate({
+        path: 'posts',
+        populate: {
+          path: 'likes',
+          model: 'user'
+        }
+      });
+      res.send(user);
+    } catch (err) {
+      next(err);
+    }
+  },
+
   async createPost(req, res, next) {
     const postParams = req.body;
 

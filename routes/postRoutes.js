@@ -1,6 +1,7 @@
 const PostController = require('../controllers/postController');
 
 module.exports = app => {
+  app.get('/api/post', PostController.getPosts);
   app.post('/api/post/new', PostController.createPost);
   app.get('/api/post/:pollId', PostController.detailPost);
   app.delete('/api/post/:pollId', PostController.deletePost);
