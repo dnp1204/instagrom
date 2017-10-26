@@ -56,7 +56,7 @@ class Profile extends Component {
       followers
     } = this.props.user;
     const { posts } = this.props.posts;
-
+    
     return (
       <div className="profile-container">
         <div className="user-container">

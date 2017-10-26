@@ -21,6 +21,9 @@ module.exports = {
         })
         .populate({
           path: 'posts',
+          options: {
+            sort: { createdAt: -1 }
+          },
           populate: {
             path: 'likes',
             model: 'user'
@@ -99,6 +102,7 @@ module.exports = {
       const user = await User.findById(req.user._id)
         .populate({
           path: 'posts',
+          sort: { createdAt: -1 },
           populate: {
             path: 'comments',
             model: 'comment',
@@ -110,6 +114,9 @@ module.exports = {
         })
         .populate({
           path: 'posts',
+          options: {
+            sort: { createdAt: -1 }
+          },
           populate: {
             path: 'likes',
             model: 'user'
