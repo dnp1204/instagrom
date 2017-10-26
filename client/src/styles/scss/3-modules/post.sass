@@ -4,17 +4,18 @@
 
   &:hover
     .post-detail
-      display: flex
+      opacity: 1
 
   img 
     width: 100%
     height: auto
 
   .post-detail
+    display: flex
     position: absolute
     top: 0
     left: 0
-    display: none
+    opacity: 0
     width: 100%
     background-color: rgba(0, 0, 0, 0.4)
     height: 100%
@@ -23,6 +24,7 @@
     justify-content: space-around
     align-items: center
     padding: 0 30px
+    transition: all 200ms ease-in-out
 
     p  
       font-size: 25px

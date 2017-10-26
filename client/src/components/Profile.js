@@ -51,8 +51,43 @@ class Profile extends Component {
               imageURL={posts[0].image}
             />
           </div>
-          <div className="col-md-4" />
-          <div className="col-md-4" />
+          <div className="col-md-4">
+            <Post
+              likes={posts[0].likes.length}
+              comments={posts[0].comments.length}
+              imageURL={posts[0].image}
+            />
+          </div>
+          <div className="col-md-4">
+            <Post
+              likes={posts[0].likes.length}
+              comments={posts[0].comments.length}
+              imageURL={posts[0].image}
+            />
+          </div>
+        </div>
+        <div className="row user-post">
+          <div className="col-md-4">
+            <Post
+              likes={posts[0].likes.length}
+              comments={posts[0].comments.length}
+              imageURL={posts[0].image}
+            />
+          </div>
+          <div className="col-md-4">
+            <Post
+              likes={posts[0].likes.length}
+              comments={posts[0].comments.length}
+              imageURL={posts[0].image}
+            />
+          </div>
+          <div className="col-md-4">
+            <Post
+              likes={posts[0].likes.length}
+              comments={posts[0].comments.length}
+              imageURL={posts[0].image}
+            />
+          </div>
         </div>
       </div>
     );

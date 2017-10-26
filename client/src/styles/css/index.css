@@ -562,6 +562,7 @@ body {
     padding: 50px 0;
     height: 30%;
     align-items: center;
+    margin-bottom: 50px;
     border-bottom: 0.7px solid rgba(0, 0, 0, 0.2); }
     .profile-container .user-container p {
       font-size: 25px; }
@@ -583,6 +584,8 @@ body {
         .profile-container .user-container .user-info .numbers span {
           color: #000000;
           font-weight: bold; }
+  .profile-container .user-post {
+    margin-bottom: 30px; }
 
 .dropdown-container {
   position: relative; }
@@ -614,15 +617,16 @@ body {
   width: 100%;
   position: relative; }
   .post-container:hover .post-detail {
-    display: flex; }
+    opacity: 1; }
   .post-container img {
     width: 100%;
     height: auto; }
   .post-container .post-detail {
+    display: flex;
     position: absolute;
     top: 0;
     left: 0;
-    display: none;
+    opacity: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     height: 100%;
@@ -630,7 +634,8 @@ body {
     color: #FFF;
     justify-content: space-around;
     align-items: center;
-    padding: 0 30px; }
+    padding: 0 30px;
+    transition: all 200ms ease-in-out; }
     .post-container .post-detail p {
       font-size: 25px; }
 

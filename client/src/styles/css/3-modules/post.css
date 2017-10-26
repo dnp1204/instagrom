@@ -2,15 +2,16 @@
   width: 100%;
   position: relative; }
   .post-container:hover .post-detail {
-    display: flex; }
+    opacity: 1; }
   .post-container img {
     width: 100%;
     height: auto; }
   .post-container .post-detail {
+    display: flex;
     position: absolute;
     top: 0;
     left: 0;
-    display: none;
+    opacity: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     height: 100%;
@@ -18,7 +19,8 @@
     color: #FFF;
     justify-content: space-around;
     align-items: center;
-    padding: 0 30px; }
+    padding: 0 30px;
+    transition: all 200ms ease-in-out; }
     .post-container .post-detail p {
       font-size: 25px; }
 

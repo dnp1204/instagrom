@@ -8,6 +8,7 @@
     padding: 50px 0;
     height: 30%;
     align-items: center;
+    margin-bottom: 50px;
     border-bottom: 0.7px solid rgba(0, 0, 0, 0.2); }
     .profile-container .user-container p {
       font-size: 25px; }
@@ -29,5 +30,7 @@
         .profile-container .user-container .user-info .numbers span {
           color: #000000;
           font-weight: bold; }
+  .profile-container .user-post {
+    margin-bottom: 30px; }
 
 /*# sourceMappingURL=profile.css.map */
