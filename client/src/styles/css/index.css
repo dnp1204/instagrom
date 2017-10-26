@@ -478,6 +478,9 @@ body {
   background-color: transparent;
   border-color: #ccc; }
 
+.app-container {
+  padding-bottom: 60px; }
+
 .app-login-page {
   display: flex;
   justify-content: center;

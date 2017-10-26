@@ -1,7 +1,7 @@
 import { MAKE_POST, FETCH_POSTS, LIKE_POST } from '../actions/types';
 
 const initialState = {
-  posts: [{ likes: [], comments: [], image: '' }],
+  posts: [{ _id: '', likes: [], comments: [], image: '' }],
   followers: [],
   following: []
 }

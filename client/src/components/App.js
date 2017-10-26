@@ -18,7 +18,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <div className="container">
+            <div className="app-container container">
               <div className="row">
                 <div className="col-md-8 col-md-offset-2">
                   <Route path="/" exact component={Newsfeed} />

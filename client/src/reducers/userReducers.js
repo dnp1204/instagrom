@@ -1,7 +1,7 @@
 import { FETCH_CURRENT_USER } from '../actions/types';
 
 const initialState = {
-  posts: [{ likes: [], comments: [], image: '' }],
+  posts: [{ _id: '', likes: [], comments: [], image: '' }],
   followers: [],
   following: []
 }
