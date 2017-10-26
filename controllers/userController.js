@@ -24,9 +24,21 @@ module.exports = {
     }
   },
 
-  async findUser(req, res, next) {
+  async searchUser(req, res, next) {
+    const { key } = req.params;
+    const name = new RegExp(key.toLowerCase(), 'i');
+
     try {
-      
+      // const user = User.find({ $text: { $search: key } });
+      // const users = await User.find({
+      //   firstName: { $regex: name },
+      //   lastName: { $regex: name }
+      // });
+      const users = await User.aggregate([
+        { $project: { name: { $concat: ['$firstName', ' ', '$lastName'] }, avatar: '$avatar' } },
+        { $match: { name: { $regex: name } } }
+      ]).limit(20);
+      res.send(users);
     } catch (err) {
       next(err);
     }

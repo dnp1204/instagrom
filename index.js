@@ -27,6 +27,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/postRoutes')(app);
+require('./routes/userRoutes')(app);
 
 app.use((err, req, res) => {
   res.status(422).send({ error: err.message });
