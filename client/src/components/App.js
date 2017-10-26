@@ -18,10 +18,12 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <div className="row">
-              <div className="col-md-6 col-md-offset-3">
-                <Route path="/" exact component={Newsfeed} />
-                <Route path="/profile" exact component={Profile} />
+            <div className="container">
+              <div className="row">
+                <div className="col-md-8 col-md-offset-2">
+                  <Route path="/" exact component={Newsfeed} />
+                  <Route path="/profile" exact component={Profile} />
+                </div>
               </div>
             </div>
           </div>
