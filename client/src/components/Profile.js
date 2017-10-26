@@ -12,6 +12,7 @@ class Profile extends Component {
 
   render() {
     const {
+      _id,
       firstName,
       lastName,
       avatar,
@@ -19,7 +20,7 @@ class Profile extends Component {
       followers
     } = this.props.user;
     const { posts } = this.props.posts;
-
+  
     return (
       <div className="profile-container">
         <div className="user-container">
@@ -49,44 +50,25 @@ class Profile extends Component {
         <div className="row user-post">
           <div className="col-md-4 col-sm-4 col-xs-4">
             <Post
-              likes={posts[0].likes.length}
+              userId={_id}
+              postId={posts[0]._id}
+              likes={posts[0].likes}
               comments={posts[0].comments.length}
               imageURL={posts[0].image}
             />
           </div>
           <div className="col-md-4 col-sm-4 col-xs-4">
             <Post
-              likes={posts[0].likes.length}
+              postId={posts[0]._id}
+              likes={posts[0].likes}
               comments={posts[0].comments.length}
               imageURL={posts[0].image}
             />
           </div>
           <div className="col-md-4 col-sm-4 col-xs-4">
             <Post
-              likes={posts[0].likes.length}
-              comments={posts[0].comments.length}
-              imageURL={posts[0].image}
-            />
-          </div>
-        </div>
-        <div className="row user-post">
-          <div className="col-md-4 col-sm-4 col-xs-4">
-            <Post
-              likes={posts[0].likes.length}
-              comments={posts[0].comments.length}
-              imageURL={posts[0].image}
-            />
-          </div>
-          <div className="col-md-4 col-sm-4 col-xs-4">
-            <Post
-              likes={posts[0].likes.length}
-              comments={posts[0].comments.length}
-              imageURL={posts[0].image}
-            />
-          </div>
-          <div className="col-md-4 col-sm-4 col-xs-4">
-            <Post
-              likes={posts[0].likes.length}
+              postId={posts[0]._id}
+              likes={posts[0].likes}
               comments={posts[0].comments.length}
               imageURL={posts[0].image}
             />

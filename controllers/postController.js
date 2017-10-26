@@ -7,23 +7,25 @@ const Comment = mongoose.model('comment');
 module.exports = {
   async getPosts(req, res, next) {
     try {
-      const user = await User.findById(req.user._id).populate({
-        path: 'posts',
-        populate: {
-          path: 'comments',
-          model: 'comment',
+      const user = await User.findById(req.user._id)
+        .populate({
+          path: 'posts',
+          populate: {
+            path: 'comments',
+            model: 'comment',
+            populate: {
+              path: 'likes',
+              model: 'user'
+            }
+          }
+        })
+        .populate({
+          path: 'posts',
           populate: {
             path: 'likes',
             model: 'user'
           }
-        },
-      }).populate({
-        path: 'posts',
-        populate: {
-          path: 'likes',
-          model: 'user'
-        }
-      });
+        });
       res.send(user);
     } catch (err) {
       next(err);
@@ -79,17 +81,41 @@ module.exports = {
 
   async likePost(req, res, next) {
     const { postId } = req.params;
-
     try {
-      const post = await Post.findById(postId);
-      const index = post.likes.indexOf(req.user);
-      if (index === -1) {
-        post.likes.push(req.user);
-      } else {
-        post.likes.splice(index, 1);
+      const post = await Post.findById(postId).populate('likes');
+      const prevLength = post.likes.length;
+      for (let i = 0; i < post.likes.length; i += 1) {
+        if (post.likes[i]._id.toString() === req.user._id.toString()) {
+          post.likes.splice(i, 1);
+          break;
+        }
       }
+      if (prevLength === post.likes.length) {
+        post.likes.push(req.user);
+      }
+
       await post.save();
-      res.send(post);
+
+      const user = await User.findById(req.user._id)
+        .populate({
+          path: 'posts',
+          populate: {
+            path: 'comments',
+            model: 'comment',
+            populate: {
+              path: 'likes',
+              model: 'user'
+            }
+          }
+        })
+        .populate({
+          path: 'posts',
+          populate: {
+            path: 'likes',
+            model: 'user'
+          }
+        });
+      res.send(user);
     } catch (err) {
       next(err);
     }

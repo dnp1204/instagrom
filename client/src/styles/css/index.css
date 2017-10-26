@@ -644,5 +644,7 @@ body {
     transition: all 200ms ease-in-out; }
     .post-container .post-detail p {
       font-size: 25px; }
+      .post-container .post-detail p .liked {
+        color: #EF5350; }
 
 /*# sourceMappingURL=index.css.map */
