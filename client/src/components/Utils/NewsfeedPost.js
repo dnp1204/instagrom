@@ -32,7 +32,7 @@ class NewsfeedPost extends Component {
   }
 
   render() {
-    const { userAvatar, userName, imageLink, comments, createdAt } = this.props;
+    const { userAvatar, userName, imageLink, createdAt } = this.props;
     return (
       <div className="newsfeed-post-container">
         <div className="user-info-section">

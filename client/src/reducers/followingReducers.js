@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { FETCH_FOLLOWING } from '../actions/types';
 
-const initialState = [{ likes: [{ name: '' }], comments: [] }];
+const initialState = [{ _id: '', likes: [{ name: '' }], comments: [] }];
 
 export default function(state = initialState, action) {
   switch (action.type) {

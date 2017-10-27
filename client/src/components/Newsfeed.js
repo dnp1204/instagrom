@@ -13,6 +13,7 @@ class Newsfeed extends Component {
     return following.map(post => {
       return (
         <NewsfeedPost
+          key={post._id}
           userAvatar={post.userAvatar}
           userName={post.userName}
           imageLink={post.image}
@@ -25,11 +26,7 @@ class Newsfeed extends Component {
   }
 
   render() {
-    return (
-      <div className="newsfeed-container">
-        {this.renderPosts()}
-      </div>
-    );
+    return <div className="newsfeed-container">{this.renderPosts()}</div>;
   }
 }
 
