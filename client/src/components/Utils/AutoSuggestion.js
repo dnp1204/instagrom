@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
+const MAX = 17;
+
 class AutoSuggestion extends Component {
   state = { show: false };
 
@@ -39,8 +42,8 @@ class AutoSuggestion extends Component {
               <img className="image" alt={value.name} src={value.avatar} />
             </div>
             <div className="user-info">
-              <h4 className="name">{value.name}</h4>
-              <p className="email">{value.email}</p>
+              <h4 className="name">{value.name.length > MAX ? `${value.name.slice(0, MAX)}...` : value.name}</h4>
+              <p className="email">{value.email.length > MAX ? `${value.email.slice(0, MAX)}...` : value.email}</p>
             </div>
           </Link>
         </li>
