@@ -37,25 +37,26 @@
       padding: 0
 
       .tag
-        padding: 0 15px
-        
+        border-bottom: 1px solid #e6e6e6
+
+        &:hover
+          background-color: #fafafa
+
+        &:last-child
+          border-bottom: none
+
         .wrapper
           cursor: pointer
           display: flex
           flex-direction: row
           align-items: center
-          border-bottom: 1px solid #e6e6e6
           width: 100%
           height: 66px
           overflow: hidden
 
-          &:hover
-            background-color: #fafafa
-
-          &:last-child
-            border-bottom: none
-
           .user-avatar
+            margin-left: 10px
+
             img  
               background-color: #000000
               height: 40px

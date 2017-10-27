@@ -75,7 +75,7 @@ class Header extends Component {
 
   render() {
     const { handleSubmit, returnUser } = this.props;
-
+    
     return (
       <div className="header-container">
         <div className="header-brand">

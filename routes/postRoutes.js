@@ -1,6 +1,7 @@
 const PostController = require('../controllers/postController');
 
 module.exports = app => {
+  app.get('/api/post/:userId', PostController.getPosts);
   app.get('/api/post', PostController.getPosts);
   app.post('/api/post/new', PostController.createPost);
   app.get('/api/post/:postId', PostController.detailPost);

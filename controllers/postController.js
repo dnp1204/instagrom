@@ -6,29 +6,57 @@ const Comment = mongoose.model('comment');
 
 module.exports = {
   async getPosts(req, res, next) {
+    const { userId } = req.params;
+
     try {
-      const user = await User.findById(req.user._id)
-        .populate({
-          path: 'posts',
-          populate: {
-            path: 'comments',
-            model: 'comment',
+      let user;
+      if (userId) {
+        user = await User.findById(userId)
+          .populate({
+            path: 'posts',
+            populate: {
+              path: 'comments',
+              model: 'comment',
+              populate: {
+                path: 'likes',
+                model: 'user'
+              }
+            }
+          })
+          .populate({
+            path: 'posts',
+            options: {
+              sort: { createdAt: -1 }
+            },
             populate: {
               path: 'likes',
               model: 'user'
             }
-          }
-        })
-        .populate({
-          path: 'posts',
-          options: {
-            sort: { createdAt: -1 }
-          },
-          populate: {
-            path: 'likes',
-            model: 'user'
-          }
-        });
+          });
+      } else {
+        user = await User.findById(req.user._id)
+          .populate({
+            path: 'posts',
+            populate: {
+              path: 'comments',
+              model: 'comment',
+              populate: {
+                path: 'likes',
+                model: 'user'
+              }
+            }
+          })
+          .populate({
+            path: 'posts',
+            options: {
+              sort: { createdAt: -1 }
+            },
+            populate: {
+              path: 'likes',
+              model: 'user'
+            }
+          });
+      }
       res.send(user);
     } catch (err) {
       next(err);

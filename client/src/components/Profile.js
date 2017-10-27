@@ -5,7 +5,18 @@ import Post from './Utils/Post';
 
 class Profile extends Component {
   componentDidMount() {
-    this.props.fetchPosts();
+    const { id } = this.props.match.params;
+    if (id) {
+      this.props.fetchPosts(id);
+    } else {
+      this.props.fetchPosts();
+    }
+  }
+  
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.match.params && prevProps.match.params.id !== this.props.match.params.id) {
+      this.props.fetchPosts(this.props.match.params.id);
+    }
   }
 
   renderPostRow(index) {
@@ -17,11 +28,11 @@ class Profile extends Component {
     } else {
       max = posts.length;
     }
-    
+
     for (index; index < max; index += 1) {
       validPost.push(posts[index]);
     }
-    
+
     return validPost.map(post => {
       return (
         <div key={post._id} className="col-md-4 col-sm-4 col-xs-4">
@@ -40,9 +51,13 @@ class Profile extends Component {
   renderPosts() {
     return this.props.posts.posts.map((post, index) => {
       if (index % 3 === 0) {
-        return <div key={index} className="row user-post">{this.renderPostRow(index)}</div>;
+        return (
+          <div key={index} className="row user-post">
+            {this.renderPostRow(index)}
+          </div>
+        );
       } else {
-        return "";
+        return '';
       }
     });
   }
@@ -53,9 +68,9 @@ class Profile extends Component {
       lastName,
       avatar,
       following,
-      followers
-    } = this.props.user;
-    const { posts } = this.props.posts;
+      followers,
+      posts
+    } = this.props.posts;
     
     return (
       <div className="profile-container">

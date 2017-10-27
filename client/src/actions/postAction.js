@@ -3,14 +3,19 @@ import { MAKE_POST, FETCH_POSTS, LIKE_POST } from './types';
 
 const URL = '/api/post';
 
-export const fetchPosts = () => async dispatch => {
+export const fetchPosts = id => async dispatch => {
   try {
-    const request = await axios.get(URL);
+    let request;
+    if (id) {
+      request = await axios.get(`${URL}/${id}`);
+    } else {
+      request = await axios.get(URL);
+    }
     dispatch({ type: FETCH_POSTS, payload: request.data });
   } catch (err) {
     console.log(err);
   }
-}
+};
 
 export const makePost = postParams => async dispatch => {
   try {
@@ -19,7 +24,7 @@ export const makePost = postParams => async dispatch => {
   } catch (err) {
     console.log(err);
   }
-}
+};
 
 export const likePost = postId => async dispatch => {
   try {
@@ -28,4 +33,4 @@ export const likePost = postId => async dispatch => {
   } catch (err) {
     console.log(err);
   }
-}
+};

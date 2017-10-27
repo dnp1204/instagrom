@@ -1,7 +1,25 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 class AutoSuggestion extends Component {
   state = { show: false };
+
+  componentDidMount() {
+    document.addEventListener('click', this.handleClickEvent.bind(this));
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleClickEvent.bind(this));
+  }
+
+  handleClickEvent(event) {
+    const { className } = event.target;
+  
+    if (className.includes('header-input')) {
+      this.setState({ show: true });
+    } else if (this.state.show) {
+      this.setState({ show: false });
+    }
+  }
 
   renderSuggestion() {
     const { suggestionValue } = this.props;
@@ -9,15 +27,19 @@ class AutoSuggestion extends Component {
     return suggestionValue.map(value => {
       return (
         <li key={value._id} className="tag">
-          <div className="wrapper">
+          <Link
+            onClick={() => this.setState({ show: false })}
+            to={`/profile/${value._id}`}
+            className="wrapper"
+          >
             <div className="user-avatar">
-              <img alt={value.name} src={value.avatar} />
+              <img className="image" alt={value.name} src={value.avatar} />
             </div>
             <div className="user-info">
-              <h4>{value.name}</h4>
-              <p>{value.email}</p>
+              <h4 className="name">{value.name}</h4>
+              <p className="email">{value.email}</p>
             </div>
-          </div>
+          </Link>
         </li>
       );
     });
@@ -27,8 +49,8 @@ class AutoSuggestion extends Component {
     this.setState({ show: true });
   }
 
-  handleOnBlur() {
-    this.setState({ show: false });
+  handleOnBlur(event) {
+    // this.setState({ show: false });
   }
 
   render() {
@@ -50,6 +72,7 @@ class AutoSuggestion extends Component {
           placeholder="Searching"
           onFocus={this.handleOnFocus.bind(this)}
           onBlur={this.handleOnBlur.bind(this)}
+          className="header-input"
         />
         <div className="fa fa-search" />
         <div className={className}>
