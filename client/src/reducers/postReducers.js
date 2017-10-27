@@ -1,4 +1,4 @@
-import { MAKE_POST, FETCH_POSTS, LIKE_POST } from '../actions/types';
+import { MAKE_POST, FETCH_POSTS, LIKE_POST, FOLLOWING_USER } from '../actions/types';
 
 const initialState = {
   posts: [{ _id: '', likes: [], comments: [], image: '' }],
@@ -8,6 +8,8 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case FOLLOWING_USER:
+      return { ...state, followers: action.payload };
     case LIKE_POST:
       return action.payload;
     case FETCH_POSTS:

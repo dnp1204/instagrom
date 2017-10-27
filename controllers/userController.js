@@ -6,19 +6,31 @@ module.exports = {
   async followUser(req, res, next) {
     const { userId } = req.params;
     try {
-      const user = await User.findById(userId);
-      const index = req.user.following.indexOf(user);
-      if (index === -1) {
+      const user = await User.findById(userId).populate('followers');
+      const prevLength = req.user.following.length;
+      
+      for (let i = 0; i < prevLength; i += 1) {
+        if (req.user.following[i].toString() === userId.toString()) {
+          req.user.following.splice(i, 1);
+
+          for (let j = 0; j < user.followers.length; j += 1) {
+            if (user.followers[j]._id.toString() === req.user._id.toString()) {
+              user.followers.splice(j, 1);
+              break;
+            }
+          }
+          break;
+        }
+      }
+      
+      if (prevLength === req.user.following.length) {
         req.user.following.push(user);
         user.followers.push(req.user);
-      } else {
-        req.user.following.splice(index, 1);
-        const index2 = user.followers.indexOf(req.user);
-        user.followers.splice(index2, 1);
       }
+
       await req.user.save();
       await user.save();
-      res.send(req.user.following);
+      res.send(user.followers);
     } catch (err) {
       next(err);
     }

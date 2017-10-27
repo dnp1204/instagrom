@@ -5,3 +5,4 @@ export const MAKE_POST = 'make_post';
 export const LIKE_POST = 'like_post';
 
 export const SEARCH_USER = 'search_user';
+export const FOLLOWING_USER = 'following_user';

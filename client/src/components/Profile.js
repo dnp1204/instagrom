@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../actions';
+import { fetchPosts, followUser } from '../actions';
 import Post from './Utils/Post';
 
 class Profile extends Component {
@@ -76,15 +76,25 @@ class Profile extends Component {
     );
   }
 
+  handleFollowUser() {
+    const { id } = this.props.match.params;
+    this.props.followUser(id);
+  }
+
   renderFollow() {
     return (
-      <button className="btn btn-primary">Follow</button>
-    )
+      <button
+        onClick={this.handleFollowUser.bind(this)}
+        className="btn btn-primary"
+      >
+        Follow
+      </button>
+    );
   }
 
   render() {
     const { id } = this.props.match.params;
-    
+
     const {
       firstName,
       lastName,
@@ -130,4 +140,4 @@ function mapStateToProps(state) {
   return { user: state.user, posts: state.posts };
 }
 
-export default connect(mapStateToProps, { fetchPosts })(Profile);
+export default connect(mapStateToProps, { fetchPosts, followUser })(Profile);
