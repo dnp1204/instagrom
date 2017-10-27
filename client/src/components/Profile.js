@@ -12,9 +12,12 @@ class Profile extends Component {
       this.props.fetchPosts();
     }
   }
-  
+
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.match.params && prevProps.match.params.id !== this.props.match.params.id) {
+    if (
+      this.props.match.params &&
+      prevProps.match.params.id !== this.props.match.params.id
+    ) {
       this.props.fetchPosts(this.props.match.params.id);
     }
   }
@@ -62,7 +65,17 @@ class Profile extends Component {
     });
   }
 
+  renderLogout() {
+    return (
+      <a href="/api/logout">
+        <i className="fa fa-sign-out fa-2x" />
+      </a>
+    );
+  }
+
   render() {
+    const { id } = this.props.match.params;
+    
     const {
       firstName,
       lastName,
@@ -71,7 +84,7 @@ class Profile extends Component {
       followers,
       posts
     } = this.props.posts;
-    
+
     return (
       <div className="profile-container">
         <div className="user-container">
@@ -83,9 +96,7 @@ class Profile extends Component {
               <h4 className="bigger">
                 {firstName} {lastName}
               </h4>
-              <a href="/api/logout">
-                <i className="fa fa-sign-out fa-2x" />
-              </a>
+              {id ? <div /> : this.renderLogout()}
             </div>
             <div className="numbers">
               <p>
