@@ -76,6 +76,12 @@ class Profile extends Component {
     );
   }
 
+  renderFollow() {
+    return (
+      <button className="btn btn-primary">Follow</button>
+    )
+  }
+
   render() {
     const { id } = this.props.match.params;
     
@@ -99,7 +105,7 @@ class Profile extends Component {
               <h4 className="bigger">
                 {firstName} {lastName}
               </h4>
-              {id ? <div /> : this.renderLogout()}
+              {id ? this.renderFollow() : this.renderLogout()}
             </div>
             <div className="numbers">
               <p>

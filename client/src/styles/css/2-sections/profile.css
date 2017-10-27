@@ -23,6 +23,14 @@
       width: 60%;
       display: flex;
       flex-direction: column; }
+      .profile-container .user-container .user-info .btn {
+        width: 100px;
+        height: 30px;
+        padding-top: 5px;
+        background-color: #3997F0;
+        border: none;
+        font-weight: bold;
+        outline: none; }
       .profile-container .user-container .user-info .name {
         display: flex;
         flex-direction: row;
