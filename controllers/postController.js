@@ -4,6 +4,32 @@ const User = mongoose.model('user');
 const Post = mongoose.model('post');
 const Comment = mongoose.model('comment');
 
+const findUser = async userId => {
+  const user = await User.findById(userId)
+    .populate({
+      path: 'posts',
+      populate: {
+        path: 'comments',
+        model: 'comment',
+        populate: {
+          path: 'likes',
+          model: 'user'
+        }
+      }
+    })
+    .populate({
+      path: 'posts',
+      options: {
+        sort: { createdAt: -1 }
+      },
+      populate: {
+        path: 'likes',
+        model: 'user'
+      }
+    });
+  return user;
+};
+
 module.exports = {
   async getPosts(req, res, next) {
     const { userId } = req.params;
@@ -11,51 +37,9 @@ module.exports = {
     try {
       let user;
       if (userId) {
-        user = await User.findById(userId)
-          .populate({
-            path: 'posts',
-            populate: {
-              path: 'comments',
-              model: 'comment',
-              populate: {
-                path: 'likes',
-                model: 'user'
-              }
-            }
-          })
-          .populate({
-            path: 'posts',
-            options: {
-              sort: { createdAt: -1 }
-            },
-            populate: {
-              path: 'likes',
-              model: 'user'
-            }
-          });
+        user = await findUser(userId);
       } else {
-        user = await User.findById(req.user._id)
-          .populate({
-            path: 'posts',
-            populate: {
-              path: 'comments',
-              model: 'comment',
-              populate: {
-                path: 'likes',
-                model: 'user'
-              }
-            }
-          })
-          .populate({
-            path: 'posts',
-            options: {
-              sort: { createdAt: -1 }
-            },
-            populate: {
-              path: 'likes',
-              model: 'user'
-            }
-          });
+        user = await findUser(req.user._id);
       }
       res.send(user);
     } catch (err) {
@@ -111,7 +95,7 @@ module.exports = {
   },
 
   async likePost(req, res, next) {
-    const { postId } = req.params;
+    const { postId, userId } = req.params;
     try {
       const post = await Post.findById(postId).populate('likes');
       const prevLength = post.likes.length;
@@ -127,29 +111,12 @@ module.exports = {
 
       await post.save();
 
-      const user = await User.findById(req.user._id)
-        .populate({
-          path: 'posts',
-          sort: { createdAt: -1 },
-          populate: {
-            path: 'comments',
-            model: 'comment',
-            populate: {
-              path: 'likes',
-              model: 'user'
-            }
-          }
-        })
-        .populate({
-          path: 'posts',
-          options: {
-            sort: { createdAt: -1 }
-          },
-          populate: {
-            path: 'likes',
-            model: 'user'
-          }
-        });
+      let user;
+      if (userId) {
+        user = await findUser(userId);
+      } else {
+        user = await findUser(req.user._id);
+      }
       res.send(user);
     } catch (err) {
       next(err);

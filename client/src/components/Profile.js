@@ -24,6 +24,8 @@ class Profile extends Component {
 
   renderPostRow(index) {
     const { posts: { posts }, user: { _id } } = this.props;
+    const { id } = this.props.match.params;
+
     let validPost = [];
     let max = 0;
     if (index + 3 < posts.length) {
@@ -40,6 +42,7 @@ class Profile extends Component {
       return (
         <div key={post._id} className="col-md-4 col-sm-4 col-xs-4">
           <Post
+            visitedUserId={id}
             userId={_id}
             postId={post._id}
             likes={post.likes}

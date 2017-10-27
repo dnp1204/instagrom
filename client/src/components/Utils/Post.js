@@ -4,7 +4,7 @@ import { likePost } from '../../actions';
 
 class Post extends Component {
   render() {
-    const { likes, comments, imageURL, postId, userId } = this.props;
+    const { likes, comments, imageURL, postId, userId, visitedUserId } = this.props;
     let checked = false;
     for (let user of likes) {
       if (user._id.toString() === userId) {
@@ -19,7 +19,7 @@ class Post extends Component {
           <p>
             {likes.length}{' '}
             <i
-              onClick={() => this.props.likePost(postId)}
+              onClick={() => this.props.likePost(postId, visitedUserId)}
               className={`fa fa-heart-o ${checked ? 'liked' : ''}`}
             />
           </p>

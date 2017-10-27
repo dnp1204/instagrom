@@ -26,9 +26,14 @@ export const makePost = postParams => async dispatch => {
   }
 };
 
-export const likePost = postId => async dispatch => {
+export const likePost = (postId, visitedUserId) => async dispatch => {
   try {
-    const request = await axios.put(`${URL}/${postId}/like`);
+    let request;
+    if (visitedUserId) {
+      request = await axios.put(`${URL}/${visitedUserId}/${postId}/like`);
+    } else {
+      request = await axios.put(`${URL}/${postId}/like`);
+    }
     dispatch({ type: LIKE_POST, payload: request.data });
   } catch (err) {
     console.log(err);
