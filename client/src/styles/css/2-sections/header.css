@@ -9,7 +9,8 @@
   width: 100%;
   top: 0;
   z-index: 999;
-  margin-bottom: 60px; }
+  margin-bottom: 60px;
+  border-bottom: 1px solid #e6e6e6; }
   .header-container .modal {
     z-index: 9999; }
   .header-container .header-brand {
