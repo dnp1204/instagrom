@@ -16,7 +16,12 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { showUpload: false, imageLink: '', imageName: '', searchKey: '' };
+    this.state = {
+      showUpload: false,
+      imageLink: '',
+      imageName: '',
+      searchKey: ''
+    };
     this.fsClient = fileStack.init('ARG1DdJEEQAWY9Jd25nffz');
   }
 
@@ -63,6 +68,10 @@ class Header extends Component {
     this.setState({ showUpload: false, imageLink: '', imageName: '' });
   }
 
+  resetValue() {
+    this.setState({ searchKey: '' });
+  }
+
   onChange(event) {
     const { _id } = this.props.user;
     const { value } = event.target;
@@ -75,20 +84,21 @@ class Header extends Component {
 
   render() {
     const { handleSubmit, returnUser } = this.props;
-    
+
     return (
       <div className="header-container">
         <div className="header-brand">
           <div className="camera-logo">
-            <Link to="/">
+            <Link to="/" onClick={() => this.resetValue()}>
               <i className="fa fa-camera-retro fa-2x" />
             </Link>
           </div>
-          <Link className="logo" to="/">
+          <Link className="logo" to="/" onClick={() => this.resetValue()}>
             <h1 className="logo">Instagrom</h1>
           </Link>
         </div>
         <AutoSuggestion
+          resetValue={this.resetValue.bind(this)}
           value={this.state.searchKey}
           onChange={this.onChange.bind(this)}
           suggestionValue={returnUser}
@@ -96,7 +106,10 @@ class Header extends Component {
         <div className="header-summary">
           <div
             className="upload"
-            onClick={() => this.setState({ showUpload: true })}
+            onClick={() => {
+              this.setState({ showUpload: true });
+              this.resetValue();
+            }}
           >
             <a>
               <i className="fa fa-cloud-upload fa-2x" />
@@ -106,7 +119,7 @@ class Header extends Component {
             <i className="fa fa-heart-o fa-2x" />
           </div>
           <div className="user-info">
-            <Link to="/profile">
+            <Link to="/profile" onClick={() => this.resetValue()}>
               <i className="fa fa-user-o fa-2x" />
             </Link>
           </div>

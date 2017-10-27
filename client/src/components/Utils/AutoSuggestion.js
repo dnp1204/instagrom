@@ -13,7 +13,7 @@ class AutoSuggestion extends Component {
 
   handleClickEvent(event) {
     const { className } = event.target;
-  
+
     if (className.includes('header-input')) {
       this.setState({ show: true });
     } else if (this.state.show) {
@@ -22,13 +22,16 @@ class AutoSuggestion extends Component {
   }
 
   renderSuggestion() {
-    const { suggestionValue } = this.props;
+    const { suggestionValue, resetValue } = this.props;
 
     return suggestionValue.map(value => {
       return (
         <li key={value._id} className="tag">
           <Link
-            onClick={() => this.setState({ show: false })}
+            onClick={() => {
+              this.setState({ show: false });
+              resetValue();
+            }}
             to={`/profile/${value._id}`}
             className="wrapper"
           >
@@ -67,6 +70,7 @@ class AutoSuggestion extends Component {
     return (
       <div className="header-search">
         <input
+          value={value}
           onChange={onChange}
           type="text"
           placeholder="Searching"
