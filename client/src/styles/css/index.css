@@ -625,6 +625,9 @@ body {
   .profile-container .user-post {
     margin-bottom: 30px; }
 
+.newsfeed-container {
+  margin-top: 60px; }
+
 .dropdown-container {
   position: relative; }
   .dropdown-container .dropdown-body {
@@ -746,5 +749,41 @@ body {
   100% {
     transform: translateY(0);
     opacity: 1; } }
+.newsfeed-post-container {
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  background-color: #ffffff;
+  margin-bottom: 60px; }
+  .newsfeed-post-container .user-info-section {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; }
+    .newsfeed-post-container .user-info-section img {
+      width: 30px;
+      height: 30px;
+      background-color: #000000;
+      border-radius: 50%;
+      margin: 0 12px 0 20px; }
+    .newsfeed-post-container .user-info-section div {
+      font-weight: bold; }
+  .newsfeed-post-container .main-image {
+    width: 100%; }
+  .newsfeed-post-container .body-section {
+    padding: 12px 14px 7px 14px; }
+    .newsfeed-post-container .body-section .sub-section {
+      margin-bottom: 4px; }
+    .newsfeed-post-container .body-section .post-function-section {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center; }
+      .newsfeed-post-container .body-section .post-function-section .fa {
+        margin-right: 15px;
+        font-size: 25px;
+        font-weight: 400; }
+    .newsfeed-post-container .body-section .like-comment-section .like-section span {
+      font-weight: bold; }
 
 /*# sourceMappingURL=index.css.map */

@@ -27,7 +27,6 @@ export const searchUser = (userId, key) => async dispatch => {
 export const followUser = userId => async dispatch => {
   try {
     const request = await axios.get(`${URL}/${userId}/following`);
-    console.log(request.data);
     dispatch({ type: FOLLOWING_USER, payload: request.data });
   } catch (err) { 
     console.log(err);

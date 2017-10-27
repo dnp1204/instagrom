@@ -4,6 +4,15 @@ import { fetchPosts, followUser } from '../actions';
 import Post from './Utils/Post';
 
 class Profile extends Component {
+  state = {};
+
+  componentWillMount() {
+    const { id } = this.props.match.params;
+    if (this.props.user.following.includes(id)) {
+      this.setState({ following: true });
+    }
+  }
+
   componentDidMount() {
     const { id } = this.props.match.params;
     if (id) {
@@ -79,9 +88,22 @@ class Profile extends Component {
   handleFollowUser() {
     const { id } = this.props.match.params;
     this.props.followUser(id);
+    this.setState({ following: !this.state.following });
   }
 
   renderFollow() {
+    // const { id } = this.props.match.params;
+    if (this.state.following) {
+      return (
+        <button
+          onClick={this.handleFollowUser.bind(this)}
+          className="btn btn-primary"
+        >
+          Following
+        </button>
+      );
+    }
+
     return (
       <button
         onClick={this.handleFollowUser.bind(this)}
@@ -94,7 +116,7 @@ class Profile extends Component {
 
   render() {
     const { id } = this.props.match.params;
-
+    
     const {
       firstName,
       lastName,

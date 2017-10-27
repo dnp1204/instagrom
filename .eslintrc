@@ -13,6 +13,8 @@
     "global-require": "off",
     "eol-last": "off",
     "function-paren-newline": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "func-names": "off",
+    "space-before-function-paren": "off"
   }
 }

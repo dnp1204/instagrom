@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,mBAAmB;EACjB,UAAU,EAAE,IAAI",
+"sources": ["../../scss/2-sections/newsfeed.sass"],
+"names": [],
+"file": "newsfeed.css"
+}

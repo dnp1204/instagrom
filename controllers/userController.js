@@ -60,5 +60,35 @@ module.exports = {
     } catch (err) {
       next(err);
     }
+  },
+
+  async getFollowing(req, res, next) {
+    try {
+      const user = await User.findById(req.user._id).populate({
+        path: 'following',
+        populate: {
+          path: 'posts',
+          model: 'post',
+          options: {
+            sort: { createdAt: -1 },
+            limit: 5
+          },
+          populate: [{
+            path: 'comments',
+            model: 'comment',
+            options: {
+              sort: { createdAt: -1 }
+            }
+          },
+          {
+            path: 'likes',
+            model: 'user'
+          }]
+        }
+      });
+      res.send(user.following);
+    } catch (err) {
+      next(err);
+    }
   }
 };
