@@ -8,28 +8,26 @@ class Newsfeed extends Component {
     this.props.fetchFollowing();
   }
 
-  render() {
+  renderPosts() {
     const { following } = this.props;
-    const post = following[0];
-    console.log(post);
+    return following.map(post => {
+      return (
+        <NewsfeedPost
+          userAvatar={post.userAvatar}
+          userName={post.userName}
+          imageLink={post.image}
+          likes={post.likes}
+          comments={post.comments}
+          createdAt={post.createdAt}
+        />
+      );
+    });
+  }
+
+  render() {
     return (
       <div className="newsfeed-container">
-        <NewsfeedPost
-          userAvatar={post.userAvatar}
-          userName={post.userName}
-          imageLink={post.image}
-          likes={post.likes}
-          comments={post.comments}
-          createdAt={post.createdAt}
-        />
-        <NewsfeedPost
-          userAvatar={post.userAvatar}
-          userName={post.userName}
-          imageLink={post.image}
-          likes={post.likes}
-          comments={post.comments}
-          createdAt={post.createdAt}
-        />
+        {this.renderPosts()}
       </div>
     );
   }

@@ -773,7 +773,7 @@ body {
   .newsfeed-post-container .body-section {
     padding: 12px 14px 7px 14px; }
     .newsfeed-post-container .body-section .sub-section {
-      margin-bottom: 4px; }
+      margin-bottom: 6px; }
     .newsfeed-post-container .body-section .post-function-section {
       display: flex;
       flex-direction: row;
@@ -783,7 +783,20 @@ body {
         margin-right: 15px;
         font-size: 25px;
         font-weight: 400; }
-    .newsfeed-post-container .body-section .like-comment-section .like-section span {
-      font-weight: bold; }
+    .newsfeed-post-container .body-section .like-comment-section .like-section {
+      margin-bottom: 10px; }
+      .newsfeed-post-container .body-section .like-comment-section .like-section span {
+        font-weight: bold; }
+    .newsfeed-post-container .body-section .like-comment-section .comment-section {
+      border-bottom: 1px solid #e6e6e6; }
+    .newsfeed-post-container .body-section .comment-input-section {
+      margin-top: 10px;
+      margin-bottom: 8px; }
+      .newsfeed-post-container .body-section .comment-input-section input {
+        width: 100%;
+        padding: 10px;
+        padding-left: 0;
+        outline: none;
+        border: none; }
 
 /*# sourceMappingURL=index.css.map */
