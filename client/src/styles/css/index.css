@@ -664,8 +664,12 @@ body {
       .post-container .post-detail p .liked {
         color: #EF5350; }
 
+.none {
+  display: none; }
+
 .suggestion-container {
-  position: relative; }
+  position: relative;
+  animation: slide-down 300ms ease-in-out; }
   .suggestion-container .arrow-up {
     background-color: #fff;
     border-top: 1px solid #e6e6e6;
@@ -695,26 +699,36 @@ body {
       list-style-type: none;
       padding: 0; }
       .suggestion-container .suggestion-body ul .tag {
-        cursor: pointer;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        border-bottom: 1px solid #e6e6e6;
-        width: 100%;
-        height: 66px; }
-        .suggestion-container .suggestion-body ul .tag:hover {
-          background-color: #fafafa; }
-        .suggestion-container .suggestion-body ul .tag:last-child {
-          border-bottom: none; }
-        .suggestion-container .suggestion-body ul .tag .user-avatar img {
-          background-color: #000000;
-          height: 40px;
-          width: 40px;
-          border-radius: 50%;
-          margin-right: 10px; }
-        .suggestion-container .suggestion-body ul .tag .user-info h4 {
-          margin: 20px 0 0 0;
-          font-size: 15px; }
+        padding: 0 15px; }
+        .suggestion-container .suggestion-body ul .tag .wrapper {
+          cursor: pointer;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          border-bottom: 1px solid #e6e6e6;
+          width: 100%;
+          height: 66px;
+          overflow: hidden; }
+          .suggestion-container .suggestion-body ul .tag .wrapper:hover {
+            background-color: #fafafa; }
+          .suggestion-container .suggestion-body ul .tag .wrapper:last-child {
+            border-bottom: none; }
+          .suggestion-container .suggestion-body ul .tag .wrapper .user-avatar img {
+            background-color: #000000;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px; }
+          .suggestion-container .suggestion-body ul .tag .wrapper .user-info h4 {
+            margin: 20px 0 0 0;
+            font-size: 15px; }
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
 
 /*# sourceMappingURL=index.css.map */

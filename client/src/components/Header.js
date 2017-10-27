@@ -16,7 +16,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { showUpload: false, imageLink: '', imageName: '' };
+    this.state = { showUpload: false, imageLink: '', imageName: '', searchKey: '' };
     this.fsClient = fileStack.init('ARG1DdJEEQAWY9Jd25nffz');
   }
 
@@ -66,6 +66,7 @@ class Header extends Component {
   onChange(event) {
     const { _id } = this.props.user;
     const { value } = event.target;
+    this.setState({ searchKey: value });
 
     if (value !== '') {
       this.props.searchUser(_id, value);
@@ -87,15 +88,11 @@ class Header extends Component {
             <h1 className="logo">Instagrom</h1>
           </Link>
         </div>
-        <div className="header-search">
-          <input
-            onChange={this.onChange.bind(this)}
-            type="text"
-            placeholder="Searching"
-          />
-          <div className="fa fa-search" />
-          <AutoSuggestion suggestionValue={returnUser} />
-        </div>
+        <AutoSuggestion
+          value={this.state.searchKey}
+          onChange={this.onChange.bind(this)}
+          suggestionValue={returnUser}
+        />
         <div className="header-summary">
           <div
             className="upload"
