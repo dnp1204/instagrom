@@ -126,8 +126,8 @@ class Profile extends Component {
     );
   }
 
-  handleDisplayModalImage(likes, comments, imageURL, postId, createdAt) {
-    this.setState({ show: true, likes, comments, imageURL, postId, createdAt });
+  handleDisplayModalImage(likes, comments, imageURL, postId, createdAt, isLiked) {
+    this.setState({ show: true, likes, comments, imageURL, postId, createdAt, isLiked });
   }
 
   renderLessComments() {
@@ -258,8 +258,8 @@ class Profile extends Component {
               <div className="image-info">
                 <div className="section image-function">
                   <div>
-                    <i className="fa fa-heart-o" />
-                    <i className="fa fa-comment-o" />
+                    <i className={`fa fa-heart-o ${this.state.isLiked ? 'liked' : ''}`} />
+                    <i onClick={() => this.commentInput.focus()} className="fa fa-comment-o" />
                   </div>
                   <div className="date">
                     {moment(this.state.createdAt).format('MMMM Do YYYY')}
@@ -271,6 +271,7 @@ class Profile extends Component {
               </div>
               <div className="image-comment-input">
                 <input
+                  ref={input => { this.commentInput = input; }}
                   value={this.state.content}
                   onChange={this.handleOnChange.bind(this)}
                   placeholder="Add a comment..."

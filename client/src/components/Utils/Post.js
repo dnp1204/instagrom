@@ -23,8 +23,18 @@ class Post extends Component {
 
     return (
       <div
-        onClick={() =>
-          handleDisplayModalImage(likes, comments, imageURL, postId, createdAt)}
+        onClick={event => {
+          if (!event.target.className.includes('fa fa-heart')) {
+            handleDisplayModalImage(
+              likes,
+              comments,
+              imageURL,
+              postId,
+              createdAt,
+              checked
+            );
+          }
+        }}
         className="post-container"
       >
         <img alt={imageURL} src={imageURL} />

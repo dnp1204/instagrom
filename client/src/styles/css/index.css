@@ -777,6 +777,8 @@ body {
         display: flex;
         align-items: center;
         justify-content: space-between; }
+        .modal-container .modal-body .image-info .image-function .liked {
+          color: #EF5350; }
         .modal-container .modal-body .image-info .image-function .fa {
           font-size: 23px;
           font-weight: bold;

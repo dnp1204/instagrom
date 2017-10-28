@@ -1,183 +1,113 @@
-.profile-container {
-  display: flex;
-  flex-direction: column; }
-  .profile-container .user-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 50px 0 40px 0;
-    height: 30%;
-    align-items: center;
-    margin-bottom: 50px;
-    border-bottom: 0.7px solid rgba(0, 0, 0, 0.2); }
-    .profile-container .user-container p {
-      font-size: 25px; }
-    .profile-container .user-container .user-avatar {
-      margin-right: 100px; }
-      .profile-container .user-container .user-avatar img {
-        height: 150px;
-        width: 150px;
-        border-radius: 50%;
-        background-color: #000; }
-    .profile-container .user-container .user-info {
-      width: 60%;
-      display: flex;
-      flex-direction: column; }
-      .profile-container .user-container .user-info .btn {
-        width: 100px;
-        height: 30px;
-        padding-top: 5px;
-        background-color: #3997F0;
-        border: none;
-        font-weight: bold;
-        outline: none; }
-      .profile-container .user-container .user-info .name {
-        display: flex;
-        flex-direction: row;
-        align-items: center; }
-        .profile-container .user-container .user-info .name h4 {
-          margin-right: 20px; }
-      .profile-container .user-container .user-info .numbers {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between; }
-        .profile-container .user-container .user-info .numbers span {
-          color: #000000;
-          font-weight: bold; }
-  .profile-container .numbers-mobile {
-    height: 45px;
-    display: none;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom: 0.7px solid rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
-    padding-bottom: 20px; }
-    .profile-container .numbers-mobile .section {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center; }
-  .profile-container .user-post {
-    margin-bottom: 30px; }
+/*
+Error: Undefined variable: "$light-red".
+        on line 216 of client/src/styles/scss/2-sections/profile.sass
 
-@media (max-width: 650px) {
-  .profile-container .user-container {
-    padding: 20px 0 20px 0;
-    height: 30%;
-    margin-bottom: 50px; }
-    .profile-container .user-container .user-avatar {
-      margin-right: 50px; }
-      .profile-container .user-container .user-avatar img {
-        height: 100px;
-        width: 100px; }
-    .profile-container .user-container .user-info .btn {
-      width: 100px;
-      height: 30px; }
-    .profile-container .user-container .user-info .name h4 {
-      font-size: 25px; }
-    .profile-container .user-container .user-info .numbers p {
-      font-size: 18px; }
-    .profile-container .user-container .user-info .numbers span {
-      font-size: 20px; }
-  .profile-container .user-post {
-    margin-bottom: 20px; }
-    .profile-container .user-post .col {
-      padding: 0 10px 0 10px !important; } }
-@media (max-width: 390px) {
-  .profile-container .user-container {
-    padding: 40px 0 20px 0;
-    margin-bottom: 20px; }
-    .profile-container .user-container p {
-      font-size: 25px; }
-    .profile-container .user-container .user-avatar {
-      margin-right: 10px; }
-      .profile-container .user-container .user-avatar img {
-        height: 80px;
-        width: 80px;
-        border-radius: 50%;
-        background-color: #000; }
-    .profile-container .user-container .user-info .btn {
-      margin-right: 60px; }
-    .profile-container .user-container .user-info .name {
-      display: flex;
-      flex-direction: column;
-      align-items: center; }
-      .profile-container .user-container .user-info .name h4 {
-        font-size: 22px; }
-    .profile-container .user-container .user-info .numbers {
-      display: none; }
-  .profile-container .numbers-mobile {
-    display: flex; } }
-.modal-container {
-  width: 70%; }
-  .modal-container .modal-body {
-    padding: 0;
-    display: flex;
-    flex-direction: row; }
-    .modal-container .modal-body .image-container {
-      flex: 5; }
-      .modal-container .modal-body .image-container img {
-        width: 100%;
-        height: auto; }
-    .modal-container .modal-body .image-detail {
-      flex: 3;
-      padding: 0 20px; }
-      .modal-container .modal-body .image-detail .image-user {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        height: 12%;
-        border-bottom: 0.7px solid rgba(0, 0, 0, 0.2);
-        padding: 10px 0 10px 5px; }
-        .modal-container .modal-body .image-detail .image-user img {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          background-color: #000000;
-          margin-right: 10px; }
-        .modal-container .modal-body .image-detail .image-user div {
-          font-weight: bold;
-          font-size: 18px; }
-    .modal-container .modal-body .image-comments {
-      border-bottom: 0.7px solid rgba(0, 0, 0, 0.2);
-      height: 63%;
-      margin-top: 10px;
-      overflow: auto; }
-      .modal-container .modal-body .image-comments #view-more {
-        cursor: pointer;
-        font-size: 15px;
-        color: #9e9e9e;
-        margin-bottom: 3px; }
-      .modal-container .modal-body .image-comments .comment-content span {
-        font-weight: bold; }
-    .modal-container .modal-body .image-info {
-      margin-top: 10px;
-      border-bottom: 0.7px solid rgba(0, 0, 0, 0.2); }
-      .modal-container .modal-body .image-info .section {
-        margin-bottom: 5px; }
-      .modal-container .modal-body .image-info .image-function {
-        display: flex;
-        align-items: center;
-        justify-content: space-between; }
-        .modal-container .modal-body .image-info .image-function .fa {
-          font-size: 23px;
-          font-weight: bold;
-          margin-right: 10px;
-          cursor: pointer; }
-        .modal-container .modal-body .image-info .image-function .date {
-          font-size: 18;
-          color: #9e9e9e; }
-      .modal-container .modal-body .image-info .total-likes {
-        font-weight: bold;
-        font-size: 18px; }
-    .modal-container .modal-body .image-comment-input {
-      margin-top: 6px; }
-      .modal-container .modal-body .image-comment-input input {
-        width: 100%;
-        padding: 10px;
-        padding-left: 0;
-        outline: none;
-        border: none; }
+211:         display: flex 
+212:         align-items: center
+213:         justify-content: space-between
+214: 
+215:         .liked
+216:           color: $light-red
+217: 
+218:         .fa
+219:           font-size: 23px
+220:           font-weight: bold
+221:           margin-right: 10px
 
-/*# sourceMappingURL=profile.css.map */
+Backtrace:
+client/src/styles/scss/2-sections/profile.sass:216
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/variable.rb:49:in `_perform'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `map'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `map'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `map'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `map'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `map'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `map'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:159:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/root_node.rb:36:in `css_tree'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `each'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:331:in `block in watch'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/vendor/listen/lib/listen/adapter.rb:254:in `report_changes'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/vendor/listen/lib/listen/adapter.rb:323:in `poll_changed_directories'
+/usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$light-red\".\A         on line 216 of client/src/styles/scss/2-sections/profile.sass\A \A 211:         display: flex \A 212:         align-items: center\A 213:         justify-content: space-between\A 214: \A 215:         .liked\A 216:           color: $light-red\A 217: \A 218:         .fa\A 219:           font-size: 23px\A 220:           font-weight: bold\A 221:           margin-right: 10px"; }
