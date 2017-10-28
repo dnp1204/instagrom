@@ -788,9 +788,9 @@ body {
       .newsfeed-post-container .body-section .post-function-section .liked {
         color: #EF5350; }
     .newsfeed-post-container .body-section .like-comment-section .like-section {
-      margin-bottom: 10px; }
-      .newsfeed-post-container .body-section .like-comment-section .like-section span {
-        font-weight: bold; }
+      margin-bottom: 3px; }
+    .newsfeed-post-container .body-section .like-comment-section span {
+      font-weight: bold; }
     .newsfeed-post-container .body-section .like-comment-section .comment-section {
       border-bottom: 1px solid #e6e6e6; }
     .newsfeed-post-container .body-section .comment-input-section {

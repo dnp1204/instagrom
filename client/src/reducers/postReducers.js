@@ -11,7 +11,7 @@ export default function (state = initialState, action) {
     case FOLLOWING_USER:
       return { ...state, followers: action.payload };
     case LIKE_POST:
-      return action.payload;
+      return action.payload.user;
     case FETCH_POSTS:
       return action.payload;
     case MAKE_POST:

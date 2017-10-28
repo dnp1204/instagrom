@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFollowing } from '../actions';
+import {
+  fetchFollowing,
+  likeFollowingPost,
+  commentFollowingPost
+} from '../actions';
 import NewsfeedPost from './Utils/NewsfeedPost';
 
 class Newsfeed extends Component {
@@ -30,6 +34,21 @@ class Newsfeed extends Component {
           comments={post.comments}
           createdAt={post.createdAt}
           gotoUser={() => this.props.history.push(`/profile/${post.userId}`)}
+          likeFollowingPost={() =>
+            this.props.likeFollowingPost(
+              post._id,
+              post.userId,
+              post.userName,
+              post.userAvatar
+            )}
+          commentFollowingPost={content =>
+            this.props.commentFollowingPost(
+              content,
+              post._id,
+              post.userId,
+              post.userName,
+              post.userAvatar
+            )}
         />
       );
     });
@@ -44,4 +63,8 @@ function mapStateToProps(state) {
   return { following: state.following, user: state.user };
 }
 
-export default connect(mapStateToProps, { fetchFollowing })(Newsfeed);
+export default connect(mapStateToProps, {
+  fetchFollowing,
+  likeFollowingPost,
+  commentFollowingPost
+})(Newsfeed);

@@ -8,7 +8,7 @@ module.exports = {
     try {
       const user = await User.findById(userId).populate('followers');
       const prevLength = req.user.following.length;
-      
+
       for (let i = 0; i < prevLength; i += 1) {
         if (req.user.following[i].toString() === userId.toString()) {
           req.user.following.splice(i, 1);
@@ -22,7 +22,7 @@ module.exports = {
           break;
         }
       }
-      
+
       if (prevLength === req.user.following.length) {
         req.user.following.push(user);
         user.followers.push(req.user);
@@ -73,17 +73,23 @@ module.exports = {
             sort: { createdAt: -1 },
             limit: 5
           },
-          populate: [{
-            path: 'comments',
-            model: 'comment',
-            options: {
-              sort: { createdAt: -1 }
+          populate: [
+            {
+              path: 'comments',
+              model: 'comment',
+              options: {
+                sort: { createdAt: 1 }
+              },
+              populate: {
+                path: 'user',
+                model: 'user'
+              }
+            },
+            {
+              path: 'likes',
+              model: 'user'
             }
-          },
-          {
-            path: 'likes',
-            model: 'user'
-          }]
+          ]
         }
       });
       res.send(user.following);

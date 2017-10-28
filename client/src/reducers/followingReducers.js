@@ -1,10 +1,33 @@
 import _ from 'lodash';
-import { FETCH_FOLLOWING } from '../actions/types';
+import {
+  FETCH_FOLLOWING,
+  LIKE_FOLLOWING_POST,
+  COMMENT_FOLLOWING_POST
+} from '../actions/types';
 
 const initialState = [{ _id: '', likes: [{ name: '' }], comments: [] }];
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case COMMENT_FOLLOWING_POST:
+      const { post, comment } = action.payload;
+      return state.map(element => {
+        if (element._id === post._id) {
+          post.comments = [...post.comments, comment];
+          return post;
+        } else {
+          return element;
+        }
+      });
+    case LIKE_FOLLOWING_POST:
+      const newList = state.map(post => {
+        if (post._id === action.payload._id) {
+          return action.payload;
+        } else {
+          return post;
+        }
+      });
+      return newList;
     case FETCH_FOLLOWING:
       let posts = [];
       action.payload.forEach(user => {
@@ -13,7 +36,7 @@ export default function(state = initialState, action) {
           post.userAvatar = user.avatar;
           post.userId = user._id;
           return post;
-        })
+        });
         posts = posts.concat(postList);
       });
       return _.shuffle(posts);

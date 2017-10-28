@@ -97,7 +97,19 @@ module.exports = {
   async likePost(req, res, next) {
     const { postId, userId } = req.params;
     try {
-      const post = await Post.findById(postId).populate('likes');
+      const post = await Post.findById(postId)
+        .populate('likes')
+        .populate({
+          path: 'comments',
+          model: 'comment',
+          options: {
+            sort: { createdAt: 1 }
+          },
+          populate: {
+            path: 'user',
+            model: 'user'
+          }
+        });
       const prevLength = post.likes.length;
       for (let i = 0; i < post.likes.length; i += 1) {
         if (post.likes[i]._id.toString() === req.user._id.toString()) {
@@ -114,10 +126,14 @@ module.exports = {
       let user;
       if (userId) {
         user = await findUser(userId);
+        post.userName = user.fullName;
+        post.userAvatar = user.avatar;
+        post.userId = user._id;
       } else {
         user = await findUser(req.user._id);
       }
-      res.send(user);
+
+      res.send({ user, post });
     } catch (err) {
       next(err);
     }
@@ -131,8 +147,20 @@ module.exports = {
       const newComment = await Comment.create({ content, user: req.user });
       const post = await Post.findByIdAndUpdate(postId, {
         $push: { comments: newComment }
-      });
-      res.send(newComment, post);
+      })
+        .populate('likes')
+        .populate({
+          path: 'comments',
+          model: 'comment',
+          options: {
+            sort: { createdAt: 1 }
+          },
+          populate: {
+            path: 'user',
+            model: 'user'
+          }
+        });
+      res.send({ post, comment: newComment });
     } catch (err) {
       next(err);
     }

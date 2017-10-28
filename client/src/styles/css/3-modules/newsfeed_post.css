@@ -11,8 +11,8 @@ Error: Undefined variable: "$light-red".
 48:     
 49:     .like-comment-section
 50:       .like-section
-51:         margin-bottom: 10px
-52:         span 
+51:         margin-bottom: 3px
+52: 
 
 Backtrace:
 client/src/styles/scss/3-modules/newsfeed_post.sass:47
@@ -99,4 +99,4 @@ client/src/styles/scss/3-modules/newsfeed_post.sass:47
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$light-red\".\A         on line 47 of client/src/styles/scss/3-modules/newsfeed_post.sass\A \A 42:         margin-right: 15px\A 43:         font-size: 25px\A 44:         font-weight: 400\A 45:       \A 46:       .liked\A 47:         color: $light-red\A 48:     \A 49:     .like-comment-section\A 50:       .like-section\A 51:         margin-bottom: 10px\A 52:         span "; }
+  content: "Error: Undefined variable: \"$light-red\".\A         on line 47 of client/src/styles/scss/3-modules/newsfeed_post.sass\A \A 42:         margin-right: 15px\A 43:         font-size: 25px\A 44:         font-weight: 400\A 45:       \A 46:       .liked\A 47:         color: $light-red\A 48:     \A 49:     .like-comment-section\A 50:       .like-section\A 51:         margin-bottom: 3px\A 52: "; }
