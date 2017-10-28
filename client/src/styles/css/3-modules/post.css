@@ -1,16 +1,16 @@
 /*
 Error: Undefined variable: "$light-red".
-        on line 33 of client/src/styles/scss/3-modules/post.sass
+        on line 37 of client/src/styles/scss/3-modules/post.sass
 
-28: 
-29:     p  
-30:       font-size: 25px
-31: 
-32:       .liked
-33:         color: $light-red
+32: 
+33:       .fa-heart
+34:         margin-right: 30px
+35: 
+36:       .liked
+37:         color: $light-red
 
 Backtrace:
-client/src/styles/scss/3-modules/post.sass:33
+client/src/styles/scss/3-modules/post.sass:37
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/variable.rb:49:in `_perform'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
@@ -94,4 +94,4 @@ client/src/styles/scss/3-modules/post.sass:33
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$light-red\".\A         on line 33 of client/src/styles/scss/3-modules/post.sass\A \A 28: \A 29:     p  \A 30:       font-size: 25px\A 31: \A 32:       .liked\A 33:         color: $light-red"; }
+  content: "Error: Undefined variable: \"$light-red\".\A         on line 37 of client/src/styles/scss/3-modules/post.sass\A \A 32: \A 33:       .fa-heart\A 34:         margin-right: 30px\A 35: \A 36:       .liked\A 37:         color: $light-red"; }

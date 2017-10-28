@@ -3,8 +3,16 @@ import { connect } from 'react-redux';
 import { likePost } from '../../actions';
 
 class Post extends Component {
+
   render() {
-    const { likes, comments, imageURL, postId, userId, visitedUserId } = this.props;
+    const {
+      likes,
+      comments,
+      imageURL,
+      postId,
+      userId,
+      visitedUserId
+    } = this.props;
     let checked = false;
     for (let user of likes) {
       if (user._id.toString() === userId) {
@@ -13,18 +21,18 @@ class Post extends Component {
     }
 
     return (
-      <div className="post-container">
+      <div onClick={() => this.setState({ show: true })} className="post-container">
         <img alt={imageURL} src={imageURL} />
         <div className="post-detail">
           <p>
             {likes.length}{' '}
             <i
               onClick={() => this.props.likePost(postId, visitedUserId)}
-              className={`fa fa-heart-o ${checked ? 'liked' : ''}`}
+              className={`fa fa-heart ${checked ? 'liked' : ''}`}
             />
           </p>
           <p>
-            {comments} <i className="fa fa-comment-o" />
+            {comments} <i className="fa fa-comment" />
           </p>
         </div>
       </div>

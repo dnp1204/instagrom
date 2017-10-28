@@ -1,6 +1,6 @@
 .post-container
-  width: 100%
   position: relative
+  background-color: #000
 
   &:hover
     .post-detail
@@ -21,13 +21,17 @@
     height: 100%
     flex-direction: row
     color: #FFF
-    justify-content: space-around
+    justify-content: center
     align-items: center
     padding: 0 30px
     transition: all 200ms ease-in-out
 
     p  
       font-size: 25px
+      font-weight: bold
+
+      .fa-heart
+        margin-right: 30px
 
       .liked
         color: $light-red

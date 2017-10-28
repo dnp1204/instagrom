@@ -661,6 +661,20 @@ body {
         .profile-container .user-container .user-info .numbers span {
           color: #000000;
           font-weight: bold; }
+  .profile-container .numbers-mobile {
+    height: 45px;
+    display: none;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 0.7px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    padding-bottom: 20px; }
+    .profile-container .numbers-mobile .section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
   .profile-container .user-post {
     margin-bottom: 30px; }
 
@@ -684,7 +698,34 @@ body {
     .profile-container .user-container .user-info .numbers span {
       font-size: 20px; }
   .profile-container .user-post {
-    margin-bottom: 20px; } }
+    margin-bottom: 20px; }
+    .profile-container .user-post .col {
+      padding: 0 10px 0 10px !important; } }
+@media (max-width: 390px) {
+  .profile-container .user-container {
+    padding: 40px 0 20px 0;
+    margin-bottom: 20px; }
+    .profile-container .user-container p {
+      font-size: 25px; }
+    .profile-container .user-container .user-avatar {
+      margin-right: 10px; }
+      .profile-container .user-container .user-avatar img {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-color: #000; }
+    .profile-container .user-container .user-info .btn {
+      margin-right: 60px; }
+    .profile-container .user-container .user-info .name {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      .profile-container .user-container .user-info .name h4 {
+        font-size: 22px; }
+    .profile-container .user-container .user-info .numbers {
+      display: none; }
+  .profile-container .numbers-mobile {
+    display: flex; } }
 .newsfeed-container {
   margin-top: 60px; }
 
@@ -715,8 +756,8 @@ body {
     transform: translateY(0px);
     opacity: 1; } }
 .post-container {
-  width: 100%;
-  position: relative; }
+  position: relative;
+  background-color: #000; }
   .post-container:hover .post-detail {
     opacity: 1; }
   .post-container img {
@@ -733,12 +774,15 @@ body {
     height: 100%;
     flex-direction: row;
     color: #FFF;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     padding: 0 30px;
     transition: all 200ms ease-in-out; }
     .post-container .post-detail p {
-      font-size: 25px; }
+      font-size: 25px;
+      font-weight: bold; }
+      .post-container .post-detail p .fa-heart {
+        margin-right: 30px; }
       .post-container .post-detail p .liked {
         color: #EF5350; }
 

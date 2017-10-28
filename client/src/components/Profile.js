@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts, followUser } from '../actions';
 import Post from './Utils/Post';
+import { ModalBody, Modal } from 'react-bootstrap';
+import Media from 'react-media';
+
+const MAX_LENGTH_NAME = 15;
 
 class Profile extends Component {
-  state = {};
+  state = { show: false };
 
   componentWillMount() {
     const { id } = this.props.match.params;
@@ -31,6 +35,10 @@ class Profile extends Component {
     }
   }
 
+  close() {
+    this.setState({ show: false });
+  }
+
   renderPostRow(index) {
     const { posts: { posts }, user: { _id } } = this.props;
     const { id } = this.props.match.params;
@@ -49,7 +57,7 @@ class Profile extends Component {
 
     return validPost.map(post => {
       return (
-        <div key={post._id} className="post col-md-4 col-sm-4 col-xs-4">
+        <div key={post._id} className="post col col-md-4 col-sm-4 col-xs-4">
           <Post
             visitedUserId={id}
             userId={_id}
@@ -80,7 +88,7 @@ class Profile extends Component {
   renderLogout() {
     return (
       <a className="btn btn-danger" href="/api/logout">
-       Log out
+        Log out
       </a>
     );
   }
@@ -114,9 +122,11 @@ class Profile extends Component {
     );
   }
 
+  handleDisplayModalImage() {}
+
   render() {
     const { id } = this.props.match.params;
-    
+
     const {
       firstName,
       lastName,
@@ -125,6 +135,7 @@ class Profile extends Component {
       followers,
       posts
     } = this.props.posts;
+    const name = firstName + ' ' + lastName;
 
     return (
       <div className="profile-container">
@@ -134,9 +145,16 @@ class Profile extends Component {
           </div>
           <div className="user-info">
             <div className="name">
-              <h4 className="bigger">
-                {firstName} {lastName}
-              </h4>
+              <Media query="(max-width: 390px)">
+                {matches =>
+                  matches ? (
+                    <h4 className="bigger">
+                      {name.length > MAX_LENGTH_NAME ? firstName : name}
+                    </h4>
+                  ) : (
+                    <h4 className="bigger">{name}</h4>
+                  )}
+              </Media>
               {id ? this.renderFollow() : this.renderLogout()}
             </div>
             <div className="numbers">
@@ -152,7 +170,32 @@ class Profile extends Component {
             </div>
           </div>
         </div>
+        <div className="numbers-mobile">
+          <div className="section">
+            <div>
+              <span className="bigger">{posts.length}</span>
+            </div>
+            <div>posts</div>
+          </div>
+          <div className="section">
+            <div>
+              <span className="bigger">{following.length}</span>
+            </div>
+            <div>following</div>
+          </div>
+          <div className="section">
+            <div>
+              <span className="bigger">{followers.length}</span>{' '}
+            </div>
+            <div>followers</div>
+          </div>
+        </div>
         {this.renderPosts()}
+        <Modal show={this.state.show} onHide={this.close.bind(this)}>
+          <ModalBody>
+            <p>Hello</p>
+          </ModalBody>
+        </Modal>
       </div>
     );
   }
