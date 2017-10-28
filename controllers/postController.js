@@ -5,28 +5,24 @@ const Post = mongoose.model('post');
 const Comment = mongoose.model('comment');
 
 const findUser = async userId => {
-  const user = await User.findById(userId)
-    .populate({
-      path: 'posts',
-      populate: {
+  const user = await User.findById(userId).populate({
+    path: 'posts',
+    populate: [
+      {
         path: 'comments',
         model: 'comment',
         populate: {
           path: 'likes',
           model: 'user'
         }
-      }
-    })
-    .populate({
-      path: 'posts',
-      options: {
-        sort: { createdAt: -1 }
       },
-      populate: {
+      {
         path: 'likes',
         model: 'user'
       }
-    });
+    ]
+  });
+
   return user;
 };
 

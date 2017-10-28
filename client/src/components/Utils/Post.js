@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { likePost } from '../../actions';
 
 class Post extends Component {
-
   render() {
     const {
       likes,
@@ -11,7 +10,8 @@ class Post extends Component {
       imageURL,
       postId,
       userId,
-      visitedUserId
+      visitedUserId,
+      handleDisplayModalImage
     } = this.props;
     let checked = false;
     for (let user of likes) {
@@ -21,7 +21,11 @@ class Post extends Component {
     }
 
     return (
-      <div onClick={() => this.setState({ show: true })} className="post-container">
+      <div
+        onClick={() =>
+          handleDisplayModalImage(likes, comments, imageURL, postId)}
+        className="post-container"
+      >
         <img alt={imageURL} src={imageURL} />
         <div className="post-detail">
           <p>

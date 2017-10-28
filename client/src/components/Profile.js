@@ -65,6 +65,7 @@ class Profile extends Component {
             likes={post.likes}
             comments={post.comments.length}
             imageURL={post.image}
+            handleDisplayModalImage={this.handleDisplayModalImage.bind(this)}
           />
         </div>
       );
@@ -122,7 +123,9 @@ class Profile extends Component {
     );
   }
 
-  handleDisplayModalImage() {}
+  handleDisplayModalImage(likes, comments, imageURL, postId) {
+    this.setState({ show: true, likes, comments, imageURL, postId });
+  }
 
   render() {
     const { id } = this.props.match.params;
@@ -191,9 +194,24 @@ class Profile extends Component {
           </div>
         </div>
         {this.renderPosts()}
-        <Modal show={this.state.show} onHide={this.close.bind(this)}>
+        <Modal
+          dialogClassName="modal-container"
+          show={this.state.show}
+          onHide={this.close.bind(this)}
+        >
           <ModalBody>
-            <p>Hello</p>
+            <div className="image-container">
+              <img alt={this.state.imageURL} src={this.state.imageURL} />
+            </div>
+            <div className="image-detail">
+              <div className="image-user">
+                <img src={avatar} alt={name} />
+                <div>{name}</div>
+              </div>
+              <div className="image-comments" />
+              <div className="image-info" />
+              <div className="image-comment-input" />
+            </div>
           </ModalBody>
         </Modal>
       </div>
