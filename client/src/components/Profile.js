@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, followUser } from '../actions';
+import { fetchPosts, followUser, likePost } from '../actions';
 import Post from './Utils/Post';
 import { ModalBody, Modal } from 'react-bootstrap';
 import Media from 'react-media';
@@ -10,7 +10,13 @@ const MAX_LENGTH_NAME = 15;
 const MAX_COMMENT_LENGTH = 5;
 
 class Profile extends Component {
-  state = { show: false, hideComment: true, comments: [], likes: [], content: '' };
+  state = {
+    show: false,
+    hideComment: true,
+    comments: [],
+    likes: [],
+    content: ''
+  };
 
   componentWillMount() {
     const { id } = this.props.match.params;
@@ -126,8 +132,23 @@ class Profile extends Component {
     );
   }
 
-  handleDisplayModalImage(likes, comments, imageURL, postId, createdAt, isLiked) {
-    this.setState({ show: true, likes, comments, imageURL, postId, createdAt, isLiked });
+  handleDisplayModalImage(
+    likes,
+    comments,
+    imageURL,
+    postId,
+    createdAt,
+    isLiked
+  ) {
+    this.setState({
+      show: true,
+      likes,
+      comments,
+      imageURL,
+      postId,
+      createdAt,
+      isLiked
+    });
   }
 
   renderLessComments() {
@@ -171,6 +192,25 @@ class Profile extends Component {
 
   handleOnChange(event) {
     this.setState({ content: event.target.value });
+  }
+
+  handleLikeClick() {
+    const { id } = this.props.match.params;
+
+    let newLikesList = this.state.likes;
+    if (this.state.isLiked) {
+      for (let i = 0; i < newLikesList.length; i ++) {
+        if (newLikesList[i]._id === this.props.posts._id) {
+          newLikesList.splice(i, 1);
+          break;
+        }
+      }
+    } else {
+      newLikesList.push(this.props.posts);
+    }
+
+    this.setState({ isLiked: !this.state.isLiked, likes: newLikesList });
+    this.props.likePost(this.state.postId, id);
   }
 
   render() {
@@ -258,8 +298,16 @@ class Profile extends Component {
               <div className="image-info">
                 <div className="section image-function">
                   <div>
-                    <i className={`fa fa-heart-o ${this.state.isLiked ? 'liked' : ''}`} />
-                    <i onClick={() => this.commentInput.focus()} className="fa fa-comment-o" />
+                    <i
+                      onClick={() => this.handleLikeClick()}
+                      className={`fa fa-heart-o ${this.state.isLiked
+                        ? 'liked'
+                        : ''}`}
+                    />
+                    <i
+                      onClick={() => this.commentInput.focus()}
+                      className="fa fa-comment-o"
+                    />
                   </div>
                   <div className="date">
                     {moment(this.state.createdAt).format('MMMM Do YYYY')}
@@ -271,7 +319,9 @@ class Profile extends Component {
               </div>
               <div className="image-comment-input">
                 <input
-                  ref={input => { this.commentInput = input; }}
+                  ref={input => {
+                    this.commentInput = input;
+                  }}
                   value={this.state.content}
                   onChange={this.handleOnChange.bind(this)}
                   placeholder="Add a comment..."
@@ -289,4 +339,6 @@ function mapStateToProps(state) {
   return { user: state.user, posts: state.posts };
 }
 
-export default connect(mapStateToProps, { fetchPosts, followUser })(Profile);
+export default connect(mapStateToProps, { fetchPosts, followUser, likePost })(
+  Profile
+);
