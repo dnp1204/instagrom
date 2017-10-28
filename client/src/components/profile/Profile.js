@@ -246,104 +246,114 @@ class Profile extends Component {
     const name = firstName + ' ' + lastName;
 
     return (
-      <div className="profile-container">
-        <div className="user-container">
-          <div className="user-avatar">
-            <img src={avatar} alt="avatar" />
-          </div>
-          <div className="user-info">
-            <div className="name">
-              <Media query="(max-width: 390px)">
-                {matches =>
-                  matches ? (
-                    <h4 className="bigger">
-                      {name.length > MAX_LENGTH_NAME ? firstName : name}
-                    </h4>
-                  ) : (
-                    <h4 className="bigger">{name}</h4>
-                  )}
-              </Media>
-              {id ? this.renderFollow() : this.renderLogout()}
-            </div>
-            <div className="numbers">
-              <p>
-                <span className="bigger">{posts.length}</span> posts
-              </p>
-              <p>
-                <span className="bigger">{following.length}</span> following
-              </p>
-              <p>
-                <span className="bigger">{followers.length}</span> followers
-              </p>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-10 col-md-offset-1">
+            <div className="profile-container">
+              <div className="user-container">
+                <div className="user-avatar">
+                  <img src={avatar} alt="avatar" />
+                </div>
+                <div className="user-info">
+                  <div className="name">
+                    <Media query="(max-width: 390px)">
+                      {matches =>
+                        matches ? (
+                          <h4 className="bigger">
+                            {name.length > MAX_LENGTH_NAME ? firstName : name}
+                          </h4>
+                        ) : (
+                          <h4 className="bigger">{name}</h4>
+                        )}
+                    </Media>
+                    {id ? this.renderFollow() : this.renderLogout()}
+                  </div>
+                  <div className="numbers">
+                    <p>
+                      <span className="bigger">{posts.length}</span> posts
+                    </p>
+                    <p>
+                      <span className="bigger">{following.length}</span>{' '}
+                      following
+                    </p>
+                    <p>
+                      <span className="bigger">{followers.length}</span>{' '}
+                      followers
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <NumbersMobile
+                posts={posts}
+                following={following}
+                followers={followers}
+              />
+              {this.renderPosts()}
+              <Modal
+                dialogClassName="modal-container"
+                show={this.state.show}
+                onHide={this.close.bind(this)}
+              >
+                <ModalBody>
+                  <div className="image-container">
+                    <img alt={this.state.imageURL} src={this.state.imageURL} />
+                  </div>
+                  <div className="image-detail">
+                    <div className="image-user">
+                      <img src={avatar} alt={name} />
+                      <div>{name}</div>
+                    </div>
+                    <div className="image-comments">
+                      {this.renderComments()}
+                    </div>
+                    <div className="image-info">
+                      <div className="section image-function">
+                        <div>
+                          <i
+                            onClick={() => this.handleLikeClick()}
+                            className={`fa fa-heart-o ${this.state.isLiked
+                              ? 'liked'
+                              : ''}`}
+                          />
+                          <i
+                            onClick={() => this.commentInput.focus()}
+                            className="fa fa-comment-o"
+                          />
+                        </div>
+                        {id ? (
+                          <div />
+                        ) : (
+                          <div>
+                            <i
+                              onClick={() => this.handleDelete()}
+                              className="fa fa-trash-o"
+                            />
+                          </div>
+                        )}
+                      </div>
+                      <div className="section total-likes">
+                        <div> {this.state.likes.length} likes</div>
+                        <div className="date">
+                          {moment(this.state.createdAt).format('MMMM Do YYYY')}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="image-comment-input">
+                      <input
+                        ref={input => {
+                          this.commentInput = input;
+                        }}
+                        value={this.state.content}
+                        onChange={this.handleOnChange.bind(this)}
+                        placeholder="Add a comment..."
+                      />
+                    </div>
+                  </div>
+                </ModalBody>
+              </Modal>
             </div>
           </div>
         </div>
-        <NumbersMobile
-          posts={posts}
-          following={following}
-          followers={followers}
-        />
-        {this.renderPosts()}
-        <Modal
-          dialogClassName="modal-container"
-          show={this.state.show}
-          onHide={this.close.bind(this)}
-        >
-          <ModalBody>
-            <div className="image-container">
-              <img alt={this.state.imageURL} src={this.state.imageURL} />
-            </div>
-            <div className="image-detail">
-              <div className="image-user">
-                <img src={avatar} alt={name} />
-                <div>{name}</div>
-              </div>
-              <div className="image-comments">{this.renderComments()}</div>
-              <div className="image-info">
-                <div className="section image-function">
-                  <div>
-                    <i
-                      onClick={() => this.handleLikeClick()}
-                      className={`fa fa-heart-o ${this.state.isLiked
-                        ? 'liked'
-                        : ''}`}
-                    />
-                    <i
-                      onClick={() => this.commentInput.focus()}
-                      className="fa fa-comment-o"
-                    />
-                  </div>
-                  {id ? (
-                    <div />
-                  ) : (
-                    <div>
-                      <i
-                        onClick={() => this.handleDelete()}
-                        className="fa fa-trash-o"
-                      />
-                    </div>
-                  )}
-                </div>
-                <div className="section total-likes">
-                  <div> {this.state.likes.length} likes</div>
-                  <div className="date">
-                    {moment(this.state.createdAt).format('MMMM Do YYYY')}
-                  </div>
-                </div>
-              </div>
-              <div className="image-comment-input">
-                <input
-                  ref={input => {
-                    this.commentInput = input;
-                  }}
-                  value={this.state.content}
-                  onChange={this.handleOnChange.bind(this)}
-                  placeholder="Add a comment..."
-                />
-              </div>
-            </div>
-          </ModalBody>
-        </Modal>
       </div>
     );
   }

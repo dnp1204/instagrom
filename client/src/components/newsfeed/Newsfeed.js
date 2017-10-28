@@ -55,7 +55,15 @@ class Newsfeed extends Component {
   }
 
   render() {
-    return <div className="newsfeed-container">{this.renderPosts()}</div>;
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 col-md-offset-3">
+            <div className="newsfeed-container">{this.renderPosts()}</div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
