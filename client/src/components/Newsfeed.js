@@ -20,6 +20,7 @@ class Newsfeed extends Component {
           likes={post.likes}
           comments={post.comments}
           createdAt={post.createdAt}
+          gotoUser={() => this.props.history.push(`/profile/${post.userId}`)}
         />
       );
     });

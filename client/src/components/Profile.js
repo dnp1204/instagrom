@@ -79,8 +79,8 @@ class Profile extends Component {
 
   renderLogout() {
     return (
-      <a href="/api/logout">
-        <i className="fa fa-sign-out fa-2x" />
+      <a className="btn btn-danger" href="/api/logout">
+       Log out
       </a>
     );
   }

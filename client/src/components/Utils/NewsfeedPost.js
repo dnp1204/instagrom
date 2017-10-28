@@ -16,14 +16,15 @@ class NewsfeedPost extends Component {
       return (
         <div className="like-section">
           Liked by <span>{`${likes[0].fullName}`}</span>
-          <span>, {likes[1].fullName}</span>{' '}
-          and <span>{likes[2].fullName}</span>
+          <span>, {likes[1].fullName}</span> and{' '}
+          <span>{likes[2].fullName}</span>
         </div>
       );
     } else if (likes.length > 0) {
       return (
         <div className="like-section">
-          Liked by <span>{`${likes[0].fullName}`}</span>{likes[1] ? ' and ' : ''}
+          Liked by <span>{`${likes[0].fullName}`}</span>
+          {likes[1] ? ' and ' : ''}
           {likes[1] ? <span>{likes[1].fullName}</span> : <div />}
         </div>
       );
@@ -32,12 +33,12 @@ class NewsfeedPost extends Component {
   }
 
   render() {
-    const { userAvatar, userName, imageLink, createdAt } = this.props;
+    const { userAvatar, userName, imageLink, createdAt, gotoUser } = this.props;
     return (
       <div className="newsfeed-post-container">
         <div className="user-info-section">
-          <img alt={userName} src={userAvatar} />
-          <div>{userName}</div>
+          <img onClick={() => gotoUser()} alt={userName} src={userAvatar} />
+          <div onClick={() => gotoUser()}>{userName}</div>
         </div>
         <img className="main-image" alt={userName} src={imageLink} />
         <div className="body-section">

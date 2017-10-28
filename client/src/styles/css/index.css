@@ -765,9 +765,11 @@ body {
       height: 30px;
       background-color: #000000;
       border-radius: 50%;
-      margin: 0 12px 0 20px; }
+      margin: 0 12px 0 20px;
+      cursor: pointer; }
     .newsfeed-post-container .user-info-section div {
-      font-weight: bold; }
+      font-weight: bold;
+      cursor: pointer; }
   .newsfeed-post-container .main-image {
     width: 100%; }
   .newsfeed-post-container .body-section {

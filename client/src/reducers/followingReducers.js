@@ -11,6 +11,7 @@ export default function(state = initialState, action) {
         const postList = user.posts.map(post => {
           post.userName = user.firstName + ' ' + user.lastName;
           post.userAvatar = user.avatar;
+          post.userId = user._id;
           return post;
         })
         posts = posts.concat(postList);
