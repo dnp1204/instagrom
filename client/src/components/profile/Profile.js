@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, followUser, likePost } from '../actions';
-import Post from './Utils/Post';
 import { ModalBody, Modal } from 'react-bootstrap';
-import Media from 'react-media';
 import moment from 'moment';
+import Media from 'react-media';
+import { fetchPosts, followUser, likePost, deletePost } from '../../actions';
+import Post from './Post';
+import NumbersMobile from './NumbersMobile';
 
 const MAX_LENGTH_NAME = 15;
 const MAX_COMMENT_LENGTH = 5;
@@ -15,15 +16,9 @@ class Profile extends Component {
     hideComment: true,
     comments: [],
     likes: [],
-    content: ''
+    content: '',
+    showListModal: false
   };
-
-  componentWillMount() {
-    const { id } = this.props.match.params;
-    if (this.props.user.following.includes(id)) {
-      this.setState({ following: true });
-    }
-  }
 
   componentDidMount() {
     const { id } = this.props.match.params;
@@ -41,7 +36,6 @@ class Profile extends Component {
 
   handleKeyPress(event) {
     if (event.charCode === 13 && this.state.content) {
-      // this.props.commentFollowingPost(this.state.content);
       this.setState({ content: '' });
     }
   }
@@ -57,6 +51,10 @@ class Profile extends Component {
 
   close() {
     this.setState({ show: false, hideComment: true });
+  }
+
+  closeListModal() {
+    this.setState({ showListModal: false });
   }
 
   renderPostRow(index) {
@@ -105,43 +103,6 @@ class Profile extends Component {
         return '';
       }
     });
-  }
-
-  renderLogout() {
-    return (
-      <a className="btn btn-danger" href="/api/logout">
-        Log out
-      </a>
-    );
-  }
-
-  handleFollowUser() {
-    const { id } = this.props.match.params;
-    this.props.followUser(id);
-    this.setState({ following: !this.state.following });
-  }
-
-  renderFollow() {
-    // const { id } = this.props.match.params;
-    if (this.state.following) {
-      return (
-        <button
-          onClick={this.handleFollowUser.bind(this)}
-          className="btn btn-primary"
-        >
-          Following
-        </button>
-      );
-    }
-
-    return (
-      <button
-        onClick={this.handleFollowUser.bind(this)}
-        className="btn btn-primary"
-      >
-        Follow
-      </button>
-    );
   }
 
   handleDisplayModalImage(
@@ -202,6 +163,42 @@ class Profile extends Component {
     });
   }
 
+  renderLogout() {
+    return (
+      <a className="btn btn-danger" href="/api/logout">
+        Log out
+      </a>
+    );
+  }
+
+  handleFollowUser() {
+    const { id } = this.props;
+    this.props.followUser(id);
+    this.setState({ following: !this.state.following });
+  }
+
+  renderFollow() {
+    if (this.state.following) {
+      return (
+        <button
+          onClick={this.handleFollowUser.bind(this)}
+          className="btn btn-primary"
+        >
+          Following
+        </button>
+      );
+    }
+
+    return (
+      <button
+        onClick={this.handleFollowUser.bind(this)}
+        className="btn btn-primary"
+      >
+        Follow
+      </button>
+    );
+  }
+
   handleOnChange(event) {
     this.setState({ content: event.target.value });
   }
@@ -226,8 +223,13 @@ class Profile extends Component {
   }
 
   handleDelete() {
-    const result = window.confirm('Do you want to delete this post ? Once you did, you cannot undo it');
-    console.log(result);
+    const result = window.confirm(
+      'Do you want to delete this post ? Once you did, you cannot undo it'
+    );
+    if (result) {
+      this.props.deletePost(this.state.postId);
+      this.setState({ show: false });
+    }
   }
 
   render() {
@@ -276,26 +278,11 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        <div className="numbers-mobile">
-          <div className="section">
-            <div>
-              <span className="bigger">{posts.length}</span>
-            </div>
-            <div>posts</div>
-          </div>
-          <div className="section">
-            <div>
-              <span className="bigger">{following.length}</span>
-            </div>
-            <div>following</div>
-          </div>
-          <div className="section">
-            <div>
-              <span className="bigger">{followers.length}</span>{' '}
-            </div>
-            <div>followers</div>
-          </div>
-        </div>
+        <NumbersMobile
+          posts={posts}
+          following={following}
+          followers={followers}
+        />
         {this.renderPosts()}
         <Modal
           dialogClassName="modal-container"
@@ -326,12 +313,16 @@ class Profile extends Component {
                       className="fa fa-comment-o"
                     />
                   </div>
-                  <div>
-                    <i
-                      onClick={() => this.handleDelete()}
-                      className="fa fa-trash-o"
-                    />
-                  </div>
+                  {id ? (
+                    <div />
+                  ) : (
+                    <div>
+                      <i
+                        onClick={() => this.handleDelete()}
+                        className="fa fa-trash-o"
+                      />
+                    </div>
+                  )}
                 </div>
                 <div className="section total-likes">
                   <div> {this.state.likes.length} likes</div>
@@ -362,6 +353,9 @@ function mapStateToProps(state) {
   return { user: state.user, posts: state.posts };
 }
 
-export default connect(mapStateToProps, { fetchPosts, followUser, likePost })(
-  Profile
-);
+export default connect(mapStateToProps, {
+  fetchPosts,
+  followUser,
+  likePost,
+  deletePost
+})(Profile);

@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { fetchCurrentUser } from '../actions';
 import LoginPage from './LoginPage';
-import Header from './Header';
-import Profile from './Profile';
-import Newsfeed from './Newsfeed';
+import Header from './header/Header';
+import Profile from './profile/Profile';
+import Newsfeed from './newsfeed/Newsfeed';
 
 class App extends Component {
   componentDidMount() {

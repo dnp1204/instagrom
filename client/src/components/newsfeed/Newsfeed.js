@@ -4,8 +4,8 @@ import {
   fetchFollowing,
   likeFollowingPost,
   commentFollowingPost
-} from '../actions';
-import NewsfeedPost from './Utils/NewsfeedPost';
+} from '../../actions';
+import NewsfeedPost from './NewsfeedPost';
 
 class Newsfeed extends Component {
   componentDidMount() {

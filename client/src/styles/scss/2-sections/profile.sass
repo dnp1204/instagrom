@@ -148,7 +148,8 @@
 
 .modal-container
   width: 70%
-
+  margin-top: 70px
+ 
   .modal-body
     padding: 0
     display: flex
@@ -159,7 +160,7 @@
 
       img 
         width: 100%
-        height: auto
+        height: 100%
     
     .image-detail
       flex: 3
@@ -179,14 +180,14 @@
           border-radius: 50%
           background-color: #000000
           margin-right: 10px
-       
+      
         div
           font-weight: bold
           font-size: 18px
 
     .image-comments
       border-bottom: 0.7px solid rgba(0, 0, 0, 0.2)
-      height: 63%
+      height: 58vh
       margin-top: 10px
       overflow: auto
 
@@ -244,3 +245,15 @@
         padding-left: 0
         outline: none
         border: none
+
+@media (max-width: 1500px) 
+  .modal-container
+    .modal-body
+      .image-comments
+        height: 49vh
+
+// @media (max-width: 1200px) 
+//   .modal-container
+//     .modal-body
+//       .image-comments
+//         height: 35vh

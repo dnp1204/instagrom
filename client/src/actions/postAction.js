@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MAKE_POST, FETCH_POSTS, LIKE_POST } from './types';
+import { MAKE_POST, FETCH_POSTS, LIKE_POST, DELETE_POST } from './types';
 
 const URL = '/api/post';
 
@@ -39,3 +39,12 @@ export const likePost = (postId, visitedUserId) => async dispatch => {
     console.log(err);
   }
 };
+
+export const deletePost = postId => async dispatch => {
+  try {
+    const request = await axios.delete(`${URL}/${postId}`);
+    dispatch({ type: DELETE_POST, payload: request.data });
+  } catch (err) {
+    console.log(err);
+  }
+}

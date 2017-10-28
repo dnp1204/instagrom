@@ -10,8 +10,8 @@ import {
   ModalFooter
 } from 'react-bootstrap';
 import fileStack from 'filestack-js';
-import { makePost, searchUser } from '../actions';
-import AutoSuggestion from './Utils/AutoSuggestion';
+import { makePost, searchUser } from '../../actions';
+import AutoSuggestion from './AutoSuggestion';
 class Header extends Component {
   constructor(props) {
     super(props);

@@ -21,7 +21,7 @@ const findUser = async userId => {
         model: 'user'
       }
     ]
-  });
+  }).populate('following').populate('followers');
 
   return user;
 };
@@ -60,8 +60,9 @@ module.exports = {
     const { postId } = req.params;
 
     try {
-      const deletePost = await Post.findByIdAndRemove(postId);
-      res.send(deletePost);
+      await Post.findByIdAndRemove(postId);
+      const user = await findUser(req.user._id);
+      res.send(user);
     } catch (err) {
       next(err);
     }
