@@ -208,7 +208,8 @@
         margin-bottom: 5px
 
       .image-function
-        display: flex 
+        display: flex
+        flex-direction: row 
         align-items: center
         justify-content: space-between
 
@@ -220,14 +221,19 @@
           font-weight: bold
           margin-right: 10px
           cursor: pointer
-        
-        .date 
-          font-size: 18
-          color: #9e9e9e
-      
+              
       .total-likes
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        align-items: center
         font-weight: bold
         font-size: 18px
+
+        .date 
+          font-size: 15px
+          font-weight: 400
+          color: #9e9e9e
 
     .image-comment-input
       margin-top: 6px

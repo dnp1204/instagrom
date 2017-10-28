@@ -32,6 +32,18 @@ class Profile extends Component {
     } else {
       this.props.fetchPosts();
     }
+    document.addEventListener('keypress', this.handleKeyPress.bind(this));
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keypress', this.handleKeyPress.bind(this));
+  }
+
+  handleKeyPress(event) {
+    if (event.charCode === 13 && this.state.content) {
+      // this.props.commentFollowingPost(this.state.content);
+      this.setState({ content: '' });
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -199,7 +211,7 @@ class Profile extends Component {
 
     let newLikesList = this.state.likes;
     if (this.state.isLiked) {
-      for (let i = 0; i < newLikesList.length; i ++) {
+      for (let i = 0; i < newLikesList.length; i++) {
         if (newLikesList[i]._id === this.props.posts._id) {
           newLikesList.splice(i, 1);
           break;
@@ -309,12 +321,18 @@ class Profile extends Component {
                       className="fa fa-comment-o"
                     />
                   </div>
-                  <div className="date">
-                    {moment(this.state.createdAt).format('MMMM Do YYYY')}
+                  <div>
+                    <i
+                      onClick={() => this.commentInput.focus()}
+                      className="fa fa-trash-o"
+                    />
                   </div>
                 </div>
                 <div className="section total-likes">
-                  {this.state.likes.length} likes
+                  <div> {this.state.likes.length} likes</div>
+                  <div className="date">
+                    {moment(this.state.createdAt).format('MMMM Do YYYY')}
+                  </div>
                 </div>
               </div>
               <div className="image-comment-input">
