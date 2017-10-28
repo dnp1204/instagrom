@@ -225,6 +225,11 @@ class Profile extends Component {
     this.props.likePost(this.state.postId, id);
   }
 
+  handleDelete() {
+    const result = window.confirm('Do you want to delete this post ? Once you did, you cannot undo it');
+    console.log(result);
+  }
+
   render() {
     const { id } = this.props.match.params;
 
@@ -323,7 +328,7 @@ class Profile extends Component {
                   </div>
                   <div>
                     <i
-                      onClick={() => this.commentInput.focus()}
+                      onClick={() => this.handleDelete()}
                       className="fa fa-trash-o"
                     />
                   </div>
