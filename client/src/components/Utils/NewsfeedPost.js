@@ -33,7 +33,15 @@ class NewsfeedPost extends Component {
   }
 
   render() {
-    const { userAvatar, userName, imageLink, createdAt, gotoUser } = this.props;
+    const {
+      userAvatar,
+      userName,
+      imageLink,
+      createdAt,
+      gotoUser,
+      liked
+    } = this.props;
+
     return (
       <div className="newsfeed-post-container">
         <div className="user-info-section">
@@ -43,7 +51,7 @@ class NewsfeedPost extends Component {
         <img className="main-image" alt={userName} src={imageLink} />
         <div className="body-section">
           <div className="sub-section post-function-section">
-            <i className="fa fa-heart-o" />
+            <i className={liked ? 'fa fa-heart-o liked' : 'fa fa-heart-o'} />
             <div>{moment(createdAt).fromNow()}</div>
           </div>
           <div className="sub-section like-comment-section">

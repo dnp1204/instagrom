@@ -9,11 +9,20 @@ class Newsfeed extends Component {
   }
 
   renderPosts() {
-    const { following } = this.props;
+    const { following, user } = this.props;
     return following.map(post => {
+      let liked = false;
+      for (let i = 0; i < post.likes.length; i++) {
+        if (post.likes[i]._id === user._id) {
+          liked = true;
+          break;
+        }
+      }
+
       return (
         <NewsfeedPost
           key={post._id}
+          liked={liked}
           userAvatar={post.userAvatar}
           userName={post.userName}
           imageLink={post.image}
@@ -32,7 +41,7 @@ class Newsfeed extends Component {
 }
 
 function mapStateToProps(state) {
-  return { following: state.following };
+  return { following: state.following, user: state.user };
 }
 
 export default connect(mapStateToProps, { fetchFollowing })(Newsfeed);

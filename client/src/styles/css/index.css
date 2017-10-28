@@ -785,6 +785,8 @@ body {
         margin-right: 15px;
         font-size: 25px;
         font-weight: 400; }
+      .newsfeed-post-container .body-section .post-function-section .liked {
+        color: #EF5350; }
     .newsfeed-post-container .body-section .like-comment-section .like-section {
       margin-bottom: 10px; }
       .newsfeed-post-container .body-section .like-comment-section .like-section span {
