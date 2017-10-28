@@ -4,11 +4,13 @@ import { fetchPosts, followUser } from '../actions';
 import Post from './Utils/Post';
 import { ModalBody, Modal } from 'react-bootstrap';
 import Media from 'react-media';
+import moment from 'moment';
 
 const MAX_LENGTH_NAME = 15;
+const MAX_COMMENT_LENGTH = 5;
 
 class Profile extends Component {
-  state = { show: false };
+  state = { show: false, hideComment: true, comments: [], likes: [], content: '' };
 
   componentWillMount() {
     const { id } = this.props.match.params;
@@ -36,7 +38,7 @@ class Profile extends Component {
   }
 
   close() {
-    this.setState({ show: false });
+    this.setState({ show: false, hideComment: true });
   }
 
   renderPostRow(index) {
@@ -59,11 +61,12 @@ class Profile extends Component {
       return (
         <div key={post._id} className="post col col-md-4 col-sm-4 col-xs-4">
           <Post
+            createdAt={post.createdAt}
             visitedUserId={id}
             userId={_id}
             postId={post._id}
             likes={post.likes}
-            comments={post.comments.length}
+            comments={post.comments}
             imageURL={post.image}
             handleDisplayModalImage={this.handleDisplayModalImage.bind(this)}
           />
@@ -123,8 +126,51 @@ class Profile extends Component {
     );
   }
 
-  handleDisplayModalImage(likes, comments, imageURL, postId) {
-    this.setState({ show: true, likes, comments, imageURL, postId });
+  handleDisplayModalImage(likes, comments, imageURL, postId, createdAt) {
+    this.setState({ show: true, likes, comments, imageURL, postId, createdAt });
+  }
+
+  renderLessComments() {
+    const { comments } = this.state;
+    const LOWER_BOUNDS = comments.length - MAX_COMMENT_LENGTH;
+    return comments.slice(LOWER_BOUNDS, comments.length).map(comment => {
+      return (
+        <div className="comment-content" key={comment._id}>
+          <span>{comment.user.fullName} </span>
+          {comment.content}
+        </div>
+      );
+    });
+  }
+
+  renderComments() {
+    const { comments } = this.state;
+    if (comments.length > MAX_COMMENT_LENGTH && this.state.hideComment) {
+      return (
+        <div>
+          <div
+            onClick={() => this.setState({ hideComment: false })}
+            id="view-more"
+          >
+            Views all comments
+          </div>
+          {this.renderLessComments()}
+        </div>
+      );
+    }
+
+    return comments.map(comment => {
+      return (
+        <div className="comment-content" key={comment._id}>
+          <span>{comment.user.fullName} </span>
+          {comment.content}
+        </div>
+      );
+    });
+  }
+
+  handleOnChange(event) {
+    this.setState({ content: event.target.value });
   }
 
   render() {
@@ -208,9 +254,28 @@ class Profile extends Component {
                 <img src={avatar} alt={name} />
                 <div>{name}</div>
               </div>
-              <div className="image-comments" />
-              <div className="image-info" />
-              <div className="image-comment-input" />
+              <div className="image-comments">{this.renderComments()}</div>
+              <div className="image-info">
+                <div className="section image-function">
+                  <div>
+                    <i className="fa fa-heart-o" />
+                    <i className="fa fa-comment-o" />
+                  </div>
+                  <div className="date">
+                    {moment(this.state.createdAt).format('MMMM Do YYYY')}
+                  </div>
+                </div>
+                <div className="section total-likes">
+                  {this.state.likes.length} likes
+                </div>
+              </div>
+              <div className="image-comment-input">
+                <input
+                  value={this.state.content}
+                  onChange={this.handleOnChange.bind(this)}
+                  placeholder="Add a comment..."
+                />
+              </div>
             </div>
           </ModalBody>
         </Modal>

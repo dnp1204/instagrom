@@ -122,7 +122,7 @@
         height: auto; }
     .modal-container .modal-body .image-detail {
       flex: 3;
-      padding: 0 10px; }
+      padding: 0 20px; }
       .modal-container .modal-body .image-detail .image-user {
         display: flex;
         flex-direction: row;
@@ -139,5 +139,45 @@
         .modal-container .modal-body .image-detail .image-user div {
           font-weight: bold;
           font-size: 18px; }
+    .modal-container .modal-body .image-comments {
+      border-bottom: 0.7px solid rgba(0, 0, 0, 0.2);
+      height: 63%;
+      margin-top: 10px;
+      overflow: auto; }
+      .modal-container .modal-body .image-comments #view-more {
+        cursor: pointer;
+        font-size: 15px;
+        color: #9e9e9e;
+        margin-bottom: 3px; }
+      .modal-container .modal-body .image-comments .comment-content span {
+        font-weight: bold; }
+    .modal-container .modal-body .image-info {
+      margin-top: 10px;
+      border-bottom: 0.7px solid rgba(0, 0, 0, 0.2); }
+      .modal-container .modal-body .image-info .section {
+        margin-bottom: 5px; }
+      .modal-container .modal-body .image-info .image-function {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; }
+        .modal-container .modal-body .image-info .image-function .fa {
+          font-size: 23px;
+          font-weight: bold;
+          margin-right: 10px;
+          cursor: pointer; }
+        .modal-container .modal-body .image-info .image-function .date {
+          font-size: 18;
+          color: #9e9e9e; }
+      .modal-container .modal-body .image-info .total-likes {
+        font-weight: bold;
+        font-size: 18px; }
+    .modal-container .modal-body .image-comment-input {
+      margin-top: 6px; }
+      .modal-container .modal-body .image-comment-input input {
+        width: 100%;
+        padding: 10px;
+        padding-left: 0;
+        outline: none;
+        border: none; }
 
 /*# sourceMappingURL=profile.css.map */

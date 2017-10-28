@@ -9,6 +9,7 @@ class Post extends Component {
       comments,
       imageURL,
       postId,
+      createdAt,
       userId,
       visitedUserId,
       handleDisplayModalImage
@@ -23,7 +24,7 @@ class Post extends Component {
     return (
       <div
         onClick={() =>
-          handleDisplayModalImage(likes, comments, imageURL, postId)}
+          handleDisplayModalImage(likes, comments, imageURL, postId, createdAt)}
         className="post-container"
       >
         <img alt={imageURL} src={imageURL} />
@@ -36,7 +37,7 @@ class Post extends Component {
             />
           </p>
           <p>
-            {comments} <i className="fa fa-comment" />
+            {comments.length} <i className="fa fa-comment" />
           </p>
         </div>
       </div>

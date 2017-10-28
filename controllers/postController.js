@@ -12,7 +12,7 @@ const findUser = async userId => {
         path: 'comments',
         model: 'comment',
         populate: {
-          path: 'likes',
+          path: 'user',
           model: 'user'
         }
       },
