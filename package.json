@@ -12,7 +12,8 @@
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "sass": "sass --watch client/src/styles/scss:client/src/styles/css",
-    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\" \"npm run sass\""
+    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\" \"npm run sass\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Doanh Pham",
   "license": "ISC",
