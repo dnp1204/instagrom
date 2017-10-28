@@ -9,7 +9,6 @@
   width: 100%;
   top: 0;
   z-index: 999;
-  margin-bottom: 60px;
   border-bottom: 1px solid #e6e6e6; }
   .header-container .modal {
     z-index: 9999; }
@@ -56,5 +55,42 @@
       cursor: pointer; }
     .header-container .header-summary .notification {
       margin-right: 30px; }
+
+@media (max-width: 650px) {
+  .header-container .fa {
+    font-size: 22px; }
+  .header-container .header-brand .camera-logo {
+    margin-right: 10px; }
+    .header-container .header-brand .camera-logo i {
+      margin-right: 10px; }
+  .header-container .header-brand h1 {
+    font-size: 22px; }
+  .header-container .header-search .fa-search {
+    top: 4px;
+    left: 10px;
+    font-size: 18px; }
+  .header-container .header-search input {
+    width: 180px; }
+  .header-container .header-summary .upload {
+    margin-right: 20px; }
+  .header-container .header-summary .notification {
+    margin-right: 20px; } }
+@media (max-width: 450px) {
+  .header-container .fa {
+    font-size: 22px; }
+  .header-container .header-brand .camera-logo {
+    border: none; }
+  .header-container .header-brand h1 {
+    display: none; }
+  .header-container .header-search .fa-search {
+    top: 4px;
+    left: 10px;
+    font-size: 18px; }
+  .header-container .header-search input {
+    width: 200px; }
+  .header-container .header-summary .upload {
+    margin-right: 20px; }
+  .header-container .header-summary .notification {
+    margin-right: 20px; } }
 
 /*# sourceMappingURL=header.css.map */

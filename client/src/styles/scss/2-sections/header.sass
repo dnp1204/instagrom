@@ -9,7 +9,6 @@
   width: 100%
   top: 0
   z-index: 999
-  margin-bottom: 60px
   border-bottom: 1px solid #e6e6e6
   
   .modal
@@ -69,4 +68,62 @@
 
     .notification 
       margin-right: 30px
-  
+
+@media (max-width: 650px) 
+  .header-container 
+    .fa 
+      font-size: 22px
+
+    .header-brand
+      .camera-logo
+        margin-right: 10px
+
+        i 
+          margin-right: 10px
+
+      h1 
+        font-size: 22px
+    
+    .header-search
+      .fa-search
+        top: 4px
+        left: 10px
+        font-size: 18px
+
+      input 
+        width: 180px
+
+    .header-summary
+      .upload
+        margin-right: 20px
+
+      .notification 
+        margin-right: 20px
+
+@media (max-width: 450px) 
+  .header-container
+    .fa 
+      font-size: 22px
+
+    .header-brand
+      .camera-logo
+        border: none
+
+      h1 
+        display: none
+    
+    .header-search
+      .fa-search
+        top: 4px
+        left: 10px
+        font-size: 18px
+
+      input 
+        width: 200px
+
+    .header-summary
+      .upload
+        margin-right: 20px
+
+      .notification 
+        margin-right: 20px

@@ -49,7 +49,7 @@ class Profile extends Component {
 
     return validPost.map(post => {
       return (
-        <div key={post._id} className="col-md-4 col-sm-4 col-xs-4">
+        <div key={post._id} className="post col-md-4 col-sm-4 col-xs-4">
           <Post
             visitedUserId={id}
             userId={_id}

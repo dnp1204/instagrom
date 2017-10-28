@@ -47,4 +47,26 @@
   .profile-container .user-post {
     margin-bottom: 30px; }
 
+@media (max-width: 650px) {
+  .profile-container .user-container {
+    padding: 20px 0 20px 0;
+    height: 30%;
+    margin-bottom: 50px; }
+    .profile-container .user-container .user-avatar {
+      margin-right: 50px; }
+      .profile-container .user-container .user-avatar img {
+        height: 100px;
+        width: 100px; }
+    .profile-container .user-container .user-info .btn {
+      width: 100px;
+      height: 30px; }
+    .profile-container .user-container .user-info .name h4 {
+      font-size: 25px; }
+    .profile-container .user-container .user-info .numbers p {
+      font-size: 18px; }
+    .profile-container .user-container .user-info .numbers span {
+      font-size: 20px; }
+  .profile-container .user-post {
+    margin-bottom: 20px; } }
+
 /*# sourceMappingURL=profile.css.map */
