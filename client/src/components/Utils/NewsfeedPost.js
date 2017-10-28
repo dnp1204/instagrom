@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
+const MAX_COMMENT_LENGTH = 5;
+
 class NewsfeedPost extends Component {
-  state = { content: '' };
+  state = { content: '', hideComment: true };
 
   componentDidMount() {
     document.addEventListener('keypress', this.handleKeyPress.bind(this));
@@ -53,11 +55,38 @@ class NewsfeedPost extends Component {
     return <div />;
   }
 
+  renderLessComments() {
+    const { comments } = this.props;
+    const LOWER_BOUNDS = comments.length - MAX_COMMENT_LENGTH;
+    return comments.slice(LOWER_BOUNDS, comments.length).map(comment => {
+      return (
+        <div className="comment-content" key={comment._id}>
+          <span>{comment.user.fullName} </span>
+          {comment.content}
+        </div>
+      );
+    });
+  }
+
   renderComments() {
     const { comments } = this.props;
+    if (comments.length > MAX_COMMENT_LENGTH && this.state.hideComment) {
+      return (
+        <div>
+          <div
+            onClick={() => this.setState({ hideComment: false })}
+            id="view-more"
+          >
+            Views all comments
+          </div>
+          {this.renderLessComments()}
+        </div>
+      );
+    }
+
     return comments.map(comment => {
       return (
-        <div key={comment._id}>
+        <div className="comment-content" key={comment._id}>
           <span>{comment.user.fullName} </span>
           {comment.content}
         </div>
