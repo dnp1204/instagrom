@@ -172,7 +172,7 @@ class Profile extends Component {
   }
 
   handleFollowUser() {
-    const { id } = this.props;
+    const { id } = this.props.match.params;
     this.props.followUser(id);
     this.setState({ following: !this.state.following });
   }
