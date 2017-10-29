@@ -8,29 +8,28 @@ import Profile from './profile/Profile';
 import Newsfeed from './newsfeed/Newsfeed';
 
 class App extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchCurrentUser();
   }
 
-  render() {
-    if (this.props.user) {
-      return (
-        <BrowserRouter>
-          <div>
-            <Header />
-            <div className="app-container">
-              <Route path="/" exact component={Newsfeed} />
-              <Route path="/profile" exact component={Profile} />
-              <Route path="/profile/:id" exact component={Profile} />
-            </div>
-          </div>
-        </BrowserRouter>
-      );
-    }
+  authRoute() {
     return (
-      <div className="app-login-page">
-        <LoginPage />
+      <div>
+        <Header />
+        <div className="app-container">
+          <Route path="/" exact component={Newsfeed} />
+          <Route path="/profile" exact component={Profile} />
+          <Route path="/profile/:id" exact component={Profile} />
+        </div>
       </div>
+    );
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        {this.props.user._id ? this.authRoute() : <Route path="/" exact component={LoginPage} />}
+      </BrowserRouter>
     );
   }
 }
