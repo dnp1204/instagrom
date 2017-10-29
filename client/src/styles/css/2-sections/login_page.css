@@ -1,21 +1,21 @@
 /*
 Error: Undefined variable: "$bg-color".
-        on line 18 of client/src/styles/scss/2-sections/login_page.sass
+        on line 21 of client/src/styles/scss/2-sections/login_page.sass
 
-13:       text-align: center
-14: 
-15:     input
-16:       height: 45px
-17:       margin-bottom: 5px
-18:       background-color: $bg-color
-19:       border: 0.2px solid rgba(0, 0, 0, 0.1) !important
-20:       outline: none !important
-21: 
-22:     .split-line-container 
-23:       display: flex
+16:       text-align: center
+17: 
+18:     input
+19:       height: 45px
+20:       margin-bottom: 5px
+21:       background-color: $bg-color
+22:       border: 0.2px solid rgba(0, 0, 0, 0.1) !important
+23:       outline: none !important
+24: 
+25:     .split-line-container 
+26:       display: flex
 
 Backtrace:
-client/src/styles/scss/2-sections/login_page.sass:18
+client/src/styles/scss/2-sections/login_page.sass:21
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/variable.rb:49:in `_perform'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
@@ -88,4 +88,4 @@ client/src/styles/scss/2-sections/login_page.sass:18
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$bg-color\".\A         on line 18 of client/src/styles/scss/2-sections/login_page.sass\A \A 13:       text-align: center\A 14: \A 15:     input\A 16:       height: 45px\A 17:       margin-bottom: 5px\A 18:       background-color: $bg-color\A 19:       border: 0.2px solid rgba(0, 0, 0, 0.1) !important\A 20:       outline: none !important\A 21: \A 22:     .split-line-container \A 23:       display: flex"; }
+  content: "Error: Undefined variable: \"$bg-color\".\A         on line 21 of client/src/styles/scss/2-sections/login_page.sass\A \A 16:       text-align: center\A 17: \A 18:     input\A 19:       height: 45px\A 20:       margin-bottom: 5px\A 21:       background-color: $bg-color\A 22:       border: 0.2px solid rgba(0, 0, 0, 0.1) !important\A 23:       outline: none !important\A 24: \A 25:     .split-line-container \A 26:       display: flex"; }

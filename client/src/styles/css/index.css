@@ -489,6 +489,9 @@ body {
   .app-container {
     margin-top: 20px;
     padding-bottom: 0; } }
+.hidden {
+  display: none; }
+
 .app-login-page {
   display: flex;
   justify-content: center;
