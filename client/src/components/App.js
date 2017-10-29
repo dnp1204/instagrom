@@ -8,8 +8,15 @@ import Profile from './profile/Profile';
 import Newsfeed from './newsfeed/Newsfeed';
 
 class App extends Component {
+  state = { hidden: 'hidden' };
+
   componentWillMount() {
     this.props.fetchCurrentUser();
+
+    let that = this;
+    setTimeout(function() {
+      that.setState({ hidden: '' });
+    }, 100);
   }
 
   authRoute() {
@@ -26,7 +33,7 @@ class App extends Component {
   }
 
   noAuthRoute() {
-    return <Route path="/" exact component={LoginPage} />;
+    return <Route path="/" exact render={() => <LoginPage  hidden={this.state.hidden}/>} />;
   }
 
   render() {

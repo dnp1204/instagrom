@@ -71,7 +71,7 @@ module.exports = {
           model: 'post',
           options: {
             sort: { createdAt: -1 },
-            limit: 5
+            limit: 6
           },
           populate: [
             {

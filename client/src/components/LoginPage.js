@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 
 class LoginPage extends Component {
-  state = { hidden: 'hidden' }
-
-  componentWillMount() {
-    let that = this;
-    setTimeout(function() {
-      that.setState({ hidden: '' });
-    }, 100);
-  }
 
   render() {
     return (
-      <div className={`app-login-page ${this.state.hidden}`}>
+      <div className={`app-login-page ${this.props.hidden}`}>
         <div className="login-page-container">
           <h1 className="logo">Instagram</h1>
           <a
