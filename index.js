@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/post');
 require('./models/comment');
-require('./models/User');
+require('./models/user');
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
