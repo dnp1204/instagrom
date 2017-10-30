@@ -30,7 +30,7 @@ module.exports = {
 
       await req.user.save();
       await user.save();
-      res.send(user.followers);
+      res.send({ followers: user.followers, following: req.user.following });
     } catch (err) {
       next(err);
     }

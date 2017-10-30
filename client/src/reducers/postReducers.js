@@ -11,7 +11,7 @@ export default function (state = initialState, action) {
     case DELETE_POST:
       return action.payload;
     case FOLLOWING_USER:
-      return { ...state, followers: action.payload };
+      return { ...state, followers: action.payload.followers };
     case LIKE_POST:
       return action.payload.user;
     case FETCH_POSTS:
