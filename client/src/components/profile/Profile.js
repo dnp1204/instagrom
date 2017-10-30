@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { ModalBody, Modal } from 'react-bootstrap';
 import moment from 'moment';
 import Media from 'react-media';
-import { fetchPosts, followUser, likePost, deletePost, deleteComment } from '../../actions';
+import { fetchPosts, followUser, likePost, deletePost, deleteComment, commentPost } from '../../actions';
 import Post from './Post';
 import NumbersMobile from './NumbersMobile';
 import UserList from './UserList';
@@ -42,6 +42,7 @@ class Profile extends Component {
 
   handleKeyPress(event) {
     if (event.charCode === 13 && this.state.content) {
+      this.props.commentPost(this.state.content, this.props.selectPost.postId);
       this.setState({ content: '' });
     }
   }
@@ -389,5 +390,6 @@ export default connect(mapStateToProps, {
   followUser,
   likePost,
   deletePost,
-  deleteComment
+  deleteComment,
+  commentPost
 })(Profile);

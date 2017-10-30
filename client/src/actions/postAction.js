@@ -4,7 +4,8 @@ import {
   FETCH_POSTS,
   LIKE_POST,
   DELETE_POST,
-  SELECT_POST
+  SELECT_POST,
+  COMMENT_POST
 } from './types';
 
 const URL = '/api/post';
@@ -57,4 +58,13 @@ export const deletePost = postId => async dispatch => {
 
 export const selectPost = post => {
   return { type: SELECT_POST, payload: post };
+};
+
+export const commentPost = (content, postId) => async dispatch => {
+  try {
+    const request = await axios.put(`${URL}/${postId}/comment`, { content });
+    dispatch({ type: COMMENT_POST, payload: request.data });
+  } catch (err) {
+    console.log(err);
+  }
 };
