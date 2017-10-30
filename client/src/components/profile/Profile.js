@@ -369,6 +369,8 @@ class Profile extends Component {
                 showModal={this.state.showListModal}
                 closeModal={this.closeListModal.bind(this)}
                 userList={this.state.userList}
+                visitedUserId={id}
+                currentUser={this.props.user}
               />
             </div>
           </div>
