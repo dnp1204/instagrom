@@ -18,18 +18,37 @@ const renderUsers = (userList, title, currentUser, visitedUserId) => {
           <img alt={user.avatar} src={user.avatar} />
           <div>{user.fullName}</div>
         </div>
-        <button className={`btn ${following ? 'btn-transparent' : 'btn-primary'}`}>{following ? 'Following' : 'Follow'}</button>
+        {currentUser._id === user._id ? (
+          <div />
+        ) : (
+          <button
+            className={`btn ${following ? 'btn-transparent' : 'btn-primary'}`}
+          >
+            {following ? 'Following' : 'Follow'}
+          </button>
+        )}
       </div>
     );
   });
-}
+};
 
-const UserList = (props) => {
-  const { showModal, closeModal, userList, title, currentUser, visitedUserId } = props;
+const UserList = props => {
+  const {
+    showModal,
+    closeModal,
+    userList,
+    title,
+    currentUser,
+    visitedUserId
+  } = props;
 
   return (
     <div>
-      <Modal dialogClassName="userlist-modal-container" show={showModal} onHide={() => closeModal()}>
+      <Modal
+        dialogClassName="userlist-modal-container"
+        show={showModal}
+        onHide={() => closeModal()}
+      >
         <ModalHeader>
           <ModalTitle>{title}</ModalTitle>
         </ModalHeader>
@@ -39,6 +58,6 @@ const UserList = (props) => {
       </Modal>
     </div>
   );
-}
+};
 
 export default UserList;
