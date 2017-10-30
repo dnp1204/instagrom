@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { ModalBody, Modal } from 'react-bootstrap';
 import moment from 'moment';
 import Media from 'react-media';
-import { fetchPosts, followUser, likePost, deletePost } from '../../actions';
+import { fetchPosts, followUser, likePost, deletePost, deleteComment } from '../../actions';
 import Post from './Post';
 import NumbersMobile from './NumbersMobile';
 import UserList from './UserList';
@@ -94,7 +94,7 @@ class Profile extends Component {
             likes={post.likes}
             comments={post.comments}
             imageURL={post.image}
-            handleDisplayModalImage={this.handleDisplayModalImage.bind(this)}
+            displayModalDetail={() => this.setState({ show: true })}
           />
         </div>
       );
@@ -115,40 +115,34 @@ class Profile extends Component {
     });
   }
 
-  handleDisplayModalImage(
-    likes,
-    comments,
-    imageURL,
-    postId,
-    createdAt,
-    isLiked
-  ) {
-    this.setState({
-      show: true,
-      likes,
-      comments,
-      imageURL,
-      postId,
-      createdAt,
-      isLiked
-    });
-  }
-
   renderLessComments() {
-    const { comments } = this.state;
+    const { comments, postId } = this.props.selectPost;
     const LOWER_BOUNDS = comments.length - MAX_COMMENT_LENGTH;
     return comments.slice(LOWER_BOUNDS, comments.length).map(comment => {
       return (
         <div className="comment-content" key={comment._id}>
-          <span>{comment.user.fullName} </span>
-          {comment.content}
+          <div>
+            <span>{comment.user.fullName} </span>
+            {comment.content}
+          </div>
+          {comment.user._id === this.props.user._id ? (
+            <div>
+              <i
+              onClick={() => this.props.deleteComment(postId, comment._id)}
+                className="fa fa-times"
+                aria-hidden="true"
+              />
+            </div>
+          ) : (
+            <div />
+          )}
         </div>
       );
     });
   }
 
   renderComments() {
-    const { comments } = this.state;
+    const { comments, postId } = this.props.selectPost;
     if (comments.length > MAX_COMMENT_LENGTH && this.state.hideComment) {
       return (
         <div>
@@ -166,8 +160,21 @@ class Profile extends Component {
     return comments.map(comment => {
       return (
         <div className="comment-content" key={comment._id}>
-          <span>{comment.user.fullName} </span>
-          {comment.content}
+          <div>
+            <span>{comment.user.fullName} </span>
+            {comment.content}
+          </div>
+          {comment.user._id === this.props.user._id ? (
+            <div>
+              <i
+                onClick={() => this.props.deleteComment(postId, comment._id)}
+                className="fa fa-times"
+                aria-hidden="true"
+              />
+            </div>
+          ) : (
+            <div />
+          )}
         </div>
       );
     });
@@ -215,21 +222,7 @@ class Profile extends Component {
 
   handleLikeClick() {
     const { id } = this.props.match.params;
-
-    let newLikesList = this.state.likes;
-    if (this.state.isLiked) {
-      for (let i = 0; i < newLikesList.length; i++) {
-        if (newLikesList[i]._id === this.props.posts._id) {
-          newLikesList.splice(i, 1);
-          break;
-        }
-      }
-    } else {
-      newLikesList.push(this.props.posts);
-    }
-
-    this.setState({ isLiked: !this.state.isLiked, likes: newLikesList });
-    this.props.likePost(this.state.postId, id);
+    this.props.likePost(this.props.selectPost.postId, id);
   }
 
   handleDelete() {
@@ -237,7 +230,7 @@ class Profile extends Component {
       'Do you want to delete this post ? Once you did, you cannot undo it'
     );
     if (result) {
-      this.props.deletePost(this.state.postId);
+      this.props.deletePost(this.props.selectPost.postId);
       this.setState({ show: false });
     }
   }
@@ -253,6 +246,9 @@ class Profile extends Component {
       followers,
       posts
     } = this.props.posts;
+
+    const { selectPost } = this.props;
+
     const name = firstName + ' ' + lastName;
 
     return (
@@ -312,7 +308,7 @@ class Profile extends Component {
               >
                 <ModalBody>
                   <div className="image-container">
-                    <img alt={this.state.imageURL} src={this.state.imageURL} />
+                    <img alt={selectPost.imageURL} src={selectPost.imageURL} />
                   </div>
                   <div className="image-detail">
                     <div className="image-user">
@@ -327,7 +323,7 @@ class Profile extends Component {
                         <div>
                           <i
                             onClick={() => this.handleLikeClick()}
-                            className={`fa fa-heart-o ${this.state.isLiked
+                            className={`fa fa-heart-o ${selectPost.isLiked
                               ? 'liked'
                               : ''}`}
                           />
@@ -348,9 +344,9 @@ class Profile extends Component {
                         )}
                       </div>
                       <div className="section total-likes">
-                        <div> {this.state.likes.length} likes</div>
+                        <div> {selectPost.likes.length} likes</div>
                         <div className="date">
-                          {moment(this.state.createdAt).format('MMMM Do YYYY')}
+                          {moment(selectPost.createdAt).format('MMMM Do YYYY')}
                         </div>
                       </div>
                     </div>
@@ -374,7 +370,7 @@ class Profile extends Component {
                 userList={this.state.userList}
                 visitedUserId={id}
                 currentUser={this.props.user}
-                followUser={(id) => this.props.followUser(id)}
+                followUser={id => this.props.followUser(id)}
               />
             </div>
           </div>
@@ -385,12 +381,13 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state) {
-  return { user: state.user, posts: state.posts };
+  return { user: state.user, posts: state.posts, selectPost: state.selectPost };
 }
 
 export default connect(mapStateToProps, {
   fetchPosts,
   followUser,
   likePost,
-  deletePost
+  deletePost,
+  deleteComment
 })(Profile);

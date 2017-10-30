@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { MAKE_POST, FETCH_POSTS, LIKE_POST, DELETE_POST } from './types';
+import {
+  MAKE_POST,
+  FETCH_POSTS,
+  LIKE_POST,
+  DELETE_POST,
+  SELECT_POST
+} from './types';
 
 const URL = '/api/post';
 
@@ -47,4 +53,8 @@ export const deletePost = postId => async dispatch => {
   } catch (err) {
     console.log(err);
   }
+};
+
+export const selectPost = post => {
+  return { type: SELECT_POST, payload: post };
 };

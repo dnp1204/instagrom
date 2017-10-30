@@ -772,8 +772,12 @@ body {
         font-size: 15px;
         color: #9e9e9e;
         margin-bottom: 3px; }
-      .modal-container .modal-body .image-comments .comment-content span {
-        font-weight: bold; }
+      .modal-container .modal-body .image-comments .comment-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; }
+        .modal-container .modal-body .image-comments .comment-content span {
+          font-weight: bold; }
     .modal-container .modal-body .image-info {
       margin-top: 10px;
       border-bottom: 0.7px solid rgba(0, 0, 0, 0.2); }

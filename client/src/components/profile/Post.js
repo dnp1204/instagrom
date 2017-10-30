@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { likePost } from '../../actions';
+import { likePost, selectPost } from '../../actions';
 
 class Post extends Component {
   render() {
@@ -12,7 +12,7 @@ class Post extends Component {
       createdAt,
       userId,
       visitedUserId,
-      handleDisplayModalImage
+      displayModalDetail
     } = this.props;
     let checked = false;
     for (let user of likes) {
@@ -25,14 +25,15 @@ class Post extends Component {
       <div
         onClick={event => {
           if (!event.target.className.includes('fa fa-heart')) {
-            handleDisplayModalImage(
+            displayModalDetail();
+            this.props.selectPost({
               likes,
               comments,
               imageURL,
               postId,
               createdAt,
-              checked
-            );
+              isLiked: checked
+            });
           }
         }}
         className="post-container"
@@ -55,4 +56,4 @@ class Post extends Component {
   }
 }
 
-export default connect(null, { likePost })(Post);
+export default connect(null, { likePost, selectPost })(Post);

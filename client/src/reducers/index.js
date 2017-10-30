@@ -4,11 +4,13 @@ import userReducers from './userReducers';
 import postReducers from './postReducers';
 import searchReducers from './searchReducers';
 import followingReducers from './followingReducers';
+import selectPostReducers from './selectPostReducers';
 
 export default combineReducers({
   form: formReducer,
   user: userReducers,
   posts: postReducers,
   searchUser: searchReducers,
-  following: followingReducers
+  following: followingReducers,
+  selectPost: selectPostReducers
 });
