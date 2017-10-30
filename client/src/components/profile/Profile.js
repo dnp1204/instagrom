@@ -25,6 +25,9 @@ class Profile extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
+    if (this.props.user.following.includes(id)) {
+      this.setState({ following: true });
+    }
     if (id) {
       this.props.fetchPosts(id);
     } else {
@@ -189,7 +192,7 @@ class Profile extends Component {
       return (
         <button
           onClick={this.handleFollowUser.bind(this)}
-          className="btn btn-primary"
+          className="btn btn-transparent"
         >
           Following
         </button>
@@ -371,6 +374,7 @@ class Profile extends Component {
                 userList={this.state.userList}
                 visitedUserId={id}
                 currentUser={this.props.user}
+                followUser={(id) => this.props.followUser(id)}
               />
             </div>
           </div>

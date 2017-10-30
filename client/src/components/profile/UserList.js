@@ -1,14 +1,20 @@
 import React from 'react';
 import { Modal, ModalBody, ModalHeader, ModalTitle } from 'react-bootstrap';
 
-const renderUsers = (userList, title, currentUser, visitedUserId) => {
+const renderUsers = (userList, title, currentUser, visitedUserId, followUser) => {
   return userList.map(user => {
     let following = false;
-    if (title === 'Following') {
-      following = true;
-    } else {
+    if (visitedUserId) {
       if (currentUser.following.includes(user._id)) {
         following = true;
+      }
+    } else {
+      if (title === 'Following') {
+        following = true;
+      } else {
+        if (currentUser.following.includes(user._id)) {
+          following = true;
+        }
       }
     }
 
@@ -22,6 +28,7 @@ const renderUsers = (userList, title, currentUser, visitedUserId) => {
           <div />
         ) : (
           <button
+            onClick={() => console.log('hello')}
             className={`btn ${following ? 'btn-transparent' : 'btn-primary'}`}
           >
             {following ? 'Following' : 'Follow'}
@@ -39,7 +46,8 @@ const UserList = props => {
     userList,
     title,
     currentUser,
-    visitedUserId
+    visitedUserId,
+    followUser
   } = props;
 
   return (
@@ -53,7 +61,7 @@ const UserList = props => {
           <ModalTitle>{title}</ModalTitle>
         </ModalHeader>
         <ModalBody>
-          {renderUsers(userList, title, currentUser, visitedUserId)}
+          {renderUsers(userList, title, currentUser, visitedUserId, followUser)}
         </ModalBody>
       </Modal>
     </div>
