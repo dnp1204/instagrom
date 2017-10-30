@@ -6,6 +6,7 @@ import Media from 'react-media';
 import { fetchPosts, followUser, likePost, deletePost } from '../../actions';
 import Post from './Post';
 import NumbersMobile from './NumbersMobile';
+import UserList from './UserList';
 
 const MAX_LENGTH_NAME = 15;
 const MAX_COMMENT_LENGTH = 5;
@@ -17,7 +18,9 @@ class Profile extends Component {
     comments: [],
     likes: [],
     content: '',
-    showListModal: false
+    showListModal: false,
+    userList: [],
+    titleModal: ''
   };
 
   componentDidMount() {
@@ -55,6 +58,10 @@ class Profile extends Component {
 
   closeListModal() {
     this.setState({ showListModal: false });
+  }
+
+  openListModal(userList, titleModal) {
+    this.setState({ showListModal: true, userList, titleModal });
   }
 
   renderPostRow(index) {
@@ -272,11 +279,17 @@ class Profile extends Component {
                     <p>
                       <span className="bigger">{posts.length}</span> posts
                     </p>
-                    <p>
+                    <p
+                      onClick={() => this.openListModal(following, 'Following')}
+                      id="showList"
+                    >
                       <span className="bigger">{following.length}</span>{' '}
                       following
                     </p>
-                    <p>
+                    <p
+                      onClick={() => this.openListModal(followers, 'Followers')}
+                      id="showList"
+                    >
                       <span className="bigger">{followers.length}</span>{' '}
                       followers
                     </p>
@@ -351,6 +364,12 @@ class Profile extends Component {
                   </div>
                 </ModalBody>
               </Modal>
+              <UserList
+                title={this.state.titleModal}
+                showModal={this.state.showListModal}
+                closeModal={this.closeListModal.bind(this)}
+                userList={this.state.userList}
+              />
             </div>
           </div>
         </div>

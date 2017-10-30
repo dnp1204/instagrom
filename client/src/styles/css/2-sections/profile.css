@@ -1,21 +1,21 @@
 /*
 Error: Undefined variable: "$light-red".
-        on line 218 of client/src/styles/scss/2-sections/profile.sass
+        on line 221 of client/src/styles/scss/2-sections/profile.sass
 
-213:         flex-direction: row 
-214:         align-items: center
-215:         justify-content: space-between
-216: 
-217:         .liked
-218:           color: $light-red
+216:         flex-direction: row 
+217:         align-items: center
+218:         justify-content: space-between
 219: 
-220:         .fa
-221:           font-size: 23px
-222:           font-weight: bold
-223:           margin-right: 10px
+220:         .liked
+221:           color: $light-red
+222: 
+223:         .fa
+224:           font-size: 23px
+225:           font-weight: bold
+226:           margin-right: 10px
 
 Backtrace:
-client/src/styles/scss/2-sections/profile.sass:218
+client/src/styles/scss/2-sections/profile.sass:221
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/variable.rb:49:in `_perform'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
 /usr/local/lib/ruby/gems/2.4.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
@@ -110,4 +110,4 @@ client/src/styles/scss/2-sections/profile.sass:218
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$light-red\".\A         on line 218 of client/src/styles/scss/2-sections/profile.sass\A \A 213:         flex-direction: row \A 214:         align-items: center\A 215:         justify-content: space-between\A 216: \A 217:         .liked\A 218:           color: $light-red\A 219: \A 220:         .fa\A 221:           font-size: 23px\A 222:           font-weight: bold\A 223:           margin-right: 10px"; }
+  content: "Error: Undefined variable: \"$light-red\".\A         on line 221 of client/src/styles/scss/2-sections/profile.sass\A \A 216:         flex-direction: row \A 217:         align-items: center\A 218:         justify-content: space-between\A 219: \A 220:         .liked\A 221:           color: $light-red\A 222: \A 223:         .fa\A 224:           font-size: 23px\A 225:           font-weight: bold\A 226:           margin-right: 10px"; }
