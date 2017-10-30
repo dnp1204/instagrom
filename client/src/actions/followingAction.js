@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_FOLLOWING, LIKE_FOLLOWING_POST, COMMENT_FOLLOWING_POST } from './types';
+import { FETCH_FOLLOWING, LIKE_FOLLOWING_POST, COMMENT_FOLLOWING_POST, DELETE_COMMENT } from './types';
 
 const URL = '/api/following';
 const URL_POST = '/api/post';
@@ -31,6 +31,15 @@ export const commentFollowingPost = (content, postId, userId, userName, userAvat
     const request = await axios.put(`${URL_POST}/${postId}/comment`, { content });
     dispatch({ type: COMMENT_FOLLOWING_POST, payload: request.data });
   } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteComment = (postId, commentId) => async dispatch => {
+  try { 
+    const request = await axios.delete(`${URL_POST}/${postId}/${commentId}/delete`);
+    dispatch({ type: DELETE_COMMENT, payload: request.data });
+  } catch (err) { 
     console.log(err);
   }
 }

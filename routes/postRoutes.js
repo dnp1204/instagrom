@@ -13,5 +13,5 @@ module.exports = app => {
   app.put('/api/post/:userId/:postId/like', PostController.likePost);
   
   app.put('/api/post/:postId/comment', PostController.commentPost);
-  app.put('/api/post/:postId/:commentId/like', PostController.likeComment);
+  app.delete('/api/post/:postId/:commentId/delete', PostController.deleteComment);
 };

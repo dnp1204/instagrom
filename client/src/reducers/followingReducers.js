@@ -2,13 +2,22 @@ import _ from 'lodash';
 import {
   FETCH_FOLLOWING,
   LIKE_FOLLOWING_POST,
-  COMMENT_FOLLOWING_POST
+  COMMENT_FOLLOWING_POST,
+  DELETE_COMMENT
 } from '../actions/types';
 
 const initialState = [{ _id: '', likes: [{ name: '' }], comments: [] }];
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case DELETE_COMMENT:
+      return state.map(post => {
+        if (post._id === action.payload._id) {
+          return action.payload;
+        } else {
+          return post;
+        }
+      });
     case COMMENT_FOLLOWING_POST:
       const { post, comment } = action.payload;
       return state.map(element => {

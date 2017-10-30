@@ -4,6 +4,7 @@ export const FETCH_POSTS = ' fetch_posts';
 export const MAKE_POST = 'make_post';
 export const LIKE_POST = 'like_post';
 export const DELETE_POST = 'delete_post';
+export const DELETE_COMMENT = 'delete_comment';
 
 export const SEARCH_USER = 'search_user';
 export const FOLLOWING_USER = 'following_user';

@@ -5,23 +5,26 @@ const Post = mongoose.model('post');
 const Comment = mongoose.model('comment');
 
 const findUser = async userId => {
-  const user = await User.findById(userId).populate({
-    path: 'posts',
-    populate: [
-      {
-        path: 'comments',
-        model: 'comment',
-        populate: {
-          path: 'user',
+  const user = await User.findById(userId)
+    .populate({
+      path: 'posts',
+      populate: [
+        {
+          path: 'comments',
+          model: 'comment',
+          populate: {
+            path: 'user',
+            model: 'user'
+          }
+        },
+        {
+          path: 'likes',
           model: 'user'
         }
-      },
-      {
-        path: 'likes',
-        model: 'user'
-      }
-    ]
-  }).populate('following').populate('followers');
+      ]
+    })
+    .populate('following')
+    .populate('followers');
 
   return user;
 };
@@ -163,20 +166,25 @@ module.exports = {
     }
   },
 
-  async likeComment(req, res, next) {
+  async deleteComment(req, res, next) {
     const { commentId, postId } = req.params;
 
     try {
-      const comment = await Comment.findById(commentId);
-      const index = comment.likes.indexOf(req.user);
-      if (index === -1) {
-        comment.likes.push(req.user);
-      } else {
-        comment.likes.splice(index, 1);
-      }
-      const post = await Post.findById(postId);
-      await comment.save();
-      res.send(post, comment);
+      await Comment.findByIdAndRemove(commentId);
+      const post = await Post.findById(postId)
+        .populate('likes')
+        .populate({
+          path: 'comments',
+          model: 'comment',
+          options: {
+            sort: { createdAt: 1 }
+          },
+          populate: {
+            path: 'user',
+            model: 'user'
+          }
+        });
+      res.send(post);
     } catch (err) {
       next(err);
     }

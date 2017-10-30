@@ -56,20 +56,33 @@ class NewsfeedPost extends Component {
   }
 
   renderLessComments() {
-    const { comments } = this.props;
+    const { comments, currentUserId, deleteComment } = this.props;
     const LOWER_BOUNDS = comments.length - MAX_COMMENT_LENGTH;
     return comments.slice(LOWER_BOUNDS, comments.length).map(comment => {
       return (
         <div className="comment-content" key={comment._id}>
-          <span>{comment.user.fullName} </span>
-          {comment.content}
+          <div>
+            <span>{comment.user.fullName} </span>
+            {comment.content}
+          </div>
+          {comment.user._id === currentUserId ? (
+            <div>
+              <i
+                onClick={() => deleteComment(comment._id)}
+                className="fa fa-times"
+                aria-hidden="true"
+              />
+            </div>
+          ) : (
+            <div />
+          )}
         </div>
       );
     });
   }
 
   renderComments() {
-    const { comments } = this.props;
+    const { comments, currentUserId, deleteComment } = this.props;
     if (comments.length > MAX_COMMENT_LENGTH && this.state.hideComment) {
       return (
         <div>
@@ -87,8 +100,21 @@ class NewsfeedPost extends Component {
     return comments.map(comment => {
       return (
         <div className="comment-content" key={comment._id}>
-          <span>{comment.user.fullName} </span>
-          {comment.content}
+          <div>
+            <span>{comment.user.fullName} </span>
+            {comment.content}
+          </div>
+          {comment.user._id === currentUserId ? (
+            <div>
+              <i
+                onClick={() => deleteComment(comment._id)}
+                className="fa fa-times"
+                aria-hidden="true"
+              />
+            </div>
+          ) : (
+            <div />
+          )}
         </div>
       );
     });

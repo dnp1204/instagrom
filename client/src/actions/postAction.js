@@ -47,4 +47,4 @@ export const deletePost = postId => async dispatch => {
   } catch (err) {
     console.log(err);
   }
-}
+};

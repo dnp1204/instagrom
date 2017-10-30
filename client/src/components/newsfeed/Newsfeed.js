@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import {
   fetchFollowing,
   likeFollowingPost,
-  commentFollowingPost
+  commentFollowingPost,
+  deleteComment
 } from '../../actions';
 import NewsfeedPost from './NewsfeedPost';
 
@@ -25,6 +26,7 @@ class Newsfeed extends Component {
 
       return (
         <NewsfeedPost
+          currentUserId={user._id}
           key={post._id}
           liked={liked}
           userAvatar={post.userAvatar}
@@ -49,6 +51,7 @@ class Newsfeed extends Component {
               post.userName,
               post.userAvatar
             )}
+          deleteComment={(commentId) => this.props.deleteComment(post._id, commentId)}
         />
       );
     });
@@ -74,5 +77,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   fetchFollowing,
   likeFollowingPost,
-  commentFollowingPost
+  commentFollowingPost,
+  deleteComment
 })(Newsfeed);
