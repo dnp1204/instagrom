@@ -2,21 +2,11 @@ import React from 'react';
 import { Modal, ModalBody, ModalHeader, ModalTitle } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const renderUsers = (userList, title, currentUser, visitedUserId, followUser) => {
+const renderUsers = (userList, title, currentUser, followUser) => {
   return userList.map(user => {
     let following = false;
-    if (visitedUserId) {
-      if (currentUser.following.includes(user._id)) {
-        following = true;
-      }
-    } else {
-      if (title === 'Following') {
-        following = true;
-      } else {
-        if (currentUser.following.includes(user._id)) {
-          following = true;
-        }
-      }
+    if (currentUser.following.includes(user._id)) {
+      following = true;
     }
 
     return (
@@ -29,7 +19,7 @@ const renderUsers = (userList, title, currentUser, visitedUserId, followUser) =>
           <div />
         ) : (
           <button
-            onClick={() => console.log('hello')}
+            onClick={() => followUser(user._id)}
             className={`btn ${following ? 'btn-transparent' : 'btn-primary'}`}
           >
             {following ? 'Following' : 'Follow'}
@@ -47,7 +37,6 @@ const UserList = props => {
     userList,
     title,
     currentUser,
-    visitedUserId,
     followUser
   } = props;
 
@@ -62,7 +51,7 @@ const UserList = props => {
           <ModalTitle>{title}</ModalTitle>
         </ModalHeader>
         <ModalBody>
-          {renderUsers(userList, title, currentUser, visitedUserId, followUser)}
+          {renderUsers(userList, title, currentUser, followUser)}
         </ModalBody>
       </Modal>
     </div>

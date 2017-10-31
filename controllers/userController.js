@@ -4,7 +4,7 @@ const User = mongoose.model('user');
 
 module.exports = {
   async followUser(req, res, next) {
-    const { userId } = req.params;
+    const { userId, list } = req.params;
     try {
       const user = await User.findById(userId).populate('followers');
       const prevLength = req.user.following.length;
@@ -30,7 +30,18 @@ module.exports = {
 
       await req.user.save();
       await user.save();
-      res.send({ followers: user.followers, following: req.user.following });
+
+      if (list) {
+        const newFollowingList = await User.findById(req.user._id).populate(
+          'following'
+        );
+        res.send({
+          postFollowing: newFollowingList.following,
+          following: req.user.following
+        });
+      } else {
+        res.send({ followers: user.followers, following: req.user.following });
+      }
     } catch (err) {
       next(err);
     }

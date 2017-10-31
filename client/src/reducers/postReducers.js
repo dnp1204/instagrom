@@ -5,7 +5,8 @@ import {
   FOLLOWING_USER,
   DELETE_POST,
   DELETE_COMMENT,
-  COMMENT_POST
+  COMMENT_POST,
+  FOLLOWING_USER_FROM_LIST
 } from '../actions/types';
 
 const initialState = {
@@ -16,6 +17,11 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case FOLLOWING_USER_FROM_LIST:
+      if (action.payload.postFollowing) {
+        return { ...state, following: action.payload.postFollowing };
+      }
+      return state;
     case COMMENT_POST:
       const { post, comment } = action.payload;
       const updatePost = state.posts.map(element => {

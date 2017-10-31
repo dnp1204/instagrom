@@ -10,6 +10,7 @@ export const DELETE_COMMENT = 'delete_comment';
 
 export const SEARCH_USER = 'search_user';
 export const FOLLOWING_USER = 'following_user';
+export const FOLLOWING_USER_FROM_LIST = 'following_user_from_list';
 
 export const FETCH_FOLLOWING = 'get_following';
 export const LIKE_FOLLOWING_POST = 'like_following_post';

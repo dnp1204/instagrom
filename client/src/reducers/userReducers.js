@@ -1,4 +1,4 @@
-import { FETCH_CURRENT_USER , FOLLOWING_USER} from '../actions/types';
+import { FETCH_CURRENT_USER , FOLLOWING_USER, FOLLOWING_USER_FROM_LIST} from '../actions/types';
 
 const initialState = {
   posts: [{ _id: '', likes: [], comments: [], image: '' }],
@@ -8,6 +8,8 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case FOLLOWING_USER_FROM_LIST:
+      return { ...state, following: action.payload.following };
     case FOLLOWING_USER:
       return { ...state, following: action.payload.following };
     case FETCH_CURRENT_USER:

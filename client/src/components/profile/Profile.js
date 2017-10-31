@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { ModalBody, Modal } from 'react-bootstrap';
 import moment from 'moment';
 import Media from 'react-media';
-import { fetchPosts, followUser, likePost, deletePost, deleteComment, commentPost } from '../../actions';
+import { fetchPosts, followUser, likePost, deletePost, deleteComment, commentPost, followUserFromList } from '../../actions';
 import Post from './Post';
 import NumbersMobile from './NumbersMobile';
 import UserList from './UserList';
@@ -369,9 +369,8 @@ class Profile extends Component {
                 showModal={this.state.showListModal}
                 closeModal={this.closeListModal.bind(this)}
                 userList={this.state.userList}
-                visitedUserId={id}
                 currentUser={this.props.user}
-                followUser={id => this.props.followUser(id)}
+                followUser={userId => this.props.followUserFromList(userId, id)}
               />
             </div>
           </div>
@@ -391,5 +390,6 @@ export default connect(mapStateToProps, {
   likePost,
   deletePost,
   deleteComment,
-  commentPost
+  commentPost,
+  followUserFromList
 })(Profile);
