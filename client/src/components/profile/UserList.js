@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, ModalBody, ModalHeader, ModalTitle } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const renderUsers = (userList, title, currentUser, visitedUserId, followUser) => {
   return userList.map(user => {
@@ -20,10 +21,10 @@ const renderUsers = (userList, title, currentUser, visitedUserId, followUser) =>
 
     return (
       <div key={user._id} className="userlist-container">
-        <div className="user-info">
+        <Link to={`/profile/${user._id}`} className="user-info">
           <img alt={user.avatar} src={user.avatar} />
           <div>{user.fullName}</div>
-        </div>
+        </Link>
         {currentUser._id === user._id ? (
           <div />
         ) : (
