@@ -1,10 +1,14 @@
-import { FETCH_CURRENT_USER , FOLLOWING_USER, FOLLOWING_USER_FROM_LIST} from '../actions/types';
+import {
+  FETCH_CURRENT_USER,
+  FOLLOWING_USER,
+  FOLLOWING_USER_FROM_LIST
+} from '../actions/types';
 
 const initialState = {
   posts: [{ _id: '', likes: [], comments: [], image: '' }],
   followers: [],
   following: []
-}
+};
 
 export default function(state = initialState, action) {
   switch (action.type) {

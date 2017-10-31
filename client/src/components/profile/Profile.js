@@ -3,7 +3,15 @@ import { connect } from 'react-redux';
 import { ModalBody, Modal } from 'react-bootstrap';
 import moment from 'moment';
 import Media from 'react-media';
-import { fetchPosts, followUser, likePost, deletePost, deleteComment, commentPost, followUserFromList } from '../../actions';
+import {
+  fetchPosts,
+  followUser,
+  likePost,
+  deletePost,
+  deleteComment,
+  commentPost,
+  followUserFromList
+} from '../../actions';
 import Post from './Post';
 import NumbersMobile from './NumbersMobile';
 import UserList from './UserList';
@@ -129,7 +137,7 @@ class Profile extends Component {
           {comment.user._id === this.props.user._id ? (
             <div>
               <i
-              onClick={() => this.props.deleteComment(postId, comment._id)}
+                onClick={() => this.props.deleteComment(postId, comment._id)}
                 className="fa fa-times"
                 aria-hidden="true"
               />
