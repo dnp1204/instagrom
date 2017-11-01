@@ -25,6 +25,11 @@ passport.use(
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
+      const duplicateUserEmail = await User.findOne({ email: profile.emails[0].value });
+      if (duplicateUserEmail) {
+        return done(null, duplicateUserEmail);
+      }
+
       const existingUser = await User.findOne({ googleId: profile.id });
       if (existingUser) {
         return done(null, existingUser);
@@ -64,6 +69,11 @@ passport.use(
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
+      const duplicateUserEmail = await User.findOne({ email: profile.emails[0].value });
+      if (duplicateUserEmail) {
+        return done(null, duplicateUserEmail);
+      }
+
       const existingUser = await User.findOne({ facebookId: profile.id });
       if (existingUser) {
         return done(null, existingUser);
