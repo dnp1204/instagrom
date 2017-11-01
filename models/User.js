@@ -4,9 +4,10 @@ const { Schema } = mongoose;
 const userSchema = new Schema(
   {
     googleId: String,
+    facebookId: String,
     firstName: String,
     lastName: String,
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: true },
     avatar: String,
     gender: String,
     placesLived: [

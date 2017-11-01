@@ -14,6 +14,13 @@ class LoginPage extends Component {
           >
             <i className="fa fa-google" /> Log in with Google
           </a>
+          <a
+            href="/auth/facebook"
+            className="btn btn-block btn-primary"
+            id="facebook-login-link"
+          >
+            <i className="fa fa-facebook" /> Log in with Facebook
+          </a>
           <div className="split-line-container">
             <div className="split-line" />
             <div className="between">OR</div>
