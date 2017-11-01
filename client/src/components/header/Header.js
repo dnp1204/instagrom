@@ -115,9 +115,9 @@ class Header extends Component {
               <i className="fa fa-cloud-upload fa-2x" />
             </a>
           </div>
-          <div className="notification">
+          {/* <div className="notification">
             <i className="fa fa-heart-o fa-2x" />
-          </div>
+          </div> */}
           <div className="user-info">
             <Link to="/profile" onClick={() => this.resetValue()}>
               <i className="fa fa-user-o fa-2x" />
