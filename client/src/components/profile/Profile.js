@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ModalBody, Modal } from 'react-bootstrap';
 import moment from 'moment';
-
 import {
   fetchPosts,
   followUser,
@@ -12,7 +11,7 @@ import {
   commentPost,
   followUserFromList
 } from '../../actions';
-import Post from './Post';
+import PostList from './PostList';
 import NumbersMobile from './NumbersMobile';
 import UserList from './UserList';
 import UserInfo from './UserInfo';
@@ -21,7 +20,7 @@ const MAX_COMMENT_LENGTH = 5;
 
 class Profile extends Component {
   state = {
-    show: false,
+    showModalDetail: false,
     hideComment: true,
     comments: [],
     likes: [],
@@ -65,7 +64,7 @@ class Profile extends Component {
   }
 
   close() {
-    this.setState({ show: false, hideComment: true });
+    this.setState({ showModalDetail: false, hideComment: true });
   }
 
   closeListModal() {
@@ -74,54 +73,6 @@ class Profile extends Component {
 
   openListModal(userList, titleModal) {
     this.setState({ showListModal: true, userList, titleModal });
-  }
-
-  renderPostRow(index) {
-    const { posts: { posts }, user: { _id } } = this.props;
-    const { id } = this.props.match.params;
-
-    let validPost = [];
-    let max = 0;
-    if (index + 3 < posts.length) {
-      max = index + 3;
-    } else {
-      max = posts.length;
-    }
-
-    for (index; index < max; index += 1) {
-      validPost.push(posts[index]);
-    }
-
-    return validPost.map(post => {
-      return (
-        <div key={post._id} className="post col col-md-4 col-sm-4 col-xs-4">
-          <Post
-            createdAt={post.createdAt}
-            visitedUserId={id}
-            userId={_id}
-            postId={post._id}
-            likes={post.likes}
-            comments={post.comments}
-            imageURL={post.image}
-            displayModalDetail={() => this.setState({ show: true })}
-          />
-        </div>
-      );
-    });
-  }
-
-  renderPosts() {
-    return this.props.posts.posts.map((post, index) => {
-      if (index % 3 === 0) {
-        return (
-          <div key={index} className="row user-post">
-            {this.renderPostRow(index)}
-          </div>
-        );
-      } else {
-        return '';
-      }
-    });
   }
 
   renderLessComments() {
@@ -243,7 +194,8 @@ class Profile extends Component {
                 posts={posts}
                 followers={followers}
                 following={following}
-                openListModal={(userList, titleModal) => this.openListModal(userList, titleModal)}
+                openListModal={(userList, titleModal) =>
+                  this.openListModal(userList, titleModal)}
                 isFollowing={this.state.following}
                 handleFollowUser={this.handleFollowUser.bind(this)}
               />
@@ -252,10 +204,16 @@ class Profile extends Component {
                 following={following}
                 followers={followers}
               />
-              {this.renderPosts()}
+              <PostList
+                posts={posts}
+                user={this.props.user}
+                visitedUserId={id}
+                displayModalDetail={() =>
+                  this.setState({ showModalDetail: true })}
+              />
               <Modal
                 dialogClassName="modal-container"
-                show={this.state.show}
+                show={this.state.showModalDetail}
                 onHide={this.close.bind(this)}
               >
                 <ModalBody>
