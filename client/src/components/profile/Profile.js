@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ModalBody, Modal } from 'react-bootstrap';
 import moment from 'moment';
-import Media from 'react-media';
+
 import {
   fetchPosts,
   followUser,
@@ -14,10 +14,9 @@ import {
 } from '../../actions';
 import Post from './Post';
 import NumbersMobile from './NumbersMobile';
-import Numbers from './Numbers';
 import UserList from './UserList';
+import UserInfo from './UserInfo';
 
-const MAX_LENGTH_NAME = 15;
 const MAX_COMMENT_LENGTH = 5;
 
 class Profile extends Component {
@@ -190,40 +189,10 @@ class Profile extends Component {
     });
   }
 
-  renderLogout() {
-    return (
-      <a className="btn btn-danger" href="/api/logout">
-        Log out
-      </a>
-    );
-  }
-
   handleFollowUser() {
     const { id } = this.props.match.params;
     this.props.followUser(id);
     this.setState({ following: !this.state.following });
-  }
-
-  renderFollow() {
-    if (this.state.following) {
-      return (
-        <button
-          onClick={this.handleFollowUser.bind(this)}
-          className="btn btn-transparent"
-        >
-          Following
-        </button>
-      );
-    }
-
-    return (
-      <button
-        onClick={this.handleFollowUser.bind(this)}
-        className="btn btn-primary"
-      >
-        Follow
-      </button>
-    );
   }
 
   handleOnChange(event) {
@@ -266,33 +235,18 @@ class Profile extends Component {
         <div className="row">
           <div className="col-md-10 col-md-offset-1">
             <div className="profile-container">
-              <div className="user-container">
-                <div className="user-avatar">
-                  <img src={avatar} alt="avatar" />
-                </div>
-                <div className="user-info">
-                  <div className="name">
-                    <Media query="(max-width: 390px)">
-                      {matches =>
-                        matches ? (
-                          <h4 className="bigger">
-                            {name.length > MAX_LENGTH_NAME ? firstName : name}
-                          </h4>
-                        ) : (
-                          <h4 className="bigger">{name}</h4>
-                        )}
-                    </Media>
-                    {id ? this.renderFollow() : this.renderLogout()}
-                  </div>
-                  <Numbers
-                    posts={posts}
-                    following={following}
-                    followers={followers}
-                    openListModal={(userList, titleModal) =>
-                      this.openListModal(userList, titleModal)}
-                  />
-                </div>
-              </div>
+              <UserInfo
+                avatar={avatar}
+                name={name}
+                firstName={firstName}
+                id={id}
+                posts={posts}
+                followers={followers}
+                following={following}
+                openListModal={(userList, titleModal) => this.openListModal(userList, titleModal)}
+                isFollowing={this.state.following}
+                handleFollowUser={this.handleFollowUser.bind(this)}
+              />
               <NumbersMobile
                 posts={posts}
                 following={following}
