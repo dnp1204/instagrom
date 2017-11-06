@@ -14,6 +14,7 @@ import {
 } from '../../actions';
 import Post from './Post';
 import NumbersMobile from './NumbersMobile';
+import Numbers from './Numbers';
 import UserList from './UserList';
 
 const MAX_LENGTH_NAME = 15;
@@ -283,25 +284,13 @@ class Profile extends Component {
                     </Media>
                     {id ? this.renderFollow() : this.renderLogout()}
                   </div>
-                  <div className="numbers">
-                    <p>
-                      <span className="bigger">{posts.length}</span> posts
-                    </p>
-                    <p
-                      onClick={() => this.openListModal(following, 'Following')}
-                      id="showList"
-                    >
-                      <span className="bigger">{following.length}</span>{' '}
-                      following
-                    </p>
-                    <p
-                      onClick={() => this.openListModal(followers, 'Followers')}
-                      id="showList"
-                    >
-                      <span className="bigger">{followers.length}</span>{' '}
-                      followers
-                    </p>
-                  </div>
+                  <Numbers
+                    posts={posts}
+                    following={following}
+                    followers={followers}
+                    openListModal={(userList, titleModal) =>
+                      this.openListModal(userList, titleModal)}
+                  />
                 </div>
               </div>
               <NumbersMobile

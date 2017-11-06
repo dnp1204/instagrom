@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class NumbersMobile extends Component {
   render() {
@@ -27,6 +28,12 @@ class NumbersMobile extends Component {
       </div>
     );
   }
+}
+
+NumbersMobile.propTypes = {
+  posts: PropTypes.array,
+  following: PropTypes.array,
+  followers: PropTypes.array
 }
 
 export default NumbersMobile;

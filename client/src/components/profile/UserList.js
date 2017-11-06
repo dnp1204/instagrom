@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, ModalBody, ModalHeader, ModalTitle } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const renderUsers = (userList, title, currentUser, followUser) => {
   return userList.map(user => {
@@ -57,5 +58,14 @@ const UserList = props => {
     </div>
   );
 };
+
+UserList.propTypes = {
+  title: PropTypes.string,
+  currentUser: PropTypes.object,
+  userList: PropTypes.array,
+  followUser: PropTypes.func,
+  showModal: PropTypes.bool,
+  closeModal: PropTypes.func,
+}
 
 export default UserList;
