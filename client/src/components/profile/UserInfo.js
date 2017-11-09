@@ -65,6 +65,10 @@ class UserInfo extends Component {
     );
   }
 
+  closeModal() {
+    this.setState({ showModalChangeAvatar: false });
+  }
+
   render() {
     const {
       avatar,
@@ -83,7 +87,7 @@ class UserInfo extends Component {
       <div className="user-container">
         <div className="user-avatar">
           <img src={avatar} alt="avatar" />
-          <div>Change</div>
+          <div onClick={() => this.setState({ showModalChangeAvatar: true })}>Change</div>
         </div>
         <div className="user-info">
           <div className="name">
@@ -107,6 +111,17 @@ class UserInfo extends Component {
               openListModal(userList, titleModal)}
           />
         </div>
+        <Modal
+          dialogClassName="modal-update-avatar-container"
+          show={this.state.showModalChangeAvatar}
+          onHide={this.closeModal.bind(this)}
+        >
+          <ModalBody>
+            <div>Change your avatar</div>
+            <div>Delete your current avatar</div>
+            <div onClick={this.closeModal.bind(this)}>Cancel</div>
+          </ModalBody>
+        </Modal>
       </div>
     );
   }
