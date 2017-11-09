@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,8BAA8B;EAC5B,UAAU,EAAE,KAAK;EAEjB,0CAAW;IACT,OAAO,EAAE,CAAC;IAEV,mDAAQ;MACN,MAAM,EAAE,OAAO;MACf,UAAU,EAAE,MAAM;MAClB,aAAa,EAAE,8BAA8B;MAC7C,SAAS,EAAE,IAAI;MACf,OAAO,EAAE,aAAa",
+"sources": ["../../scss/3-modules/modal-update-avatar.sass"],
+"names": [],
+"file": "modal-update-avatar.css"
+}

@@ -117,9 +117,9 @@ class UserInfo extends Component {
           onHide={this.closeModal.bind(this)}
         >
           <ModalBody>
-            <div>Change your avatar</div>
-            <div>Delete your current avatar</div>
-            <div onClick={this.closeModal.bind(this)}>Cancel</div>
+            <div className="section">Change your avatar</div>
+            <div className="section">Delete your current avatar</div>
+            <div className="section" onClick={this.closeModal.bind(this)}>Cancel</div>
           </ModalBody>
         </Modal>
       </div>
