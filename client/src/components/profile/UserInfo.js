@@ -48,6 +48,7 @@ const UserInfo = ({
     <div className="user-container">
       <div className="user-avatar">
         <img src={avatar} alt="avatar" />
+        <div>Change</div>
       </div>
       <div className="user-info">
         <div className="name">

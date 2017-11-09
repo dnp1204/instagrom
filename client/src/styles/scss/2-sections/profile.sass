@@ -17,6 +17,27 @@
 
     .user-avatar
       margin-right: 100px
+      position: relative
+
+      &:hover
+        div
+          opacity: 1
+
+      div 
+        background-color: rgba(0, 0, 0, 0.2)
+        position: absolute
+        display: flex
+        top: 0
+        justify-content: center
+        align-items: center
+        cursor: pointer
+        height: 150px
+        width: 150px
+        border-radius: 50%
+        font-size: 17px
+        color: #fff
+        opacity: 0
+        transition: all 200ms ease-in-out
 
       img
         height: 150px
@@ -125,7 +146,7 @@
 
       .user-avatar
         margin-right: 10px
-
+      
         img
           height: 80px
           width: 80px
