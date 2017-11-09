@@ -15,3 +15,5 @@ export const FOLLOWING_USER_FROM_LIST = 'following_user_from_list';
 export const FETCH_FOLLOWING = 'get_following';
 export const LIKE_FOLLOWING_POST = 'like_following_post';
 export const COMMENT_FOLLOWING_POST = 'comment_following_post';
+
+export const DELETE_AVATAR = 'delete_avatar';

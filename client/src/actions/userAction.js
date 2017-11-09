@@ -3,7 +3,8 @@ import {
   FETCH_CURRENT_USER,
   SEARCH_USER,
   FOLLOWING_USER,
-  FOLLOWING_USER_FROM_LIST
+  FOLLOWING_USER_FROM_LIST,
+  DELETE_AVATAR
 } from './types';
 
 const URL = '/api';
@@ -54,3 +55,12 @@ export const followUserFromList = (userId, visitedUserId) => async dispatch => {
     console.log(err);
   }
 };
+
+export const deleteAvatar = userId => async dispatch => {
+  try {
+    const request = await axios.put(`${URL}/${userId}/deleteAvatar`);
+    dispatch({ type: DELETE_AVATAR, payload: request.data });
+  } catch (err) {
+    console.log(err);
+  }
+}

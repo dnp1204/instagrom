@@ -6,7 +6,8 @@ import {
   DELETE_POST,
   DELETE_COMMENT,
   COMMENT_POST,
-  FOLLOWING_USER_FROM_LIST
+  FOLLOWING_USER_FROM_LIST,
+  DELETE_AVATAR
 } from '../actions/types';
 
 const initialState = {
@@ -17,6 +18,8 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case DELETE_AVATAR:
+      return { ...state, avatar: action.payload };
     case FOLLOWING_USER_FROM_LIST:
       if (action.payload.postFollowing) {
         return { ...state, following: action.payload.postFollowing };

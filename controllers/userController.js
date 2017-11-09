@@ -107,5 +107,18 @@ module.exports = {
     } catch (err) {
       next(err);
     }
+  },
+
+  async deleteAvatar(req, res, next) {
+    const url =
+      'https://www.rhinodigital.com/wp-content/uploads/2016/12/blank-user.jpg';
+    const { userId } = req.params;
+
+    try {
+      await User.findByIdAndUpdate({ _id: userId }, { avatar: url });
+      res.send(url);
+    } catch (err) {
+      next(err);
+    }
   }
 };

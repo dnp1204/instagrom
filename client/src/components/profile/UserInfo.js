@@ -6,33 +6,6 @@ import PropTypes from 'prop-types';
 
 const MAX_LENGTH_NAME = 15;
 
-const renderLogout = () => {
-  return (
-    <a className="btn btn-danger" href="/api/logout">
-      Log out
-    </a>
-  );
-};
-
-const renderFollow = (following, handleFollowUser) => {
-  if (following) {
-    return (
-      <button
-        onClick={() => handleFollowUser()}
-        className="btn btn-transparent"
-      >
-        Following
-      </button>
-    );
-  }
-
-  return (
-    <button onClick={() => handleFollowUser()} className="btn btn-primary">
-      Follow
-    </button>
-  );
-};
-
 class UserInfo extends Component {
   state = { showModalChangeAvatar: false };
 
@@ -71,6 +44,7 @@ class UserInfo extends Component {
 
   render() {
     const {
+      currentUserId,
       avatar,
       name,
       firstName,
@@ -79,10 +53,9 @@ class UserInfo extends Component {
       following,
       followers,
       openListModal,
-      isFollowing,
-      handleFollowUser
+      deleteAvatar
     } = this.props;
-
+    
     return (
       <div className="user-container">
         <div className="user-avatar">
@@ -127,7 +100,15 @@ class UserInfo extends Component {
         >
           <ModalBody>
             <div className="section">Change your avatar</div>
-            <div className="section">Delete your current avatar</div>
+            <div
+              className="section"
+              onClick={() => {
+                deleteAvatar(currentUserId);
+                this.setState({ showModalChangeAvatar: false });
+              }}
+            >
+              Delete your current avatar
+            </div>
             <div className="section" onClick={this.closeModal.bind(this)}>
               Cancel
             </div>
