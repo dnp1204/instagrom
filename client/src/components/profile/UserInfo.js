@@ -87,7 +87,16 @@ class UserInfo extends Component {
       <div className="user-container">
         <div className="user-avatar">
           <img src={avatar} alt="avatar" />
-          <div onClick={() => this.setState({ showModalChangeAvatar: true })}>Change</div>
+          {id ? (
+            <div />
+          ) : (
+            <div
+              className="change-container"
+              onClick={() => this.setState({ showModalChangeAvatar: true })}
+            >
+              Change
+            </div>
+          )}
         </div>
         <div className="user-info">
           <div className="name">
@@ -119,7 +128,9 @@ class UserInfo extends Component {
           <ModalBody>
             <div className="section">Change your avatar</div>
             <div className="section">Delete your current avatar</div>
-            <div className="section" onClick={this.closeModal.bind(this)}>Cancel</div>
+            <div className="section" onClick={this.closeModal.bind(this)}>
+              Cancel
+            </div>
           </ModalBody>
         </Modal>
       </div>

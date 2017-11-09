@@ -637,7 +637,7 @@ body {
       position: relative; }
       .profile-container .user-container .user-avatar:hover div {
         opacity: 1; }
-      .profile-container .user-container .user-avatar div {
+      .profile-container .user-container .user-avatar .change-container {
         background-color: rgba(0, 0, 0, 0.2);
         position: absolute;
         display: flex;
