@@ -1,13 +1,43 @@
 import React, { Component } from 'react';
 import Media from 'react-media';
 import { Modal, ModalBody } from 'react-bootstrap';
-import Numbers from './Numbers';
 import PropTypes from 'prop-types';
+import fileStack from 'filestack-js';
+import Numbers from './Numbers';
 
 const MAX_LENGTH_NAME = 15;
 
 class UserInfo extends Component {
-  state = { showModalChangeAvatar: false };
+  constructor(props) {
+    super(props);
+
+    this.state = { showModalChangeAvatar: false };
+    this.fsClient = fileStack.init('ARG1DdJEEQAWY9Jd25nffz');
+  }
+
+  async openPicker() {
+    try {
+      const response = await this.fsClient.pick({
+        fromSources: ['local_file_system', 'url', 'facebook', 'instagram'],
+        transformations: {
+          circle: true,
+          crop: {
+            force: true,
+            aspectRatio: 1
+          }
+        },
+        accept: ['image/*', 'jpeg', 'png', 'jpg'],
+        maxFiles: 1,
+        minFiles: 1
+      });
+      const { filesUploaded } = response;
+      this.setState({
+        imageLink: filesUploaded[0].url
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   renderLogout() {
     return (
@@ -55,7 +85,7 @@ class UserInfo extends Component {
       openListModal,
       deleteAvatar
     } = this.props;
-    
+
     return (
       <div className="user-container">
         <div className="user-avatar">
@@ -99,12 +129,20 @@ class UserInfo extends Component {
           onHide={this.closeModal.bind(this)}
         >
           <ModalBody>
-            <div className="section">Change your avatar</div>
+            <div
+              className="section"
+              onClick={() => {
+                this.openPicker();
+                this.closeModal();
+              }}
+            >
+              Change your avatar
+            </div>
             <div
               className="section"
               onClick={() => {
                 deleteAvatar(currentUserId);
-                this.setState({ showModalChangeAvatar: false });
+                this.closeModal();
               }}
             >
               Delete your current avatar
