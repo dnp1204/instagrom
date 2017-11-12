@@ -31,9 +31,7 @@ class UserInfo extends Component {
         minFiles: 1
       });
       const { filesUploaded } = response;
-      this.setState({
-        imageLink: filesUploaded[0].url
-      });
+      this.props.updateAvatar(this.props.currentUserId, filesUploaded[0].url);
     } catch (err) {
       console.log(err);
     }
@@ -167,7 +165,9 @@ UserInfo.PropTypes = {
   followers: PropTypes.array,
   isFollowing: PropTypes.bool,
   openListModal: PropTypes.func,
-  handleFollowUser: PropTypes.func
+  handleFollowUser: PropTypes.func,
+  deleteAvatar: PropTypes.func,
+  updateAvatar: PropTypes.func
 };
 
 export default UserInfo;

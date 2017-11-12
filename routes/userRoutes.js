@@ -7,4 +7,5 @@ module.exports = app => {
   app.get('/api/following', UserController.getFollowing);
 
   app.put('/api/:userId/deleteAvatar', UserController.deleteAvatar);
+  app.put('/api/:userId/updateAvatar', UserController.updateAvatar);
 };

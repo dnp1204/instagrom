@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, followUser, followUserFromList, deleteAvatar } from '../../actions';
+import {
+  fetchPosts,
+  followUser,
+  followUserFromList,
+  deleteAvatar,
+  updateAvatar
+} from '../../actions';
 import PostList from './PostList';
 import NumbersMobile from './NumbersMobile';
 import ImageModalDetail from './ImageModalDetail';
@@ -58,7 +64,7 @@ class Profile extends Component {
     } = this.props.posts;
 
     const name = firstName + ' ' + lastName;
-    
+
     return (
       <div className="container">
         <div className="row">
@@ -77,7 +83,8 @@ class Profile extends Component {
                   this.openListModal(userList, titleModal)}
                 isFollowing={this.state.following}
                 handleFollowUser={this.handleFollowUser.bind(this)}
-                deleteAvatar={(id) => this.props.deleteAvatar(id)}
+                deleteAvatar={id => this.props.deleteAvatar(id)}
+                updateAvatar={(id, url) => this.props.updateAvatar(id, url)}
               />
               <NumbersMobile
                 posts={posts}
@@ -122,5 +129,6 @@ export default connect(mapStateToProps, {
   fetchPosts,
   followUser,
   followUserFromList,
-  deleteAvatar
+  deleteAvatar,
+  updateAvatar
 })(Profile);

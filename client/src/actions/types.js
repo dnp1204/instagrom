@@ -17,3 +17,4 @@ export const LIKE_FOLLOWING_POST = 'like_following_post';
 export const COMMENT_FOLLOWING_POST = 'comment_following_post';
 
 export const DELETE_AVATAR = 'delete_avatar';
+export const UPDATE_AVATAR = 'update_avatar';

@@ -120,5 +120,17 @@ module.exports = {
     } catch (err) {
       next(err);
     }
+  },
+
+  async updateAvatar(req, res, next) {
+    const { userId } = req.params;
+    const avatar = req.body;
+    
+    try {
+      await User.findByIdAndUpdate({ _id: userId }, avatar);
+      res.send(avatar.avatar);
+    } catch (err) {
+      next(err);
+    }
   }
 };
