@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Media from 'react-media';
-import { Modal, ModalBody } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import fileStack from 'filestack-js';
 import Numbers from './Numbers';
