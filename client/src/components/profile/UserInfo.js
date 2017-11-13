@@ -4,6 +4,7 @@ import { Modal, ModalBody } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import fileStack from 'filestack-js';
 import Numbers from './Numbers';
+import AvatarAndInfoModal from './AvatarAndInfoModal';
 
 const MAX_LENGTH_NAME = 15;
 
@@ -121,35 +122,29 @@ class UserInfo extends Component {
               openListModal(userList, titleModal)}
           />
         </div>
-        <Modal
-          dialogClassName="modal-update-avatar-container"
-          show={this.state.showModalChangeAvatar}
-          onHide={this.closeModal.bind(this)}
+        <AvatarAndInfoModal
+          showModal={this.state.showModalChangeAvatar}
+          closeModal={this.closeModal.bind(this)}
         >
-          <ModalBody>
-            <div
-              className="section"
-              onClick={() => {
-                this.openPicker();
-                this.closeModal();
-              }}
-            >
-              Change your avatar
-            </div>
-            <div
-              className="section"
-              onClick={() => {
-                deleteAvatar(currentUserId);
-                this.closeModal();
-              }}
-            >
-              Delete your current avatar
-            </div>
-            <div className="section" onClick={this.closeModal.bind(this)}>
-              Cancel
-            </div>
-          </ModalBody>
-        </Modal>
+          <div
+            className="section"
+            onClick={() => {
+              this.openPicker();
+              this.closeModal();
+            }}
+          >
+            Change your avatar
+          </div>
+          <div
+            className="section"
+            onClick={() => {
+              deleteAvatar(currentUserId);
+              this.closeModal();
+            }}
+          >
+            Delete your current avatar
+          </div>
+        </AvatarAndInfoModal>
       </div>
     );
   }
