@@ -91,13 +91,14 @@ class Profile extends Component {
                 following={following}
                 followers={followers}
               />
-              <PostList
+              {posts.length > 0 ? <PostList
                 posts={posts}
                 user={this.props.user}
                 visitedUserId={id}
                 displayModalDetail={() =>
                   this.setState({ showModalDetail: true })}
-              />
+              /> : <div style={{ textAlign: 'center' }}>There is no post to show yet!</div>}
+              
               <ImageModalDetail
                 showModalDetail={this.state.showModalDetail}
                 closeModalDetail={this.closeModalDetail.bind(this)}
